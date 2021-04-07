@@ -29,9 +29,9 @@ function CardProduct() {
     }
   ])
   return (
-    <div className="flex flex-row justify-around px-10 m-10 ">
+    <div className="flex flex-col flex-wrap p-4 md:flex-row md:justify-center lg:justify-between lg:px-5 xl:px-10">
       {products.map((product) => (
-        <div className="px-5" key={product.id}>
+        <div className="py-4 px-1 w-72 md:px-4 lg:w-80" key={product.id}>
           <div className="bg-white rounded overflow-hidden shadow-lg"> 
             <img 
                 src={product.img}

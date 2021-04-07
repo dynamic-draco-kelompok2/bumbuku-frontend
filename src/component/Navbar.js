@@ -9,6 +9,7 @@ const Navbar = () => {
   const handleBarMobile = () => {
     setNavbarMobile(!navbarMobile)
   }
+  
   return (
     <div className="bg-base w-full h-16 sticky top-0">
       <div className="px-4 flex flex-row justify-between lg:px-8 xl:px-14">
