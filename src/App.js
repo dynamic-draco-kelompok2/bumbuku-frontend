@@ -1,9 +1,17 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './pages/Home'
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-black font-opensans">Test</h1>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
