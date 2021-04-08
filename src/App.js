@@ -5,7 +5,7 @@ import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-desktop">
       <Router>
         <Switch>
           <Route exact path="/">

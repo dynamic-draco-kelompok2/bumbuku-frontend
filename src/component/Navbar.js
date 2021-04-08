@@ -11,7 +11,7 @@ const Navbar = () => {
   }
   
   return (
-    <div className="bg-base w-full h-16 sticky top-0">
+    <div className="bg-base w-full h-16 sticky top-0 z-50">
       <div className="px-4 flex flex-row justify-between lg:px-8 xl:px-14">
         <Link to="/">
           <img 
