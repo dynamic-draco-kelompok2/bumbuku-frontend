@@ -45,10 +45,10 @@ const Hero = () => {
           <div className="my-1" key={index}>
             {index === current && (
               <div>
-                <img src={banner.img} alt="banner"/>
+                <img src={banner.img} alt="banner" className="relative object-cover"/>
                 <div className="z-10">
                   <div 
-                    className="rounded-full bg-icon w-10 h-10 absolute top-64 left-10 cursor-pointer"
+                    className="rounded-full bg-icon w-7 h-7 absolute top-24 left-3 cursor-pointer lg:top-36 xl:top-44 2xl:top-52"
                     onClick={prevSlide}
                   >
                     <div className="ml-1 mt-1.5">
@@ -56,10 +56,10 @@ const Hero = () => {
                     </div>
                   </div>
                   <div 
-                    className="rounded-full bg-icon w-10 h-10 absolute top-64 right-10 cursor-pointer"
+                    className="rounded-full bg-icon w-7 h-7 absolute top-24 right-3 cursor-pointer lg:top-36 xl:top-44 2xl:top-52"
                     onClick={nextSlide}
                   >
-                    <div className="ml-2 mt-1.5">
+                    <div className="ml-1.5 mt-1.5">
                       <RightArrow />
                     </div>
                   </div>
