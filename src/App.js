@@ -18,7 +18,7 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/productdetails">
+          <Route path="/productdetails/:id">
             <ProductDetails />
           </Route>
           <Route>
