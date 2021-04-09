@@ -1,53 +1,26 @@
-import React, { useState } from 'react'
-import BumbuNasgor from '../assets/images/bumbu-nasigoreng.jpg'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-function CardProduct() {
-  const [products, setProducts] = useState([
-    {
-      id:0,
-      img: BumbuNasgor,
-      title: 'Fried Rice Seasoning',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s'
-    },
-    {
-      id:1,
-      img: BumbuNasgor,
-      title: 'Fried Rice Seasoning',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s'
-    },
-    {
-      id:2,
-      img: BumbuNasgor,
-      title: 'Fried Rice Seasoning',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s'
-    },
-    {
-      id:3,
-      img: BumbuNasgor,
-      title: 'Fried Rice Seasoning',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s'
-    }
-  ])
+function CardProduct(bumbuProduk) {
+  const productBumbu = bumbuProduk.bumbuProduk
+  console.log(productBumbu)
   return (
-    <div className="flex flex-col flex-wrap p-4 md:flex-row md:justify-center lg:justify-between lg:px-5 xl:px-10">
-      {products.map((product) => (
-        <Link to="/productdetails">
-          <div className="py-4 px-1 w-72 md:px-4 lg:w-80" key={product.id}>
-            <div className="bg-white rounded overflow-hidden shadow-lg">
-                <img 
-                  src={product.img}
-                  alt="Logo"
-                  className="w-full"
-                />
-            
-              <div className="font-opensans p-5">
-                <p className="font-opensans font-bold text-xl pb-2">{product.title}</p>
-                <p className="font-opensans text-sm">{product.description}</p>
-              </div>
-            </div>
+    <div className="flex flex-col w-full flex-wrap items-center md:flex-row">
+      {productBumbu.map((bumbu) => (
+        <div 
+          className="w-56 h-72 bg-white m-4 rounded shadow-2xl"
+          key={bumbu._id}
+        >
+          <img 
+            src={bumbu.image} 
+            alt="produk"
+            className="w-full h-48 object-cover rounded-t"
+          />
+          <div className="p-2">
+            <h4>{bumbu.name}</h4>
+            <span>Rp. {bumbu.harga}</span>
           </div>
-        </Link> 
+        </div>
       ))}
     </div>
   )

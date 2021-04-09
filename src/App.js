@@ -8,7 +8,7 @@ import Navbar from './component/Navbar'
 
 function App() {
   return (
-    <div className="App bg-desktop">
+    <div className="App bg-desktop h-screen">
       <Router>
       <Navbar/>
         <Switch>
@@ -18,7 +18,7 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/productdetails">
+          <Route path="/productdetails/:id">
             <ProductDetails />
           </Route>
           <Route>
