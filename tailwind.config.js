@@ -17,7 +17,8 @@ module.exports = {
       'icon': '#FCA078',
       'desktop': '#EEEEEE',
       'white': '#FFFFFF',
-      'black': '#000000'
+      'black': '#000000',
+      'grey': '#4E4E4E'
     },
     borderColor: {
       'base': '#B23947',
