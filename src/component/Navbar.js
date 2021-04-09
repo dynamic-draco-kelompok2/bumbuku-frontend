@@ -39,6 +39,12 @@ const Navbar = () => {
           >
             Login
           </Link>
+          <Link 
+            to="/register"
+            className="mx-1"
+          >
+            Register
+          </Link>
         </div>
         <div className="flex md:hidden" onClick={handleBarMobile}>
           {navbarMobile ? <CloseMenu /> : <Hamburger />}
