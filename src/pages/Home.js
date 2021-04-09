@@ -12,7 +12,6 @@ const Home = () => {
     dispatch(getBumbuProduk())
   }, [dispatch])
 
-  // console.log(bumbuProduk)
   return (
     <div>
       <Hero />
