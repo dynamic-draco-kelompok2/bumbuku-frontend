@@ -7,7 +7,7 @@ const LeftArrow = () => {
         version="1.1" 
         id="Layer_1" 
         xmlns="http://www.w3.org/2000/svg"
-        width="1.5rem"
+        width="1rem"
         fill="#FFFFFF"
         x="0px" 
         y="0px"
