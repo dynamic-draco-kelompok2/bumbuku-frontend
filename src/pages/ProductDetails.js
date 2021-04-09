@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 import BumbuNasgor from '../assets/images/bumbu-nasigoreng.jpg'
 
 function ProductDetails() {
@@ -9,6 +12,14 @@ function ProductDetails() {
     img: BumbuNasgor,
     descriptionText: 'Detail base seasoning, is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,when an unknown printer took a galley of type'
   })
+
+  const bumbuProduk = useSelector((state) => state.handleBumbuProduk.data)
+  console.log(bumbuProduk);
+  
+  let {id} = useParams()
+  console.log(id);
+
+
 
   return (
     <div className="flex flex-col justify-center items-center h-screen lg:flex-row ">

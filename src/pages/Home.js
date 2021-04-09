@@ -6,17 +6,17 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const bumbuProduk = useSelector((state) => state)
+  const bumbuProduk = useSelector((state) => state.handleBumbuProduk.data)
   
   useEffect(() => {
     dispatch(getBumbuProduk())
   }, [dispatch])
 
-  console.log(bumbuProduk)
+  // console.log(bumbuProduk)
   return (
     <div>
       <Hero />
-      <CardProduct />
+      <CardProduct bumbuProduk={bumbuProduk}/>
     </div>
   )
 }
