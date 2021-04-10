@@ -6,8 +6,8 @@ function CardProduct(bumbuProduk) {
   
   return (
     <div className="flex flex-col w-full flex-wrap items-center md:flex-row">
-      {productBumbu.map((bumbu) => (
-        <Link to={`/productdetails/${bumbu._id}`}>
+      {productBumbu.map((bumbu, index) => (
+        <Link key={index} to={`/productdetails/${bumbu._id}`}>
           <div 
             className="w-56 h-72 bg-white m-4 rounded shadow-2xl"
             key={bumbu._id}

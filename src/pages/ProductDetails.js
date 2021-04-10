@@ -19,7 +19,7 @@ function ProductDetails() {
   useEffect(() => {
     dispatch(getBumbuById(id))
     dispatch(getCustomBumbu())
-  }, [dispatch])
+  }, [dispatch, id])
   
   return (
     <div className="">
