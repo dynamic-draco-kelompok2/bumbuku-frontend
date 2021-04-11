@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './pages/Home'
 import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register'
+import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
 import Navbar from './component/Navbar'
 
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/productdetails/:id">
             <ProductDetails />
