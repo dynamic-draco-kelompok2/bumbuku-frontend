@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import ListCustomBumbu from './ListCustomBumbu'
 
-const CustomBumbu = ({customBumbu, setCustomPage}) => {
+const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom}) => {
   const [totalItemCustom, setTotalItemCustom] = useState(0)
   const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
-  const [addCustom, setAddCustom] = useState({})
 
   const closeModal = () => {
     setCustomPage(false)
@@ -12,9 +11,10 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
 
   return (
     <div className="">
+      {console.log("ini add custom ", addCustom)}
       <div className="w-screen h-screen bg-black opacity-50 fixed top-0 hidden md:flex"></div>
       <div className="flex justify-center z-10">
-        <div className="bg-desktop w-full h-full flex flex-col rounded fixed top-14 md:top-28 md:max-w-xl md:h-4/5 lg:max-w-2xl">
+        <div className="bg-desktop w-full h-full flex flex-col rounded fixed top-14 md:top-28 md:max-w-xl md:h-4/5 lg:max-w-3xl">
           <div 
             className="pt-5 flex justify-between px-4"
           >
@@ -52,6 +52,10 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
               <ListCustomBumbu 
                 key={custom._id}
                 {...custom}
+                addCustom={addCustom}
+                setAddCustom={setAddCustom}
+                totalItemCustom={totalItemCustom}
+                setTotalItemCustom={setTotalItemCustom}
               />
             ))}
             
@@ -63,7 +67,7 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
               <h1 className="mr-1 font-opensans font-bold">{totalItemCustom}</h1>
               <span className="font-opensans font-bold">{totalItemCustom > 1 ? 'Items' : 'Item'}</span>
             </div>
-            <button className="bg-base text-white rounded w-20 h-8 font-opensans">
+            <button onClick={closeModal} className="bg-base text-white rounded w-20 h-8 font-opensans">
               Apply
             </button>
           </div>

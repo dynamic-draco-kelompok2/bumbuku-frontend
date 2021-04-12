@@ -7,6 +7,7 @@ import CustomBumbu from '../component/CustomBumbu'
 
 function ProductDetails() {
   const [customPage, setCustomPage] = useState(false)
+  const [addCustom, setAddCustom] = useState("")
   const dispatch = useDispatch()
   const customBumbu = useSelector((state) => state.handleCustomBumbu.data)
   const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById)
@@ -63,6 +64,8 @@ function ProductDetails() {
         <CustomBumbu 
           customBumbu={customBumbu}
           setCustomPage={setCustomPage}
+          addCustom={addCustom}
+          setAddCustom={setAddCustom}
         />
       )}
     </div>
