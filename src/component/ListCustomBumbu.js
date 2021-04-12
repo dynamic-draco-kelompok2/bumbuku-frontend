@@ -7,7 +7,7 @@ const ListCustomBumbu = ({name, harga, image}) => {
   }
   return (
     <div 
-      className="flex flex-row justify-between mx-4 pt-4 pb-2 border-b border-grey"
+      className="flex flex-row justify-between mx-4 pt-4 pb-2 mb-1 border-b border-grey"
     >
       <div>
         <h1 className="font-opensans">{name}</h1>

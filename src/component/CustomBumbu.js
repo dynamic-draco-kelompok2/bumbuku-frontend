@@ -13,8 +13,8 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
   return (
     <div className="">
       <div className="w-screen h-screen bg-black opacity-50 fixed top-0 hidden md:flex"></div>
-      <div className="flex justify-center">
-        <div className="bg-desktop w-screen h-screen rounded z-10 fixed top-14 md:top-28 md:max-w-xl md:h-4/5 lg:max-w-2xl">
+      <div className="flex justify-center z-10">
+        <div className="bg-desktop w-full h-full flex flex-col rounded fixed top-14 md:top-28 md:max-w-xl md:h-4/5 lg:max-w-2xl">
           <div 
             className="pt-5 flex justify-between px-4"
           >
@@ -41,7 +41,7 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
               onChange={(e) => setSearchCustomBumbu(e.target.value)}
             />
           </div>
-          <div className="overflow-hidden overflow-y-scroll flex-none h-4/6 md:h-3/5">
+          <div className="overflow-hidden overflow-y-scroll flex-1 h-4/6 md:h-3/5">
             {customBumbu.filter((custom) => {
               if(searchCustomBumbu === "") {
                 return custom
@@ -56,7 +56,9 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
             ))}
             
           </div>
-          <div className="flex flex-row justify-between px-4 py-5 md:py-8 sticky bottom-0 z-10 bg-desktop">
+          <div 
+            className="flex-none sticky w-full items-center bottom-0 flex flex-row justify-between p-4 mt-14 bg-desktop z-10 md:mt-10"
+          >
             <div className="flex flex-row">
               <h1 className="mr-1 font-opensans font-bold">{totalItemCustom}</h1>
               <span className="font-opensans font-bold">{totalItemCustom > 1 ? 'Items' : 'Item'}</span>
