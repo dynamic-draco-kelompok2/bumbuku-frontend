@@ -9,26 +9,50 @@ function login() {
           <p className="font-opensans font-bold text-3xl pb-16">Login</p>
           <p className="font-opensans font-regular text-3xl pb-2">Login to your account</p>     
           <div className="text-grey">
-          <p className="font-opensans text-sm py-5 font-light pb-10">Thank you for get back bumbu KU, lets access our the best seasoning recommendation for you</p>
+            <p className="font-opensans text-sm py-5 font-light pb-10">
+              Thank you for get back bumbu KU, lets access our the best seasoning recommendation for you
+            </p>
           </div>
           <form>
             <div className="mb-4">
-              <label className="font-opensans text-sm font-regular mb-5  text-grey" for="username">Username
+              <label 
+                className="font-opensans text-sm font-regular mb-5 text-grey"
+              >
+                Username
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base bg-grey" id="username" type="text" placeholder="Your username"></input>
+              <input 
+                className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base bg-grey" 
+                id="username" 
+                type="text" 
+                placeholder="Your username"
+              />
             </div>
             <div className="mb-4">
-              <label class="font-opensans text-sm font-regular mb-5 text-grey" for="password">Password
+              <label 
+                className="font-opensans text-sm font-regular mb-5 text-grey"
+              >
+                Password
               </label>
-                <input className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:outline-te" id="password" type="password" placeholder="Password"></input>
+                <input 
+                  className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:outline-te" 
+                  id="password" 
+                  type="password" 
+                  placeholder="Password"
+                />
             </div>
           </form>
           <div className="pt-5 lg:w-40">
             <button className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full">Sign In</button>
           </div>
           <div className="pt-12 items-center">
-            <p className="font-opensans text-m text-grey">Don’t have an account yet?<Link to='/register/'><b className="font-opensans text-md text-base"> Register</b></Link></p>  
-
+            <p className="font-opensans text-m text-grey">
+              Don’t have an account yet?
+              <Link to='/register/'>
+                <b className="font-opensans text-md text-base ml-1"> 
+                  Register
+                </b>
+              </Link>
+            </p>  
           </div>
         </div>
       </div>

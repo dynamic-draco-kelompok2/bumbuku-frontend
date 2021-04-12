@@ -13,7 +13,7 @@ module.exports = {
       'black': '#000000'
     }),
     textColor: {
-      'base': '#B23947',
+      'basic': '#B23947',
       'icon': '#FCA078',
       'desktop': '#EEEEEE',
       'white': '#FFFFFF',
@@ -25,7 +25,8 @@ module.exports = {
       'icon': '#FCA078',
       'desktop': '#EEEEEE',
       'white': '#FFFFFF',
-      'black': '#000000'
+      'black': '#000000',
+      'grey': '#4E4E4E'
     },
     extend: {},
   },
