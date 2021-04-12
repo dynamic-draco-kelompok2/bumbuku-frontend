@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { registerAction } from '../redux/actions/auth.actions';
 
 function Register() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [register, setRegister] = useState({
+      name: "",
+      email: "",
+      password: "",
+      alamat: ""
+  })
+
+  const handleChange= (e) => {
+      setRegister({
+          ...register,
+          [e.target.name] : e.target.value
+      })
+  }
+
+
   return (
     <div className="flex flex-col justify-center items-center h-screen lg:flex-row bg-white dr">
       <div className="lg:w-1/3">
@@ -23,7 +45,8 @@ function Register() {
               className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base bg-grey" 
               id="username" 
               type="text" 
-              placeholder="Your username" 
+              placeholder="Your username"
+              value={register.name} onChange={handleChange} name="name"
             />
           </div>
           <div className="mb-4">
@@ -36,7 +59,8 @@ function Register() {
               className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base" 
               id="email" 
               type="email" 
-              placeholder="Email address" 
+              placeholder="Email address"
+              value={register.email} onChange={handleChange} name="email"
             />
           </div>
           <div className="mb-4">
@@ -45,7 +69,26 @@ function Register() {
             >
               Password
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:outline-te" id="password" type="password" placeholder="Password"></input>
+            <input 
+              className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:outline-te" 
+              id="password" 
+              type="password" 
+              placeholder="Password"
+              value={register.password} onChange={handleChange} name="password"></input>
+          </div>
+          <div className="mb-4">
+            <label 
+              className="font-opensans text-sm font-regular mb-5 text-grey"
+            >
+              Alamat
+            </label>
+            <input 
+              className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base" 
+              id="alamat" 
+              type="text" 
+              placeholder="Address"
+              value={register.alamat} onChange={handleChange} name="alamat"
+            />
           </div>
           </form>
           <div className="pt-5 lg:w-40">
