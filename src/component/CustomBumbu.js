@@ -41,7 +41,7 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
               onChange={(e) => setSearchCustomBumbu(e.target.value)}
             />
           </div>
-          <div className="overflow-hidden overflow-y-scroll h-4/6 md:h-3/5 border">
+          <div className="overflow-hidden overflow-y-scroll flex-none h-4/6 md:h-3/5">
             {customBumbu.filter((custom) => {
               if(searchCustomBumbu === "") {
                 return custom
@@ -56,7 +56,7 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
             ))}
             
           </div>
-          <div className="flex flex-row justify-between px-4 py-5 md:py-8 sticky bottom-0 bg-desktop">
+          <div className="flex flex-row justify-between px-4 py-5 md:py-8 sticky bottom-0 z-10 bg-desktop">
             <div className="flex flex-row">
               <h1 className="mr-1 font-opensans font-bold">{totalItemCustom}</h1>
               <span className="font-opensans font-bold">{totalItemCustom > 1 ? 'Items' : 'Item'}</span>
