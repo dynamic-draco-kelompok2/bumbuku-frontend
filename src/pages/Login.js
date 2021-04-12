@@ -1,7 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
-function login() {
+import { loginAction } from '../redux/actions/auth.actions';
+
+function Login() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [login, setLogin] = useState({
+    name: "",
+    password: ""
+  })
+
+  const handleChange= (e) => {
+    setLogin({
+        ...login,
+        [e.target.name] : e.target.value
+    })
+  }
+
   return (
     <div className="flex flex-col justify-center items-center h-screen lg:flex-row bg-white dr">
       <div className="lg:w-1/3">
@@ -13,7 +31,7 @@ function login() {
               Thank you for get back bumbu KU, lets access our the best seasoning recommendation for you
             </p>
           </div>
-          <form>
+          <form onSubmit={(e) => dispatch(loginAction(login, e, history, setLogin))}>
             <div className="mb-4">
               <label 
                 className="font-opensans text-sm font-regular mb-5 text-grey"
@@ -25,6 +43,8 @@ function login() {
                 id="username" 
                 type="text" 
                 placeholder="Your username"
+                name="name"
+                value={login.name} onChange={handleChange}
               />
             </div>
             <div className="mb-4">
@@ -38,12 +58,14 @@ function login() {
                   id="password" 
                   type="password" 
                   placeholder="Password"
+                  name="password"
+                  value={login.password} onChange={handleChange}
                 />
             </div>
-          </form>
           <div className="pt-5 lg:w-40">
-            <button className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full">Sign In</button>
+            <button type="submit" className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full">Sign In</button>
           </div>
+          </form>
           <div className="pt-12 items-center">
             <p className="font-opensans text-m text-grey">
               Don’t have an account yet?
@@ -60,4 +82,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
