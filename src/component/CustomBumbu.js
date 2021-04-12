@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 
 const CustomBumbu = ({customBumbu, setCustomPage}) => {
   const [totalItemCustom, setTotalItemCustom] = useState(0)
+  const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
+
   const closeModal = () => {
     setCustomPage(false)
   }
+
   return (
     <div className="">
       <div className="w-screen h-screen bg-black opacity-50 fixed top-0 hidden md:flex"></div>
@@ -32,10 +35,18 @@ const CustomBumbu = ({customBumbu, setCustomPage}) => {
               type="text" 
               placeholder="Cari bumbu..."
               className="rounded pl-1 w-full py-1 font-opensans focus:outline-none"
+              value={searchCustomBumbu}
+              onChange={(e) => setSearchCustomBumbu(e.target.value)}
             />
           </div>
           <div className="overflow-hidden overflow-y-scroll h-4/6 md:h-3/5">
-            {customBumbu.map((custom) => (
+            {customBumbu.filter((custom) => {
+              if(searchCustomBumbu === "") {
+                return custom
+              } else if(custom.name.toLowerCase().includes(searchCustomBumbu.toLowerCase())) {
+                return custom
+              }
+            }).map((custom) => (
               <div 
                 className="flex flex-row justify-between mx-4 pt-4 pb-2 border-b border-grey"
                 key={custom._id}
