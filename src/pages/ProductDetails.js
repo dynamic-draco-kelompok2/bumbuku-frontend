@@ -22,8 +22,8 @@ function ProductDetails() {
   }, [dispatch, id])
   
   return (
-    <div className="">
-      <div key={bumbuProduk._id} className="p-4 flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-10 xl:px-14">
+    <div className="" key={bumbuProduk._id}>
+      <div className="p-4 flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-10 xl:px-14">
         <img 
           src={bumbuProduk.image} 
           alt="gambar" 
@@ -40,11 +40,6 @@ function ProductDetails() {
               >
                 Add Custom
               </button>
-            </div>
-            <div>
-              {customPage && customBumbu.map((custom) => (
-                <CustomBumbu custom={custom}/>
-              ))}
             </div>
             <div className="grid divide-y text-grey">
               <p 
@@ -64,6 +59,12 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+      {customPage && (
+        <CustomBumbu 
+          customBumbu={customBumbu}
+          setCustomPage={setCustomPage}
+        />
+      )}
     </div>
   )
 }
