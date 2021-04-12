@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { registerAction } from '../redux/actions/auth.actions';
@@ -34,7 +34,7 @@ function Register() {
             Please register to create your own ingridients with bumbu KU, choose base ingridients and have fun!
           </p>
         </div>
-        <form>
+        <form onSubmit={(e) => dispatch(registerAction(register, e, history, setRegister))}>
           <div className="mb-4">
             <label 
               className="font-opensans text-sm font-regular mb-5 text-grey"
@@ -90,14 +90,15 @@ function Register() {
               value={register.alamat} onChange={handleChange} name="alamat"
             />
           </div>
-          </form>
           <div className="pt-5 lg:w-40">
             <button 
+              type="submit"
               className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full"
             >
               Register
             </button>
           </div>
+          </form>
         </div>
       </div>
     </div>
