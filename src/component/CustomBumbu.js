@@ -4,6 +4,7 @@ import ListCustomBumbu from './ListCustomBumbu'
 const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, totalItemCustom, setTotalItemCustom}) => {
   const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
   const closeModal = () => {
+    setTotalItemCustom([]);
     setCustomPage(false)
   }
 
@@ -11,6 +12,10 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
     setAddCustom(totalItemCustom)
     setCustomPage(false)
   }
+
+  useEffect(() => {
+    setTotalItemCustom(addCustom)
+  }, [addCustom, setTotalItemCustom])
 
   return (
     <div className="">
