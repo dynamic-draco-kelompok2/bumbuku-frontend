@@ -2,7 +2,11 @@ import {
   GET_CART_REQUEST,
   GET_CART_SUCCESS,
   GET_CART_ERROR,
+  GET_CUSTOM_REQUEST,
+  GET_CUSTOM_SUCCESS,
+  GET_CUSTOM_ERROR
 } from '../actions/cart.action'
+
 
 const initialState = {
   isLoading: false,
@@ -25,6 +29,35 @@ const handleCart = (state = initialState, action) => {
         isLoading: false
       }
     case GET_CART_ERROR:
+      return {
+        ...state,
+        error: action.error,
+        isLoading: false
+      }
+    case GET_CUSTOM_REQUEST:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case GET_CUSTOM_SUCCESS:
+      console.log(action);
+      const NewData = state.data.map(item => {
+        if (item._id === action.result[0].order_id){
+          return {
+            ...item,
+            custom: action.result
+          }
+        }
+        return item
+      })
+      console.log(NewData);
+
+      return {
+        ...state,
+        data: NewData,
+        isLoading: false
+      }
+    case GET_CUSTOM_ERROR:
       return {
         ...state,
         error: action.error,
