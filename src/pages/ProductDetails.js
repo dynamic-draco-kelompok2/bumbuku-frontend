@@ -7,7 +7,7 @@ import CustomBumbu from '../component/CustomBumbu'
 
 function ProductDetails() {
   const [customPage, setCustomPage] = useState(false)
-  const [addCustom, setAddCustom] = useState("")
+  const [addCustom, setAddCustom] = useState([])
   const [totalItemCustom, setTotalItemCustom] = useState([])
   const dispatch = useDispatch()
   const customBumbu = useSelector((state) => state.handleCustomBumbu.data)
@@ -17,6 +17,8 @@ function ProductDetails() {
   const handleCustomBumbu = () => {
     setCustomPage(!customPage)
   }
+
+  // console.log(totalItemCustom)
 
   const itemPrice = totalItemCustom.reduce((accumulation, currentItem) => 
     accumulation + currentItem.hargaBumbu * currentItem.qty, 0
