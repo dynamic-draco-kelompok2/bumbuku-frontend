@@ -37,7 +37,7 @@ export const postOrder = (produkId, customData) => {
     }
 
     axios
-      .post(`http://bumbuku.herokuapp.com/order/`, dataSend, {
+      .post(`https://bumbuku.herokuapp.com/order/`, dataSend, {
         headers: {
           Authorization: 'Bearer ' + token
         }})
@@ -49,7 +49,7 @@ export const postOrder = (produkId, customData) => {
                     bumbuDasar_id: item.id,
                     gram: item.qty
                 }
-                axios.post('http://bumbuku.herokuapp.com/custom/', dataCustomSend, {
+                axios.post('https://bumbuku.herokuapp.com/custom/', dataCustomSend, {
                     headers: {
                         Authorization: 'Bearer ' + token
                     }})
