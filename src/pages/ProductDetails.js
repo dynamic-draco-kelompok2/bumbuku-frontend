@@ -21,6 +21,10 @@ function ProductDetails() {
     dispatch(getBumbuById(id))
     dispatch(getCustomBumbu())
   }, [dispatch, id])
+
+  const handleCart = () => {
+    console.log('bn to cart');
+  }
   
   return (
     <div className="" key={bumbuProduk._id}>
@@ -53,7 +57,8 @@ function ProductDetails() {
             <div className="pt-5 lg:w-40">
               <button 
                 className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full"
-              >
+                onClick={handleCart}
+                >
                 Add To Cart
               </button>
             </div>
