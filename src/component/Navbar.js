@@ -28,7 +28,7 @@ const Navbar = () => {
             Category
           </Link>
           <Link 
-            to="#"
+            to="/cart"
             className="mx-1"
           >
             Cart

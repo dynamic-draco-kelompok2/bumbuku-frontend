@@ -5,6 +5,7 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
   const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
   const closeModal = () => {
     setCustomPage(false)
+    console.log()
   }
 
   const applyCustomBumbu = () => {
