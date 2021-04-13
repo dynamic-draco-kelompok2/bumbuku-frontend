@@ -8,6 +8,7 @@ import CustomBumbu from '../component/CustomBumbu'
 function ProductDetails() {
   const [customPage, setCustomPage] = useState(false)
   const [addCustom, setAddCustom] = useState("")
+  const [totalItemCustom, setTotalItemCustom] = useState([])
   const dispatch = useDispatch()
   const customBumbu = useSelector((state) => state.handleCustomBumbu.data)
   const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById)
@@ -22,10 +23,6 @@ function ProductDetails() {
     dispatch(getCustomBumbu())
   }, [dispatch, id])
 
-  const handleCart = () => {
-    console.log('bn to cart');
-  }
-  
   return (
     <div className="" key={bumbuProduk._id}>
       <div className="p-4 flex flex-col lg:flex-row lg:justify-between lg:items-center lg:px-10 xl:px-14">
@@ -46,6 +43,13 @@ function ProductDetails() {
                 Add Custom
               </button>
             </div>
+            {!!addCustom && addCustom.map((item) => (
+              <div key={item.id} className="flex flex-row">
+                <h1 className="mx-1">{item.namaBumbu}</h1>
+                <span className="mx-1">Rp. {item.hargaBumbu}</span>
+                <span className="mx-1">{item.qty} gram</span>
+              </div>
+            ))}
             <div className="grid divide-y text-grey">
               <p 
                 className="font-opensans uppercase text-sm font-semibold pb-2 text-black"
@@ -71,6 +75,8 @@ function ProductDetails() {
           setCustomPage={setCustomPage}
           addCustom={addCustom}
           setAddCustom={setAddCustom}
+          totalItemCustom={totalItemCustom}
+          setTotalItemCustom={setTotalItemCustom}
         />
       )}
     </div>
