@@ -5,8 +5,11 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom}) => {
   const [totalItemCustom, setTotalItemCustom] = useState(0)
   const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
 
+  const [dataCustom, setDataCustom] = useState([])
+
   const closeModal = () => {
     setCustomPage(false)
+    console.log()
   }
 
   return (

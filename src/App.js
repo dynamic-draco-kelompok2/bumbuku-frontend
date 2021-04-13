@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
 import Navbar from './component/Navbar'
+import Cart from './pages/Cart'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route path="/login">
             <Login />
