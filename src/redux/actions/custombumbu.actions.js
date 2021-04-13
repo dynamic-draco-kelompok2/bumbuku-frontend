@@ -29,7 +29,7 @@ export const getCustomBumbu = () => {
     dispatch(getCustomBumbuRequest())
 
     axios
-      .get("http://bumbuku.herokuapp.com/bumbudasar")
+      .get("https://bumbuku.herokuapp.com/bumbudasar")
       .then((result) => dispatch(getCustomBumbuSuccess(result.data)))
       .catch((error) => dispatch(getCustomBumbuError(error)))
   }
