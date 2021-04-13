@@ -55,6 +55,7 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
               } else if(custom.name.toLowerCase().includes(searchCustomBumbu.toLowerCase())) {
                 return custom
               }
+              return null
             }).map((custom) => (
               <ListCustomBumbu 
                 key={custom._id}

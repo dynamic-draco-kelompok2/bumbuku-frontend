@@ -6,7 +6,7 @@ import RightArrow from '../assets/icons/RightArrow'
 
 const Hero = () => {
   const [current, setCurrent] = useState(0)
-  const [banners, setBanners] = useState([
+  const [banners] = useState([
     {
       id: 0,
       img: Banner1
