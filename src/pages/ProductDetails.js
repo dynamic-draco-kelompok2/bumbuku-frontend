@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getBumbuById } from '../redux/actions/bumbuproduk.actions'
 import { getCustomBumbu } from '../redux/actions/custombumbu.actions'
+import { postOrder } from '../redux/actions/order.action';
 import CustomBumbu from '../component/CustomBumbu'
 
 function ProductDetails() {
@@ -25,6 +26,10 @@ function ProductDetails() {
   )
 
   const totalprice = bumbuProduk.harga + itemPrice
+
+  const addCart = () => {
+    dispatch(postOrder(id, addCustom));
+  }
 
   useEffect(() => {
     dispatch(getBumbuById(id))
@@ -89,6 +94,7 @@ function ProductDetails() {
             </div>
             <div className="lg:w-40">
               <button 
+                onClick={addCart}
                 className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full"
               >
                 Add To Cart
