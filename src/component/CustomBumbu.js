@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import ListCustomBumbu from './ListCustomBumbu'
 
-const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom}) => {
-  const [totalItemCustom, setTotalItemCustom] = useState(0)
+const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, totalItemCustom, setTotalItemCustom}) => {
   const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
-
-  const [dataCustom, setDataCustom] = useState([])
-
   const closeModal = () => {
     setCustomPage(false)
     console.log()
   }
 
+  const applyCustomBumbu = () => {
+    setAddCustom(totalItemCustom)
+    setCustomPage(false)
+    console.log('total item custom', totalItemCustom)
+  }
+
   return (
     <div className="">
-      {console.log("ini add custom ", addCustom)}
       <div className="w-screen h-screen bg-black opacity-50 fixed top-0 hidden md:flex"></div>
       <div className="flex justify-center z-10">
         <div className="bg-desktop w-full h-full flex flex-col rounded fixed top-14 md:top-28 md:max-w-xl md:h-4/5 lg:max-w-3xl">
@@ -60,17 +61,27 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom}) => {
                 totalItemCustom={totalItemCustom}
                 setTotalItemCustom={setTotalItemCustom}
               />
-            ))}
-            
+            ))}     
           </div>
           <div 
             className="flex-none sticky w-full items-center bottom-0 flex flex-row justify-between p-4 mt-14 bg-desktop z-10 md:mt-10"
           >
             <div className="flex flex-row">
-              <h1 className="mr-1 font-opensans font-bold">{totalItemCustom}</h1>
-              <span className="font-opensans font-bold">{totalItemCustom > 1 ? 'Items' : 'Item'}</span>
+              <h1 
+                className="mr-1 font-opensans font-bold"
+              >
+                {totalItemCustom.length}
+              </h1>
+              <span 
+                className="font-opensans font-bold"
+              >
+                {totalItemCustom > 1 ? 'Items' : 'Item'}
+              </span>
             </div>
-            <button onClick={closeModal} className="bg-base text-white rounded w-20 h-8 font-opensans">
+            <button 
+              onClick={applyCustomBumbu} 
+              className="bg-base text-white rounded w-20 h-8 font-opensans"
+            >
               Apply
             </button>
           </div>
