@@ -4,6 +4,8 @@ export const GET_CART_REQUEST = 'GET_CART_REQUEST'
 export const GET_CART_SUCCESS = 'GET_CART_SUCCES'
 export const GET_CART_ERROR = 'GET_CART_ERROR'
 
+export const ADD_CART_ITEM = 'ADD_CART_ITEM'
+export const ADD_CART_ITEM_CUSTOM = 'ADD_CART_ITEM_CUSTOM'
 
 export const getCartRequest = () => {
   return {
@@ -24,7 +26,6 @@ export const getCartError = (error) => {
     error
   }
 }
-
 
 export const getCart = (user) => {
   return function(dispatch) {
