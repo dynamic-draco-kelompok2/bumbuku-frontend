@@ -51,12 +51,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="mx-4 pt-4 pb-2 font-medium font-opensans text-base text-white">
-              <Link to="#">
+              <Link to="/cart">
                 Cart
               </Link>
             </li>
             <li className="mx-4 pt-4 pb-2 font-medium font-opensans text-base text-white">
-              <Link to="#">
+              <Link to="/login">
                 Login
               </Link>
             </li>

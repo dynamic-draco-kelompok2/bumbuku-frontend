@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ListCustomBumbu from './ListCustomBumbu'
 
 const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, totalItemCustom, setTotalItemCustom}) => {
   const [searchCustomBumbu, setSearchCustomBumbu] = useState("")
   const closeModal = () => {
+    setTotalItemCustom([]);
     setCustomPage(false)
-    console.log()
   }
 
   const applyCustomBumbu = () => {
     setAddCustom(totalItemCustom)
     setCustomPage(false)
-    console.log('total item custom', totalItemCustom)
   }
+
+  useEffect(() => {
+    setTotalItemCustom(addCustom)
+  }, [addCustom, setTotalItemCustom])
 
   return (
     <div className="">
@@ -52,6 +55,7 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
               } else if(custom.name.toLowerCase().includes(searchCustomBumbu.toLowerCase())) {
                 return custom
               }
+              return null
             }).map((custom) => (
               <ListCustomBumbu 
                 key={custom._id}

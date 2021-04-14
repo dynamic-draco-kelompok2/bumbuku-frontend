@@ -53,7 +53,7 @@ export const getBumbuProduk = () => {
     dispatch(getBumbuProdukRequest())
 
     axios
-      .get("http://bumbuku.herokuapp.com/bumbuproduk")
+      .get("https://bumbuku.herokuapp.com/bumbuproduk")
       .then((result) => dispatch(getBumbuProdukSuccess(result.data)))
       .catch((error) => dispatch(getBumbuProdukError(error)))
   }
@@ -64,7 +64,7 @@ export const getBumbuById = (_id) => {
     dispatch(getBumbuByIdRequest())
 
     axios
-      .get(`http://bumbuku.herokuapp.com/bumbuproduk/${_id}`)
+      .get(`https://bumbuku.herokuapp.com/bumbuproduk/${_id}`)
       .then((result) => dispatch(getBumbuByIdSuccess(result.data)))
       .catch((error) => dispatch(getBumbuByIdError(error)))
   }

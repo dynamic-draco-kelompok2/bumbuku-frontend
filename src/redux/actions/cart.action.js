@@ -70,7 +70,7 @@ export const getCart = (user) => {
     dispatch(getCartRequest())
 
     axios
-      .get(`http://bumbuku.herokuapp.com/order/user/${user}`, {
+      .get(`https://bumbuku.herokuapp.com/order/user/${user}`, {
         headers: {
           Authorization: 'Bearer ' + token //the token is a variable which holds the token
         }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, totalItemCustom, setTotalItemCustom}) => {
   const [addCounter, setAddCounter] = useState(false)
@@ -10,6 +10,15 @@ const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, tota
     imageBumbu: image,
     qty: counter
   }
+
+  useEffect(() => {
+    totalItemCustom.forEach(item => {
+      if(item.id === _id){
+        setAddCounter(true);
+        setCounter(item.qty)
+      }
+    })
+  }, [_id, totalItemCustom])
 
   const handleAddButton = () => {
     setTotalItemCustom([...totalItemCustom, {...newCustom, qty: counter}])
