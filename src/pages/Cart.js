@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart } from "../redux/actions/cart.action";
 
@@ -100,7 +100,7 @@ function Cart() {
                       <p className="text-xl font-bold font-regular">Total Harga</p>
                     </div>
                     <div className="col-end-9 col-span-2">
-                      <h4 className="text-lg font-semibold font-opensans py-4"></h4>
+                      <h4 className="text-lg font-semibold font-opensans py-4"> </h4>
                       <p className="py-2 font-opensans font-regular">Rp. {totalHargaBase}</p>
                       <p className="pb-2 font-opensans font-regular">{dataOrder.length} Item</p>
                       <p className="pb-2 font-opensans font-regular">Rp. {totalHargaCustom}</p>
