@@ -4,9 +4,12 @@ import { getCart } from "../redux/actions/cart.action";
 
 function Cart() {
 	const dataOrder = useSelector((state) => state.handleCart.data);
+	const totalHargaCustom = useSelector((state) => state.handleCart.totalCustom);
+	const CustomItem = useSelector((state) => state.handleCart.custom);
 	const dispatch = useDispatch();
-  // const [totalHargaBase, setTotalHargaBase] = useState([])
 
+	//Get Per Custom Item
+	// console.log(totalHargaCustom)
 
 	// console.log("ini data order ", dataOrder);
 
@@ -14,53 +17,16 @@ function Cart() {
 		const User = JSON.parse(localStorage.payload)._id;
 
 		dispatch(getCart(User));
+		// console.log("data order dlm use uffect ", dataOrder);
+	
 	}, [dispatch]);
 
-	//Harga Per Base Item
-	const getHargaBase = dataOrder.map((order, index) => {
-		return order.bumbuProduk_id.harga
-	})
-	// console.log('harga per base item', getHargaBase);
-	
 	//Total Harga all Base Item
-	// const totalHargaBase = getHargaBase.reduce((total, value) => {
-	// 	return total + value;
-	// })
+	const totalHargaBase = dataOrder.reduce((total, value) => 
+		total + value.bumbuProduk_id.harga, 0
+	)
 	// console.log('Ini harga Total base semua item', totalHargaBase);
 	
-	//Get Per Custom Item
-	// const getHargaCustom = dataOrder.filter((order) => {
-	// 	return order.custom !== undefined
-	// })
-	// console.log('harga per custom item', getHargaCustom);
-
-	//Get Per Custom Item
-	// const getCustomBumbuDasar_id = getHargaCustom.map((custom, index) => {
-	// 	return custom.custom
-	// })
-	// console.log(getCustomBumbuDasar_id);
-	
-	//Get Harga Custom all per Item
-	// const getPerCustom = getCustomBumbuDasar_id.map((custom, index) => {
-	// 	// console.log(custom);
-	// 	return custom.map((harga,index) => {
-	// 		// harga.bumbuDasar_id.harga
-	// 		// console.log('hasil val custom',hasil);
-	// 		// console.log(harga.bumbuDasar_id.harga);
-		
-	// 		return harga.bumbuDasar_id.harga
-	// 	})
-	// 	// return custom
-	// })
-	// console.log('harga per custom', getPerCustom);
-
-	//Total Harga all Custom Item
-	// const totalHargaCustom = getPerCustom.reduce((total, value) => {
-	// 	// console.log(total);
-	// 	return total + value;
-	// })
-	// console.log('Ini harga Total custom semua item', totalHargaCustom);
-
 
 	return (
 		<>
@@ -119,30 +85,27 @@ function Cart() {
 								</div>
 							))}
 
-							{/* {console.log('data order luar', dataOrder)} */}
-
 							<div className="flex">
 								<div
 									className="w-full h-42 bg-white rounded shadow-2xl"
 									key="3"
 								>
-									<div className="p-7 grid grid-flow-col auto-cols-max">
-                    <div>
-                      <h4 className="text-lg font-semibold font-opensans">Ringkasan Belanja </h4>
-                      <p className="py-2 font-opensans font-regular">Total Harga</p>
+									<div className="p-7 grid grid-cols-6 gap-4">
+                    <div className="col-start-1 col-end-6">
+                      <h4 className="text-lg font-semibold font-opensans">Ringkasan Belanja : </h4>
+                      <p className="py-2 font-opensans font-regular">Total Harga base</p>
                       <p className="pb-2 font-opensans font-regular">Total Item</p>
-
-											{/* {dataOrder.reduce((total, value) => {
-												
-											})
-											} */}
+                      <p className="pb-2 font-opensans font-regular">Total Harga Custom</p>
+                      <p className="pb-2 font-opensans font-regular">Total Item Custom</p>
                       <p className="text-xl font-bold font-regular">Total Harga</p>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-semibold font-opensans">:</h4>
-                      <p className="py-2 font-opensans font-regular">Rp.</p>
+                    <div className="col-end-9 col-span-2">
+                      <h4 className="text-lg font-semibold font-opensans py-4"></h4>
+                      <p className="py-2 font-opensans font-regular">Rp. {totalHargaBase}</p>
                       <p className="pb-2 font-opensans font-regular">{dataOrder.length} Item</p>
-                      <p className="text-xl font-bold font-regular">Rp.</p>
+                      <p className="pb-2 font-opensans font-regular">Rp. {totalHargaCustom}</p>
+                      <p className="pb-2 font-opensans font-regular">{CustomItem.length} Item</p>
+                      <p className="text-xl font-bold font-regular">Rp. {totalHargaBase+totalHargaCustom}</p>
                     </div>
 
 									</div>
