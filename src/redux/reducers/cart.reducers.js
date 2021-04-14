@@ -96,5 +96,7 @@ function getTotal(data){
     // console.log(n)
     return n
   } 
+
+  return 0
 }
 export default handleCart
