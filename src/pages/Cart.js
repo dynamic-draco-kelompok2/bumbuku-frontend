@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart } from "../redux/actions/cart.action";
+import CartDetail from '../component/CartDetail'
 
 function Cart() {
 	const dataOrder = useSelector((state) => state.handleCart.data);
 	const dispatch = useDispatch();
-  // const [totalHargaBase, setTotalHargaBase] = useState([])
-
 
 	// console.log("ini data order ", dataOrder);
 
@@ -14,53 +13,26 @@ function Cart() {
 		const User = JSON.parse(localStorage.payload)._id;
 
 		dispatch(getCart(User));
+
 	}, [dispatch]);
 
-	//Harga Per Base Item
-	const getHargaBase = dataOrder.map((order, index) => {
-		return order.bumbuProduk_id.harga
-	})
-	// console.log('harga per base item', getHargaBase);
-	
-	//Total Harga all Base Item
-	// const totalHargaBase = getHargaBase.reduce((total, value) => {
-	// 	return total + value;
-	// })
-	// console.log('Ini harga Total base semua item', totalHargaBase);
-	
-	//Get Per Custom Item
-	// const getHargaCustom = dataOrder.filter((order) => {
-	// 	return order.custom !== undefined
-	// })
-	// console.log('harga per custom item', getHargaCustom);
+	const totalHarga = () => {
+		let harga = 0;
 
-	//Get Per Custom Item
-	// const getCustomBumbuDasar_id = getHargaCustom.map((custom, index) => {
-	// 	return custom.custom
-	// })
-	// console.log(getCustomBumbuDasar_id);
-	
-	//Get Harga Custom all per Item
-	// const getPerCustom = getCustomBumbuDasar_id.map((custom, index) => {
-	// 	// console.log(custom);
-	// 	return custom.map((harga,index) => {
-	// 		// harga.bumbuDasar_id.harga
-	// 		// console.log('hasil val custom',hasil);
-	// 		// console.log(harga.bumbuDasar_id.harga);
-		
-	// 		return harga.bumbuDasar_id.harga
-	// 	})
-	// 	// return custom
-	// })
-	// console.log('harga per custom', getPerCustom);
+		if(dataOrder.length !== 0){
+			dataOrder.forEach(item => {
+				harga += item.bumbuProduk_id.harga;
+				if(item.custom){
+					item.custom.forEach(item2 => {
+						harga += (item2.bumbuDasar_id.harga * item2.gram)
+					})
+				}
+			})
+			return harga
+		}
 
-	//Total Harga all Custom Item
-	// const totalHargaCustom = getPerCustom.reduce((total, value) => {
-	// 	// console.log(total);
-	// 	return total + value;
-	// })
-	// console.log('Ini harga Total custom semua item', totalHargaCustom);
-
+		return 0
+	}
 
 	return (
 		<>
@@ -127,23 +99,33 @@ function Cart() {
 									key="3"
 								>
 									<div className="p-7 grid grid-flow-col auto-cols-max">
-                    <div>
+					<div>
+					<h4 className="text-lg font-semibold font-opensans">Ringkasan Belanja :</h4>
+						<table>
+							<tbody>
+								{dataOrder.map((item, index, dataOrder) => {
+									return <CartDetail key={index} item={item}/>
+								})}
+								<tr>
+									<td className="text-xl font-bold font-regular">Total Harga</td>
+									<td className="text-xl font-bold font-regular">Rp. {totalHarga()}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                    {/* <div>
                       <h4 className="text-lg font-semibold font-opensans">Ringkasan Belanja </h4>
                       <p className="py-2 font-opensans font-regular">Total Harga</p>
                       <p className="pb-2 font-opensans font-regular">Total Item</p>
 
-											{/* {dataOrder.reduce((total, value) => {
-												
-											})
-											} */}
                       <p className="text-xl font-bold font-regular">Total Harga</p>
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold font-opensans">:</h4>
                       <p className="py-2 font-opensans font-regular">Rp.</p>
                       <p className="pb-2 font-opensans font-regular">{dataOrder.length} Item</p>
-                      <p className="text-xl font-bold font-regular">Rp.</p>
-                    </div>
+                      <p className="text-xl font-bold font-regular">Rp. {totalHarga()}</p>
+                    </div> */}
 
 									</div>
 

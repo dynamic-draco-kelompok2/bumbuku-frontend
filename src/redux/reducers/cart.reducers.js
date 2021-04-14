@@ -40,7 +40,6 @@ const handleCart = (state = initialState, action) => {
         isLoading: true
       }
     case GET_CUSTOM_SUCCESS:
-      console.log(action);
       const NewData = state.data.map(item => {
         if (item._id === action.result[0].order_id){
           return {
@@ -50,7 +49,6 @@ const handleCart = (state = initialState, action) => {
         }
         return item
       })
-      console.log(NewData);
 
       return {
         ...state,

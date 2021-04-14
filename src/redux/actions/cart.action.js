@@ -76,7 +76,6 @@ export const getCart = (user) => {
         }
       })
       .then((result) => {
-        console.log('item', result);
         result.data.forEach(item => {
           dispatch(getCustom(item._id))
         })
