@@ -54,7 +54,7 @@ export const getCustom = (order_id) => {
     dispatch(getCustomRequest())
 
     axios
-      .get(`http://bumbuku.herokuapp.com/custom/order/${order_id}`, {
+      .get(`https://bumbuku.herokuapp.com/custom/order/${order_id}`, {
         headers: {
           Authorization: 'Bearer ' + token //the token is a variable which holds the token
         }
