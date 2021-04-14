@@ -61,7 +61,7 @@ function ProductDetails() {
             <div className="pt-5 lg:w-40">
               <button 
                 className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full"
-                onClick={handleCart}
+                // onClick={handleCart}
                 >
                 Add To Cart
               </button>
