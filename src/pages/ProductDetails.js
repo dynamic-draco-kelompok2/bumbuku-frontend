@@ -19,8 +19,6 @@ function ProductDetails() {
     setCustomPage(!customPage)
   }
 
-  // console.log(totalItemCustom)
-
   const itemPrice = totalItemCustom.reduce((accumulation, currentItem) => 
     accumulation + currentItem.hargaBumbu * currentItem.qty, 0
   )
@@ -57,13 +55,28 @@ function ProductDetails() {
               </button>
             </div>
             <div className="pb-4">
-              {!!addCustom && addCustom.map((item) => (
-                <div key={item.id} className="flex justify-between">
-                  <h1 className="">{item.namaBumbu}</h1>
-                  <span className="">Rp. {item.hargaBumbu}</span>
-                  <span className="">{item.qty} gram</span>
-                </div>
-              ))}
+              <table className="w-full text-left">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Item</th>
+                    <th>Harga</th>
+                    <th>Berat</th>
+                  </tr>
+                </thead>
+                {!!addCustom && addCustom.map((item) => (
+                  <tbody key={item.id}>
+                    <tr>
+                      <th>
+                        <img src={item.imageBumbu} alt="gambar" className="w-10 h-10 object-cover"/>
+                      </th>
+                      <th className="text-sm font-medium">{item.namaBumbu}</th>
+                      <th className="text-sm font-medium">Rp. {item.hargaBumbu}</th>
+                      <th className="text-sm font-medium">{item.qty} gram</th>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
             </div>
             <div className="grid divide-y text-grey">
               <p 
