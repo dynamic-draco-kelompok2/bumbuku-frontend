@@ -21,6 +21,11 @@ const Navbar = () => {
           />
         </Link>
         <div className="hidden md:flex md:pt-4 font-opensans text-white text-base">
+          {localStorage.payload ? 
+          <div className="mx-1">Hello, {JSON.parse(localStorage.payload).name}</div>
+          :
+          null
+          }
           <Link 
             to="#"
             className="mx-1"
@@ -46,6 +51,11 @@ const Navbar = () => {
         {navbarMobile && (
           <ul className="flex flex-col absolute bg-base w-full left-0 top-14 z-10 pb-6 md:hidden">
             <li className="mx-4 pt-4 pb-2 font-medium font-opensans text-base text-white">
+            {localStorage.payload ? 
+              <div className="mx-1">Hello, {JSON.parse(localStorage.payload).name}</div>
+              :
+              null
+              }
               <Link to="#">
                 Category
               </Link>
