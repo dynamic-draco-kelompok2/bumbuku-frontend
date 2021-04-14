@@ -4,8 +4,9 @@ export const GET_CART_REQUEST = 'GET_CART_REQUEST'
 export const GET_CART_SUCCESS = 'GET_CART_SUCCES'
 export const GET_CART_ERROR = 'GET_CART_ERROR'
 
-export const ADD_CART_ITEM = 'ADD_CART_ITEM'
-export const ADD_CART_ITEM_CUSTOM = 'ADD_CART_ITEM_CUSTOM'
+export const GET_CUSTOM_REQUEST = 'GET_CUSTOM_REQUEST'
+export const GET_CUSTOM_SUCCESS = 'GET_CUSTOM_SUCCES'
+export const GET_CUSTOM_ERROR = 'GET_CUSTOM_ERROR'
 
 export const getCartRequest = () => {
   return {
@@ -27,6 +28,42 @@ export const getCartError = (error) => {
   }
 }
 
+export const getCustomRequest = () => {
+  return {
+    type: GET_CUSTOM_REQUEST
+  }
+}
+
+export const getCustomSuccess = (result) => {
+  return {
+    type: GET_CUSTOM_SUCCESS,
+    result
+  }
+}
+
+export const getCustomError = (error) => {
+  return {
+    type: GET_CUSTOM_ERROR,
+    error
+  }
+}
+
+export const getCustom = (order_id) => {
+  return function(dispatch) {
+    const token = localStorage.token;
+    dispatch(getCustomRequest())
+
+    axios
+      .get(`http://bumbuku.herokuapp.com/custom/order/${order_id}`, {
+        headers: {
+          Authorization: 'Bearer ' + token //the token is a variable which holds the token
+        }
+      })
+      .then((result) => dispatch(getCustomSuccess(result.data)))
+      .catch((error) => dispatch(getCustomError(error)))
+  }
+}
+
 export const getCart = (user) => {
   return function(dispatch) {
     const token = localStorage.token;
@@ -38,8 +75,17 @@ export const getCart = (user) => {
           Authorization: 'Bearer ' + token //the token is a variable which holds the token
         }
       })
-      .then((result) => dispatch(getCartSuccess(result.data)))
+      .then((result) => {
+        // console.log('item', result);
+        result.data.forEach(item => {
+          dispatch(getCustom(item._id))
+        })
+        
+        dispatch(getCartSuccess(result.data))})
       .catch((error) => dispatch(getCartError(error)))
   }
 }
+
+
+
 
