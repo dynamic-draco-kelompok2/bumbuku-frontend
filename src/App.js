@@ -10,7 +10,7 @@ import Cart from './pages/Cart'
 
 function App() {
   return (
-    <div className="App bg-desktop h-screen">
+    <div className="bg-desktop">
       <Router>
       <Navbar/>
         <Switch>
