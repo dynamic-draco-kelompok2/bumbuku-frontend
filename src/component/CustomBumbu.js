@@ -39,11 +39,12 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
             </div>
           </div>
           <div className="px-4">
-            <h1 className="uppercase font-opensans pb-1">Add Custom</h1>
+            <h1 className="uppercase font-opensans pb-1 titleAddCstm font-bold">Add Custom</h1>
             <input 
               type="text" 
               placeholder="Cari bumbu..."
-              className="rounded pl-1 w-full py-1 font-opensans focus:outline-none"
+              className="rounded pl-1 w-full py-1 font-opensans border-2 border-gray-300"
+              id="placeholerSty"
               value={searchCustomBumbu}
               onChange={(e) => setSearchCustomBumbu(e.target.value)}
             />
@@ -84,7 +85,7 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
             </div>
             <button 
               onClick={applyCustomBumbu} 
-              className="bg-base text-white rounded w-20 h-8 font-opensans"
+              className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-1/4 textBtnCustomRed"
             >
               Apply
             </button>

@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
 import Navbar from './component/Navbar'
 import Cart from './pages/Cart'
+import './App.css'
 
 function App() {
   return (

@@ -58,8 +58,8 @@ const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, tota
         className="flex flex-row justify-between mx-4 pt-4 pb-2"
       >
         <div>
-          <h1 className="font-opensans">{name}</h1>
-          <span className="font-opensans">Rp. {harga} / gram</span>
+          <h1 className="font-opensans font-semibold listItem">{name}</h1>
+          <span className="font-opensans font-regular listHarga">Rp. {harga} / gram </span>
         </div>
         <div>
           <img 
