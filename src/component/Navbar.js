@@ -9,6 +9,7 @@ const NavbarMenu = () => {
     window.localStorage.clear()
     window.location.reload();
   }
+
   return (
     <div className="">
       <Navbar className="bg-base d-flex justify-content-between" expand="lg" variant="dark">
@@ -23,11 +24,21 @@ const NavbarMenu = () => {
           id="basic-navbar-nav"
           className="flex justify-content-lg-between"
         > 
-          <Navbar.Brand href="#home" className="d-none d-lg-block">
-            <img src={Logo} alt="logo" className="h-8 w-36"/>
+          <Navbar.Brand className="d-none d-lg-block">
+            <Link to="/">
+              <img 
+                src={Logo} 
+                alt="logo" 
+                className="h-8 w-36"
+              />
+            </Link>
           </Navbar.Brand>
           <Form className="hidden lg:flex lg:w-1/2">
-            <FormControl type="text" placeholder="Search" className="mr-sm-2 focus:outline-none font-opensans" />
+            <FormControl 
+              type="text" 
+              placeholder="Search" 
+              className="mr-sm-2 focus:outline-none font-opensans" 
+            />
             <button className="bg-icon text-white py-1 px-2 text-md rounded font-opensans">Search</button>
           </Form>
           <Nav className="font-opensans">
