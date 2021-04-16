@@ -1,80 +1,69 @@
-import React, { useState } from 'react'
-import Logo from '../assets/images/Logo bumbukuok-01.png';
+import React from 'react'
+import Logo from '../assets/images/Logo bumbukuok-01.png'
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import Hamburger from '../assets/icons/Hamburger';
-import CloseMenu from '../assets/icons/CloseMenu';
 
-const Navbar = () => {
-  const [navbarMobile, setNavbarMobile] = useState(false)
-  const handleBarMobile = () => {
-    setNavbarMobile(!navbarMobile)
+const NavbarMenu = () => {
+  const token = localStorage.getItem("payload")
+  const handleLogOut = () => {
+    window.localStorage.clear()
+    window.location.reload();
   }
-  
   return (
-    <div className="bg-base w-full h-16 sticky top-0 z-50">
-      <div className="px-4 flex flex-row justify-between lg:px-8 xl:px-14">
-        <Link to="/">
-          <img 
-            src={Logo} 
-            alt="Logo"
-            className="flex w-32 pt-4"
-          />
-        </Link>
-        <div className="hidden md:flex md:pt-4 font-opensans text-white text-base">
-          {localStorage.payload ? 
-          <div className="mx-1">Hello, {JSON.parse(localStorage.payload).name}</div>
-          :
-          null
-          }
-          <Link 
-            to="#"
-            className="mx-1"
-          >
-            Category
-          </Link>
-          <Link 
-            to="/cart"
-            className="mx-1"
-          >
-            Cart
-          </Link>
-          <Link 
-            to="/login"
-            className="mx-1"
-          >
-            Login
-          </Link>
-        </div>
-        <div className="flex md:hidden" onClick={handleBarMobile}>
-          {navbarMobile ? <CloseMenu /> : <Hamburger />}
-        </div>
-        {navbarMobile && (
-          <ul className="flex flex-col absolute bg-base w-full left-0 top-14 z-10 pb-6 md:hidden">
-            <li className="mx-4 pt-4 pb-2 font-medium font-opensans text-base text-white">
-            {localStorage.payload ? 
-              <div className="mx-1">Hello, {JSON.parse(localStorage.payload).name}</div>
-              :
-              null
-              }
-              <Link to="#">
-                Category
-              </Link>
-            </li>
-            <li className="mx-4 pt-4 pb-2 font-medium font-opensans text-base text-white">
-              <Link to="/cart">
-                Cart
-              </Link>
-            </li>
-            <li className="mx-4 pt-4 pb-2 font-medium font-opensans text-base text-white">
-              <Link to="/login">
+    <div className="">
+      <Navbar className="bg-base d-flex justify-content-between" expand="lg" variant="dark">
+        <Navbar.Brand href="#home" className="d-lg-none">
+          <img src={Logo} alt="logo" className="h-8 w-36"/>
+        </Navbar.Brand>
+        <Navbar.Toggle 
+          aria-controls="basic-navbar-nav"
+          className="bg-icon"
+        />
+        <Navbar.Collapse 
+          id="basic-navbar-nav"
+          className="flex justify-content-lg-between"
+        > 
+          <Navbar.Brand href="#home" className="d-none d-lg-block">
+            <img src={Logo} alt="logo" className="h-8 w-36"/>
+          </Navbar.Brand>
+          <Form className="hidden lg:flex lg:w-1/2">
+            <FormControl type="text" placeholder="Search" className="mr-sm-2 focus:outline-none font-opensans" />
+            <button className="bg-icon text-white py-1 px-2 text-md rounded font-opensans">Search</button>
+          </Form>
+          <Nav className="font-opensans">
+            <Link 
+              to="/category" 
+              className="text-white my-3 lg:mx-3 my-lg-0"
+            >
+              Category
+            </Link>
+            <Link 
+              to="/category" 
+              className="text-white my-3 lg:mx-2 my-lg-0"
+            >
+              Cart
+            </Link>
+            {token
+            ? 
+              <button 
+                className="text-white my-3 lg:mx-2 my-lg-0"
+                onClick={handleLogOut}
+              >
+                Logout
+              </button>
+            :
+              <Link 
+                to="/login" 
+                className="text-white my-3 lg:mx-2 my-lg-0"
+              >
                 Login
               </Link>
-            </li>
-          </ul>
-        )}
-      </div>
+            }
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   )
 }
 
-export default Navbar
+export default NavbarMenu
