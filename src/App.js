@@ -12,7 +12,15 @@ function App() {
   return (
     <div className="App bg-desktop h-screen">
       <Router>
-      <Navbar/>
+      <Switch>
+          <Route path="/register">
+          </Route>
+          <Route path="/login">
+          </Route>
+          <Route path="/">
+            <Navbar/>
+          </Route>
+      </Switch>
         <Switch>
           <Route exact path="/">
             <Home />

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { Container, Row, Col, Spinner, Form, Button, Image } from 'react-bootstrap';
 
 import { registerAction } from '../redux/actions/auth.actions';
 
 function Register() {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const registerLoading = useSelector(state => state.auth)
 
   const [register, setRegister] = useState({
       name: "",
@@ -24,85 +27,84 @@ function Register() {
 
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen lg:flex-row bg-white dr">
-      <div className="lg:w-1/3">
-        <div className="font-opensans p-5">
-          <p className="font-opensans font-bold text-3xl pb-16">Register</p>
-          <p className="font-opensans font-regular text-3xl pb-2">Welcome to bumbu KU!</p>     
-          <div className="text-grey">
-          <p className="font-opensans text-sm py-5 font-light pb-10">
-            Please register to create your own ingridients with bumbu KU, choose base ingridients and have fun!
-          </p>
-        </div>
-        <form onSubmit={(e) => dispatch(registerAction(register, e, history, setRegister))}>
-          <div className="mb-4">
-            <label 
-              className="font-opensans text-sm font-regular mb-5 text-grey"
-            >
-              Username
-            </label>
-            <input 
-              className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base bg-grey" 
-              id="username" 
-              type="text" 
-              placeholder="Your username"
-              value={register.name} onChange={handleChange} name="name"
-            />
-          </div>
-          <div className="mb-4">
-            <label 
-              className="font-opensans text-sm font-regular mb-5 text-grey"
-            >
-              Email
-            </label>
-            <input 
-              className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base" 
-              id="email" 
-              type="email" 
-              placeholder="Email address"
-              value={register.email} onChange={handleChange} name="email"
-            />
-          </div>
-          <div className="mb-4">
-            <label 
-              className="font-opensans text-sm font-regular mb-5 text-grey"
-            >
-              Password
-            </label>
-            <input 
-              className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:outline-te" 
-              id="password" 
-              type="password" 
-              placeholder="Password"
-              value={register.password} onChange={handleChange} name="password"></input>
-          </div>
-          <div className="mb-4">
-            <label 
-              className="font-opensans text-sm font-regular mb-5 text-grey"
-            >
-              Alamat
-            </label>
-            <input 
-              className="shadow appearance-none border rounded w-full py-2 mt-1 px-3 text-gray-700 leading-tight focus:border-base" 
-              id="alamat" 
-              type="text" 
-              placeholder="Address"
-              value={register.alamat} onChange={handleChange} name="alamat"
-            />
-          </div>
-          <div className="pt-5 lg:w-40">
-            <button 
-              type="submit"
-              className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full"
-            >
-              Register
-            </button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
+    <>
+    <Container fluid className="d-flex flex-row justify-content-between h-100 bg-white position-relative">
+        <Row className="justify-content-center w-100">
+            <Col md={7} className="mt-5">
+                <div>
+                    <Link to="/">
+                      <Image src={require('../assets/images/Logo-Red.svg').default} alt="Logo Bumbuku" width="250"/>
+                    </Link>
+                </div>
+                <div className="mt-5">
+                    <h3>Daftar ke Bumbu KU!</h3>
+                    <div className="mt-5 text-grey">
+                      <div>Daftar untuk membuat bumbu anda sendiri bersama bumbu KU</div>
+                      <div>pilih bumbu dan kreasikan menurut selera anda</div>
+                    </div>
+                </div>
+                <div className="mt-5">
+                    {registerLoading.isLoading === true ?
+                    <div className="text-center">
+                        <Spinner className="mt-3" animation="border" />
+                    </div>
+                    :
+                    <Form onSubmit={(e) => dispatch(registerAction(register, e, history, setRegister))}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control required 
+                          className="rounded-3xl" 
+                          type="text" 
+                          placeholder="Your email"
+                          value={register.email} onChange={handleChange} name="name"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicUsername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control required 
+                          type="text" 
+                          placeholder="Your username"
+                          value={register.name} onChange={handleChange} name="name"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control required  
+                          type="password" 
+                          placeholder="Password"
+                          value={register.password} onChange={handleChange} name="password"/>
+                    </Form.Group>
+                    <Form.Group controlId="formAddress">
+                        <Form.Label>Alamat</Form.Label>
+                        <Form.Control required  
+                          type="text" 
+                          placeholder="Address"
+                          value={register.alamat} onChange={handleChange} name="alamat"/>
+                    </Form.Group>
+                    <Button type="submit" className="my-btn mt-3 w-100">
+                        Register
+                    </Button>
+                    </Form>
+                    }
+                    <div className="pt-12 items-center">
+                      <p className="font-opensans text-m text-grey">
+                        Sudah mempunyai akun Bumbu KU ?
+                        <Link to='/register/'>
+                          <b className="font-opensans text-md text-base ml-1 "> 
+                            Login
+                          </b>
+                        </Link>
+                      </p>  
+                    </div>
+                </div>
+            </Col>
+        </Row>
+        <Row className="tw-bg-base w-100 d-none d-lg-block">
+            <div className="position-absolute bottom-0 right-0 w-40 d-none d-lg-block">
+              <Image className="right-0 " src={require('../assets/images/Register-image.png').default} alt="Logo Bumbuku" width="100%"/>
+            </div>
+        </Row>
+        
+    </Container>
+    </>
   )
 }
 
