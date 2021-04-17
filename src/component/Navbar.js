@@ -43,7 +43,7 @@ const NavbarMenu = () => {
               placeholder="Search" 
               className="mr-sm-2 focus:tw-outline-none tw-font-opensans" 
             />
-            <button className="tw-bg-icon tw-text-white tw-py-1 tw-px-2 tw-text-md tw-rounded tw-font-opensans">Search</button>
+            <button className="tw-bg-icon tw-text-white tw-py-1 tw-px-4 tw-text-md tw-rounded tw-font-opensans">Search</button>
           </Form>
           <Nav className="tw-font-opensans">
             <Link 
