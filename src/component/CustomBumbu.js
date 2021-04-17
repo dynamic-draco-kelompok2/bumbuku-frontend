@@ -86,7 +86,7 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
             </div>
             <button 
               onClick={applyCustomBumbu} 
-              className="tw-bg-base tw-rounded tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-tracking-wider tw-text-white tw-filter tw-drop-shadow-base tw-w-1/3 tw-h-10"
+              className="tw-bg-base tw-rounded tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-tracking-wider tw-text-white tw-filter tw-drop-shadow-base tw-w-24 tw-h-10"
             >
               Apply
             </button>
