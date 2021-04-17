@@ -55,49 +55,49 @@ const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, tota
   return (
     <>
       <div 
-        className="flex flex-row justify-between mx-4 pt-4 pb-2"
+        className="tw-flex tw-flex-row tw-justify-between tw-mx-4 tw-pt-4 tw-pb-2"
       >
         <div>
-          <h1 className="font-opensans font-semibold listItem">{name}</h1>
-          <span className="font-opensans font-regular listHarga">Rp. {harga} / gram </span>
+          <h1 className="tw-font-opensans tw-font-semibold">{name}</h1>
+          <span className="tw-font-opensans tw-font-regular">Rp. {harga} / gram </span>
         </div>
         <div>
           <img 
             src={image} 
             alt="gambar_custom" 
-            className="w-20 h-20 object-cover"
+            className="tw-w-20 tw-h-20 tw-object-cover"
           />
         </div>
       </div>
-      <div className="flex justify-end mx-4 border-b border-grey pb-2 mb-1">
+      <div className="tw-flex tw-justify-end tw-mx-4 tw-border-b tw-border-grey tw-pb-2 tw-mb-1">
         {addCounter 
           ? 
-            <div className="pt-2">
-              <div className="items-center flex justify-center">
+            <div className="tw-pt-2">
+              <div className="tw-items-center tw-flex tw-justify-center">
                 <div 
-                  className="bg-base rounded-full w-5 h-5 flex cursor-pointer items-center"
+                  className="tw-bg-base tw-rounded-full tw-w-5 tw-h-5 tw-flex tw-cursor-pointer tw-items-center"
                   onClick={() => handleCounter(-1)}
                 >
-                  <span className="text-sm mx-auto -mt-1 text-white">-</span>
+                  <span className="tw-text-sm tw-mx-auto tw--mt-1 tw-text-white">-</span>
                 </div>
                 <input 
-                  className="w-10 h-5 mx-2 rounded text-center text-xs font-opensans"
+                  className="tw-w-10 tw-h-5 tw-mx-2 tw-rounded tw-text-center tw-text-xs tw-font-opensans"
                   type="string"
                   value={counter}
                   onChange={(e) => setCounter(e.target.value)}
                   readOnly
                 />
                 <div 
-                  className="bg-base rounded-full w-5 h-5 flex cursor-pointer items-center"
+                  className="tw-bg-base tw-rounded-full tw-w-5 tw-h-5 tw-flex tw-cursor-pointer tw-items-center"
                   onClick={() => handleCounter(1)}
                 >
-                  <span className="text-sm mx-auto -mt-1 text-white">+</span>
+                  <span className="tw-text-sm tw-mx-auto tw--mt-1 tw-text-white">+</span>
                 </div>
               </div>
             </div>
           : 
             <button 
-              className="text-white focus:outline-none bg-base w-20 rounded text-xs p-1 mt-2 font-opensans"
+              className="tw-text-white focus:tw-outline-none tw-bg-base tw-w-20 tw-rounded tw-text-xs tw-p-1 tw-mt-2 tw-font-opensans"
               onClick={handleAddButton}
             >
               Add
