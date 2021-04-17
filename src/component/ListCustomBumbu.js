@@ -58,8 +58,8 @@ const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, tota
         className="tw-flex tw-flex-row tw-justify-between tw-mx-4 tw-pt-4 tw-pb-2"
       >
         <div>
-          <h1 className="tw-font-opensans tw-font-bold tw-text-base tw--mb-0">{name}</h1>
-          <span className="tw-font-opensans tw-font-regular">Rp. {harga} / gram </span>
+          <h1 className="tw-font-opensans tw-font-bold tw-text-base tw--mb-0 lg:tw-text-xl">{name}</h1>
+          <span className="tw-font-opensans tw-font-regular lg:tw-text-xl">Rp. {harga} / gram </span>
         </div>
         <div>
           <img 
