@@ -44,6 +44,10 @@ hr {
 /* hr {
 } */
 
+.object-fit-cover {
+	object-fit: cover;
+}
+
 .textBtnCustomRed {
 	font-family: "Roboto";
 	font-weight: 400;
