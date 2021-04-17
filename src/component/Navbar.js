@@ -12,9 +12,13 @@ const NavbarMenu = () => {
 
   return (
     <div className="">
-      <Navbar className="bg-base d-flex justify-content-between" expand="lg" variant="dark">
+      <Navbar 
+        className="tw-bg-base d-flex justify-content-between" 
+        expand="lg" 
+        variant="dark"
+      >
         <Navbar.Brand href="#home" className="d-lg-none">
-          <img src={Logo} alt="logo" className="h-8 w-36"/>
+          <img src={Logo} alt="logo" className="tw-h-8 tw-w-36"/>
         </Navbar.Brand>
         <Navbar.Toggle 
           aria-controls="basic-navbar-nav"
@@ -22,42 +26,42 @@ const NavbarMenu = () => {
         />
         <Navbar.Collapse 
           id="basic-navbar-nav"
-          className="flex justify-content-lg-between"
+          className="tw-flex justify-content-lg-between"
         > 
           <Navbar.Brand className="d-none d-lg-block">
             <Link to="/">
               <img 
                 src={Logo} 
                 alt="logo" 
-                className="h-8 w-36"
+                className="tw-h-8 tw-w-36"
               />
             </Link>
           </Navbar.Brand>
-          <Form className="hidden lg:flex lg:w-1/2">
+          <Form className="tw-hidden lg:tw-flex lg:tw-w-1/2">
             <FormControl 
               type="text" 
               placeholder="Search" 
-              className="mr-sm-2 focus:outline-none font-opensans" 
+              className="mr-sm-2 focus:tw-outline-none tw-font-opensans" 
             />
-            <button className="bg-icon text-white py-1 px-2 text-md rounded font-opensans">Search</button>
+            <button className="tw-bg-icon tw-text-white tw-py-1 tw-px-4 tw-text-md tw-rounded tw-font-opensans">Search</button>
           </Form>
-          <Nav className="font-opensans">
+          <Nav className="tw-font-opensans">
             <Link 
               to="/category" 
-              className="text-white my-3 lg:mx-3 my-lg-0"
+              className="tw-text-white tw-my-3 lg:tw-mx-3 my-lg-0"
             >
               Category
             </Link>
             <Link 
-              to="/category" 
-              className="text-white my-3 lg:mx-2 my-lg-0"
+              to="/cart" 
+              className="tw-text-white tw-my-3 lg:tw-mx-3 my-lg-0"
             >
               Cart
             </Link>
             {token
             ? 
               <button 
-                className="text-white my-3 lg:mx-2 my-lg-0"
+                className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
                 onClick={handleLogOut}
               >
                 Logout
@@ -65,7 +69,7 @@ const NavbarMenu = () => {
             :
               <Link 
                 to="/login" 
-                className="text-white my-3 lg:mx-2 my-lg-0"
+                className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
               >
                 Login
               </Link>

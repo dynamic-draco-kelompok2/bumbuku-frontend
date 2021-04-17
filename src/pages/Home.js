@@ -13,7 +13,7 @@ const Home = () => {
   }, [dispatch])
 
   return (
-    <div className="bg-desktop md:h-screen">
+    <div className="tw-bg-desktop md:tw-h-screen">
       <Hero />
       <CardProduct bumbuProduk={bumbuProduk}/>
     </div>

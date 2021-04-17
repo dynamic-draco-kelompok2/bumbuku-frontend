@@ -8,6 +8,7 @@ const Hero = () => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+  
   const [banners] = useState([
     {
       id: 0,
