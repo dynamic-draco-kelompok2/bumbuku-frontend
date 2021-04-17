@@ -53,7 +53,7 @@ const NavbarMenu = () => {
               Category
             </Link>
             <Link 
-              to="/category" 
+              to="/cart" 
               className="tw-text-white tw-my-3 lg:tw-mx-3 my-lg-0"
             >
               Cart
