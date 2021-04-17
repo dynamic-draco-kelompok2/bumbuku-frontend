@@ -19,37 +19,37 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
 
   return (
     <div className="">
-      <div className="w-screen h-screen bg-black opacity-50 fixed top-0 hidden md:flex"></div>
-      <div className="flex justify-center z-10">
-        <div className="bg-desktop w-full h-full flex flex-col rounded fixed top-14 md:top-28 md:max-w-xl md:h-4/5 lg:max-w-3xl">
+      <div className="tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-hidden md:tw-flex"></div>
+      <div className="tw-flex tw-justify-center tw-z-10">
+        <div className="tw-bg-desktop tw-w-full tw-h-full tw-flex tw-flex-col tw-rounded tw-fixed tw-top-14 md:tw-top-28 md:tw-max-w-xl md:tw-h-4/5 lg:tw-max-w-3xl">
           <div 
-            className="pt-5 flex justify-between px-4"
+            className="tw-pt-5 tw-flex tw-justify-between tw-px-4"
           >
             <div></div>
-            <div className="bg-icon w-8 h-8 rounded-full cursor-pointer">
+            <div className="tw-bg-icon tw-w-8 tw-h-8 tw-rounded-full tw-cursor-pointer">
               <div 
-                className="flex justify-center" 
+                className="tw-flex tw-justify-center" 
                 style={{marginTop: '2px'}}
                 onClick={closeModal}
               >
-                <span className="text-xl text-white font-medium">
+                <span className="tw-text-xl tw-text-white tw-font-medium">
                   X
                 </span>
               </div>
             </div>
           </div>
-          <div className="px-4">
-            <h1 className="uppercase font-opensans pb-1 titleAddCstm font-bold">Add Custom</h1>
+          <div className="tw-px-4">
+            <h1 className="tw-uppercase tw-font-opensans tw-pb-1 tw-font-bold">Add Custom</h1>
             <input 
               type="text" 
               placeholder="Cari bumbu..."
-              className="rounded pl-1 w-full py-1 font-opensans border-2 border-gray-300"
+              className="tw-rounded tw-pl-1 tw-w-full tw-py-1 tw-font-opensans tw-border-2 tw-border-gray-300"
               id="placeholerSty"
               value={searchCustomBumbu}
               onChange={(e) => setSearchCustomBumbu(e.target.value)}
             />
           </div>
-          <div className="overflow-hidden overflow-y-scroll flex-1 h-4/6 md:h-3/5">
+          <div className="tw-overflow-hidden tw-overflow-y-scroll tw-flex-1 tw-h-4/6 md:tw-h-3/5">
             {customBumbu.filter((custom) => {
               if(searchCustomBumbu === "") {
                 return custom
@@ -69,23 +69,23 @@ const CustomBumbu = ({customBumbu, setCustomPage, addCustom, setAddCustom, total
             ))}     
           </div>
           <div 
-            className="flex-none sticky w-full items-center bottom-0 flex flex-row justify-between p-4 mt-14 bg-desktop z-10 md:mt-10"
+            className="tw-flex-none tw-sticky tw-w-full tw-items-center tw-bottom-0 tw-flex tw-flex-row tw-justify-between tw-p-4 tw-mt-14 tw-bg-desktop tw-z-10 md:tw-mt-10"
           >
-            <div className="flex flex-row">
+            <div className="tw-flex tw-flex-row">
               <h1 
-                className="mr-1 font-opensans font-bold"
+                className="tw-mr-1 tw-font-opensans tw-font-bold"
               >
                 {totalItemCustom.length}
               </h1>
               <span 
-                className="font-opensans font-bold"
+                className="tw-font-opensans tw-font-bold"
               >
                 {totalItemCustom > 1 ? 'Items' : 'Item'}
               </span>
             </div>
             <button 
               onClick={applyCustomBumbu} 
-              className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-1/4 textBtnCustomRed"
+              className="tw-bg-base  tw-rounded-xl tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-tracking-wider tw-text-white tw-filter tw-drop-shadow-base tw-w-1/4"
             >
               Apply
             </button>

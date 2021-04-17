@@ -22,11 +22,10 @@ const NavbarMenu = () => {
         </Navbar.Brand>
         <Navbar.Toggle 
           aria-controls="basic-navbar-nav"
-          className="bg-icon"
         />
         <Navbar.Collapse 
           id="basic-navbar-nav"
-          className="tw-flex justify-content-lg-between"
+          className="d-flex justify-content-lg-between"
         > 
           <Navbar.Brand className="d-none d-lg-block">
             <Link to="/">
