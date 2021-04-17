@@ -11,7 +11,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className="bg-desktop">
+    <div className="tw-bg-desktop tw-h-screen">
       <Router>
       <Switch>
           <Route path="/register">
