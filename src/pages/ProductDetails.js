@@ -39,9 +39,9 @@ function ProductDetails() {
 
 	
 	return (
-		<div>
+		<div className="tw-bg-desktop">
 			<div className="tw-flex tw-flex-col tw-bg-desktop p-4 lg:tw-flex-row lg:tw-justify-between lg:tw-max-w-4xl mx-auto">
-				<div className="my-auto">
+				<div className="my-auto absolute">
 					<img
 						src={bumbuProduk.image}
 						alt="gambar"
@@ -72,11 +72,11 @@ function ProductDetails() {
 						</span>
 					</div>
 					<DisplayCustomBumbu addCustom = {addCustom}/>
-					<div>
-						<h1 className="tw-font-bold tw-font-opensans tw-text-base">
+					<div className="tw-border-t tw-border-grey">
+						<h1 className="tw-font-bold tw-font-opensans tw-mt-2 tw-text-base">
 							Subtotal:
 						</h1>
-						<div className="tw-flex">
+						<div className="tw-flex tw--mt-1">
 							<h1 className="tw-font-semibold tw-font-opensans tw-text-base mr-1">
 								Harga {bumbuProduk.name}: 
 							</h1>
