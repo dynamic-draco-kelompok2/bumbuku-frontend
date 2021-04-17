@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 /* Hal Product Details */
+
+body {
+	background-color: #eeeeee !important;
+}
 .textTitle {
 	font-size: 32px;
 	letter-spacing: -0.5px;
@@ -115,4 +119,40 @@ hr {
 .borderless th {
 	border: none !important;
 	border-color: indianred !important;
+}
+
+/* Hal Cart */
+.titleCart {
+	font-size: 30px;
+}
+
+.subTitleCart {
+	font-size: 29px;
+	letter-spacing: -0.5px;
+	padding: 68px 0 0px 0;
+}
+
+.textSubCart {
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 17.5px;
+	margin: 24px 0 47px 0;
+	color: #949698;
+}
+
+.textBase {
+	font-size: 32px;
+	margin: 52px 0 5px 0;
+	letter-spacing: -0.5px;
+}
+
+.textHargaBase {
+	font-size: 24px;
+	color: #4e4e4e;
+}
+
+.titleTextCustom {
+	font-size: 24px;
+	color: #b23947;
+	letter-spacing: -0.5px;
 }
