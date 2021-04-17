@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+/* Hal Product Details */
+.textTitle {
+	font-size: 32px;
+	letter-spacing: -0.5px;
+}
+
+.textHarga {
+	font-size: 24px;
+	padding: 6px 0 0 0;
+}
+
+.descriptionTitle {
+	font-size: 18px;
+	letter-spacing: -0.5px;
+	padding: 23px 0 9px 0;
+}
+
+.textDescription {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 15.5px;
+	padding: 18px 0 9px 0;
+	margin: 0;
+	color: #686868;
+}
+
+.textBtnCustom {
+	font-size: 12px;
+	letter-spacing: -0.5px;
+	/* padding: 26px 0 9px 0; */
+}
+.textBtnCustom:hover {
+	box-shadow: 0px 9px 10px -3px #dd8863;
+}
+
+hr {
+	margin-bottom: 28px !important;
+	margin-top: 4px !important;
+	/* width: 100%; */
+	background-color: #b23947;
+	height: 2px !important;
+}
+/* hr {
+} */
+
+.textBtnCustomRed {
+	font-family: "Roboto";
+	font-weight: 400;
+	font-size: 21px;
+	letter-spacing: -0.5px;
+	margin: 26px 0 0 0;
+}
+.textBtnCustomRed:hover {
+	box-shadow: 0px 9px 10px -3px #b23947;
+}
+.titleSubtotal {
+	font-size: 20px;
+	letter-spacing: -0.5px;
+	padding: 56px 0 0 0;
+}
+
+.textSubtotal {
+	font-family: "Roboto";
+	font-weight: 400;
+	font-size: 19px;
+	letter-spacing: -0.5px;
+	color: #686868;
+}
+
+.textList {
+	font-family: "Roboto";
+	font-weight: 400;
+	font-size: 14px;
+	letter-spacing: -0.5px;
+	color: #4e4e4e;
+}
+.textTotalHarga {
+	font-family: "Roboto";
+	font-weight: 600;
+	font-size: 24px;
+	letter-spacing: -0.5px;
+	color: #4e4e4e;
+	padding: 9px 0 9px 0;
+}
+.list-group {
+	border: 0 none !important;
+}
+
+/* hal custom bumbu */
+.titleAddCstm {
+	font-size: 21px;
+}
+
+#placeholerSty {
+	font-size: 14px;
+	/* border: 1px !important;
+	border-color: black !important; */
+}
+
+.listItem {
+	font-size: 26px;
+}
+
+.listHarga {
+	font-size: 18px;
+	color: #575454;
+}
+
+.border-2 {
+	border-width: 1px;
+	color: #666666;
+}
+
+.borderless th {
+	border: none !important;
+	border-color: indianred !important;
+}
