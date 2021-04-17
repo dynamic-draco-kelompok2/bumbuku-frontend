@@ -79,16 +79,16 @@ function Register() {
                           placeholder="Address"
                           value={register.alamat} onChange={handleChange} name="alamat"/>
                     </Form.Group>
-                    <Button type="submit" className="my-btn mt-3 w-100">
+                    <Button type="submit" variant="primary" className="mt-3 w-100 tw-bg-base tw-border-base tw-shadow-base">
                         Register
                     </Button>
                     </Form>
                     }
-                    <div className="pt-12 items-center">
+                    <div className="tw-pt-12 text-center">
                       <p className="font-opensans text-m text-grey">
                         Sudah mempunyai akun Bumbu KU ?
                         <Link to='/register/'>
-                          <b className="font-opensans text-md text-base ml-1 "> 
+                          <b className="font-opensans text-md text-base ml-1 tw-text-basic"> 
                             Login
                           </b>
                         </Link>
@@ -97,11 +97,12 @@ function Register() {
                 </div>
             </Col>
         </Row>
-        <Row className="tw-bg-base w-100 d-none d-lg-block">
-            <div className="position-absolute bottom-0 right-0 w-40 d-none d-lg-block">
-              <Image className="right-0 " src={require('../assets/images/Register-image.png').default} alt="Logo Bumbuku" width="100%"/>
-            </div>
+        <Row className="tw-bg-base w-100 d-none d-lg-block position-static">
+            
         </Row>
+        <div className="position-absolute tw-bottom-0 tw-right-0 d-none d-lg-block tw-w-7/12">
+           <Image className="img-fluid object-fit-cover" src={require('../assets/images/Register-image.png').default} alt="Logo Bumbuku" height="100%"/>
+        </div>
         
     </Container>
     </>
