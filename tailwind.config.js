@@ -18,7 +18,8 @@ module.exports = {
       'desktop': '#EEEEEE',
       'white': '#FFFFFF',
       'black': '#000000',
-      'grey': '#4E4E4E'
+      'grey': '#4E4E4E',
+      'gray': '#949698'
     },
     borderColor: {
       'base': '#B23947',
@@ -28,11 +29,15 @@ module.exports = {
       'black': '#000000',
       'grey': '#4E4E4E'
     },
+    boxShadow: {
+      'base': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 25px 20px -12px rgba(178,57,71, 0.70);'
+    },
     extend: {},
   },
   variants: {
     extend: {},
   },
   plugins: [],
-  prefix: 'tw-'
+  prefix: 'tw-',
+  important: true
 }
