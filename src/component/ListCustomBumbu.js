@@ -58,14 +58,14 @@ const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, tota
         className="tw-flex tw-flex-row tw-justify-between tw-mx-4 tw-pt-4 tw-pb-2"
       >
         <div>
-          <h1 className="tw-font-opensans tw-font-semibold">{name}</h1>
+          <h1 className="tw-font-opensans tw-font-bold tw-text-base tw--mb-0">{name}</h1>
           <span className="tw-font-opensans tw-font-regular">Rp. {harga} / gram </span>
         </div>
         <div>
           <img 
             src={image} 
             alt="gambar_custom" 
-            className="tw-w-20 tw-h-20 tw-object-cover"
+            className="tw-w-24 tw-h-24 tw-object-cover tw-rounded"
           />
         </div>
       </div>
@@ -97,7 +97,7 @@ const ListCustomBumbu = ({_id, name, harga, image, addCustom, setAddCustom, tota
             </div>
           : 
             <button 
-              className="tw-text-white focus:tw-outline-none tw-bg-base tw-w-20 tw-rounded tw-text-xs tw-p-1 tw-mt-2 tw-font-opensans"
+              className="tw-text-white focus:tw-outline-none tw-bg-base tw-w-24 tw-rounded tw-text-xs tw-p-1 tw-mt-2 tw-font-opensans"
               onClick={handleAddButton}
             >
               Add
