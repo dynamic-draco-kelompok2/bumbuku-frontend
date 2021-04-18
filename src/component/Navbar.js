@@ -25,7 +25,7 @@ const NavbarMenu = () => {
         expand="lg" 
         variant="dark"
       >
-        <Navbar.Brand href="#home" className="d-lg-none">
+        <Navbar.Brand href="/" className="d-lg-none">
           <img src={Logo} alt="logo" className="tw-h-8 tw-w-36"/>
         </Navbar.Brand>
         <Navbar.Toggle 
@@ -67,12 +67,14 @@ const NavbarMenu = () => {
             </Link>
             {isLogin.isLogged
             ? 
-              <button 
-                className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
-                onClick={handleLogOut}
-              >
-                Logout
-              </button>
+              <div>
+                <button 
+                  className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </button>
+              </div>
             :
               <Link 
                 to="/login" 
