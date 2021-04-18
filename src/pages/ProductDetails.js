@@ -40,15 +40,15 @@ function ProductDetails() {
 	
 	return (
 		<div className="tw-bg-desktop">
-			<div className="tw-flex tw-flex-col tw-bg-desktop p-4 lg:tw-flex-row lg:tw-justify-between lg:tw-max-w-4xl mx-auto">
-				<div className="my-auto absolute">
+			<div className="tw-flex tw-flex-col tw-bg-desktop p-4 lg:tw-flex-row lg:tw-justify-between lg:tw-max-w-5xl tw-mx-auto">
+				<div className="my-auto">
 					<img
 						src={bumbuProduk.image}
 						alt="gambar"
-						className="tw-rounded tw-w-full lg:tw-max-w-md"
+						className="tw-rounded tw-w-full tw-h-48 tw-object-cover md:tw-h-96 lg:tw-max-w-md lg:tw-h-72"
 					/>
 				</div>
-				<div className="tw-flex tw-flex-col">
+				<div className="tw-flex tw-flex-col lg:tw-w-96">
 					<div>
 						<h3 className="tw-font-opensans tw-pt-2 tw-mb-1 tw-font-bold">
 							{bumbuProduk.name}
@@ -103,7 +103,7 @@ function ProductDetails() {
 							</span>
 						</div>
 					</div>
-					<div className="tw-pt-2 lg:tw-pt-0">
+					<div className="tw-mt-2">
 						<button
 							onClick={addCart}
 							className="tw-bg-base tw-w-full tw-rounded-xl tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-text-white"

@@ -9,30 +9,19 @@ function Cart() {
 	const CustomItem = useSelector((state) => state.handleCart.custom);
 	const dispatch = useDispatch();
 
-	//Get Per Custom Item
-	// console.log(totalHargaCustom)
-
-	// console.log("ini data order ", dataOrder);
-
 	useEffect(() => {
 		const User = JSON.parse(localStorage.payload)._id;
-
 		dispatch(getCart(User));
-		// console.log("data order dlm use uffect ", dataOrder);
 	}, [dispatch]);
 
-	//Total Harga all Base Item
 	const totalHargaBase = dataOrder.reduce(
-		(total, value) => total + value.bumbuProduk_id.harga,
-		0
+		(total, value) => total + value.bumbuProduk_id.harga, 0
 	);
-	// console.log('Ini harga Total base semua item', totalHargaBase);
 
 	return (
 		<>
 			{dataOrder.length === 0 ? (
 				<Container>
-
 					<Row className="tw-pt-40 mx-2"><p className="tw-font-opensans tw-font-bold titleCart tw-m-0 tw-text-basic">No Order Found</p></Row>
 				</Container>
 			) : (
