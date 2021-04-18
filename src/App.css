@@ -145,7 +145,7 @@ hr {
 }
 
 .textBase {
-	font-size: 32px;
+	font-size: 32px !important;
 	margin: 52px 0 5px 0;
 	letter-spacing: -0.5px;
 }
@@ -159,4 +159,30 @@ hr {
 	font-size: 24px;
 	color: #b23947;
 	letter-spacing: -0.5px;
+	margin: 0 0 12px 8px;
+}
+
+.borderCustom {
+	border-radius: 18px;
+	background-color: #f9f9f9;
+	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
+}
+
+.textCustomBumbu {
+	font-size: 18px;
+	color: #b23947;
+	padding: 0 0 0 30px;
+	margin: 0;
+}
+
+.textCustomGram {
+	font-size: 16px;
+	padding: 0 0 0 30px;
+	color: #7c202b;
+}
+
+.lineListOrder {
+	background-color: #b23947;
+	height: 12px;
+	margin: 18px 0 63px 0;
 }
