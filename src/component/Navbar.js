@@ -1,13 +1,21 @@
 import React from 'react'
 import Logo from '../assets/images/Logo bumbukuok-01.png'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+
+import { logoutAction } from '../redux/actions/auth.actions';
 
 const NavbarMenu = () => {
-  const token = localStorage.getItem("payload")
+  const history = useHistory();
+  const isLogin = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  console.log(isLogin)
+
   const handleLogOut = () => {
-    window.localStorage.clear()
-    window.location.reload();
+    localStorage.clear();
+    dispatch(logoutAction());
+    history.push('/');
   }
 
   return (
@@ -57,7 +65,7 @@ const NavbarMenu = () => {
             >
               Cart
             </Link>
-            {token
+            {isLogin.isLogged
             ? 
               <button 
                 className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
