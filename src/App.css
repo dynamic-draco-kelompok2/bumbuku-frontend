@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 /* Hal Product Details */
+body {
+	background-color: #eeeeee !important;
+}
+
 .textTitle {
 	font-size: 32px;
 	letter-spacing: -0.5px;
@@ -28,8 +33,8 @@
 .textBtnCustom {
 	font-size: 12px;
 	letter-spacing: -0.5px;
-	/* padding: 26px 0 9px 0; */
 }
+
 .textBtnCustom:hover {
 	box-shadow: 0px 9px 10px -3px #dd8863;
 }
@@ -37,12 +42,9 @@
 hr {
 	margin-bottom: 28px !important;
 	margin-top: 4px !important;
-	/* width: 100%; */
 	background-color: #b23947;
 	height: 2px !important;
 }
-/* hr {
-} */
 
 .object-fit-cover {
 	object-fit: cover;
@@ -55,9 +57,11 @@ hr {
 	letter-spacing: -0.5px;
 	margin: 26px 0 0 0;
 }
+
 .textBtnCustomRed:hover {
 	box-shadow: 0px 9px 10px -3px #b23947;
 }
+
 .titleSubtotal {
 	font-size: 20px;
 	letter-spacing: -0.5px;
@@ -79,6 +83,7 @@ hr {
 	letter-spacing: -0.5px;
 	color: #4e4e4e;
 }
+
 .textTotalHarga {
 	font-family: "Roboto";
 	font-weight: 600;
@@ -87,6 +92,7 @@ hr {
 	color: #4e4e4e;
 	padding: 9px 0 9px 0;
 }
+
 .list-group {
 	border: 0 none !important;
 }
@@ -98,8 +104,6 @@ hr {
 
 #placeholerSty {
 	font-size: 14px;
-	/* border: 1px !important;
-	border-color: black !important; */
 }
 
 .listItem {
@@ -119,4 +123,94 @@ hr {
 .borderless th {
 	border: none !important;
 	border-color: indianred !important;
+}
+
+/* Hal Cart */
+.titleCart {
+	font-size: 30px;
+}
+
+.subTitleCart {
+	font-size: 29px;
+	letter-spacing: -0.5px;
+	padding: 68px 0 0px 0;
+}
+
+.textSubCart {
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 17.5px;
+	margin: 24px 0 47px 0;
+	color: #949698;
+}
+
+.textBase {
+	font-size: 32px !important;
+	margin: 52px 0 5px 0;
+	letter-spacing: -0.5px;
+	line-height: 1.2 !important;
+}
+
+.textHargaBase {
+	font-size: 24px;
+	color: #4e4e4e;
+}
+
+.titleTextCustom {
+	font-size: 24px;
+	color: #b23947;
+	letter-spacing: -0.5px;
+	margin: 0 0 12px 8px;
+}
+
+.borderCustom {
+	border-radius: 18px;
+	background-color: #f9f9f9;
+	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
+}
+
+.textCustomBumbu {
+	font-size: 18px;
+	color: #b23947;
+	padding: 0 0 0 30px;
+	margin: 0;
+	line-height: 1.25 !important;
+}
+
+.textCustomGram {
+	font-size: 16px;
+	padding: 2px 0 0 30px;
+	color: #7c202b;
+}
+
+.lineListOrder {
+	background-color: #b23947;
+	height: 12px;
+	margin: 18px 0 63px 0px !important;
+}
+.linePlaceOrder {
+	background-color: #4e4e4e;
+	height: 0.5px;
+	margin: 26px 0 30px 0px !important;
+}
+
+.padSm {
+	margin-bottom: 10px;
+}
+.txtTotalHarga {
+	font-size: 26px;
+}
+.btnPlaceOrder {
+	margin: 0 15px 0 15px !important;
+}
+.btnPlaceOrder:hover {
+	font-weight: 700;
+	background-color: #ac3745 !important;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.btnPlaceOrder {
+		width: 20% !important;
+	}
 }
