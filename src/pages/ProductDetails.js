@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getBumbuById } from "../redux/actions/bumbuproduk.actions";
 import { getCustomBumbu } from "../redux/actions/custombumbu.actions";
 import { postOrder } from "../redux/actions/order.action";
+import DisplayCustomBumbu from "../component/DisplayCustomBumbu";
 import CustomBumbu from "../component/CustomBumbu";
-import { Image, Container, Row, ListGroup, Col, Figure, Table } from "react-bootstrap";
 
 function ProductDetails() {
 	const [customPage, setCustomPage] = useState(false);
@@ -39,127 +39,92 @@ function ProductDetails() {
 
 	
 	return (
-		<Container className="flex flex-col lg:flex-row lg:justify-content-center lg:items-center lg:px-10 xl:px-14">
-			<Row>
-				<Col>
+		<div className="tw-bg-desktop">
+			<div className="tw-flex tw-flex-col tw-bg-desktop p-4 lg:tw-flex-row lg:tw-justify-between lg:tw-max-w-4xl mx-auto">
+				<div className="my-auto absolute">
 					<img
 						src={bumbuProduk.image}
 						alt="gambar"
-						className="rounded w-full lg:max-w-lg"
+						className="tw-rounded tw-w-full lg:tw-max-w-md"
 					/>
-				</Col>
-			</Row>
-			<Row className="flex flex-col lg:flex-row lg:justify-content-center lg:items-center lg:px-10 xl:px-14">
-				<Col className="lg:ml-28" key={bumbuProduk._id}>
-					<div className="">
-						<div className="pt-20">
-							<p className="font-opensans font-bold textTitle m-0">
-								{bumbuProduk.name}
-							</p>
-							<p className="font-opensans font-regular textHarga text-grey m-0">
-								Rp.{bumbuProduk.harga}
-							</p>
-							<div className="grid divide-y text-grey">
-								<p className="font-opensans font-semibold descriptionTitle text-black m-0">
-									Description
-								</p>
-								<p className="font-opensans font-light textDescription">
-									{bumbuProduk.description}
-								</p>
-							</div>
-							<div className="lg:w-40 py-6">
-								<button
-									className="bg-icon rounded-xl py-2 px-4 uppercase font-opensans font-bold cursor-pointer tracking-wider text-white  textBtnCustom"
-									onClick={handleCustomBumbu}
-								>
-									Add Custom
-								</button>
-							</div>
-
-							<div className="pb-4 pt-2 px-4 bg-white rounded shadow-2xl">
-		
-								<Table className="w-full text-left borderless" >
-									{/* <div> */}
-										<thead>
-											<tr className="font-opensans font-semibold text-basic">
-												<th>Image</th>
-												<th>Item</th>
-												<th>Harga</th>
-												<th>Berat</th>
-
-											</tr>
-												{/* <hr className="hr w-full"/> */}
-										</thead>
-										{/* <div >
-											<hr className="hr"/>
-										</div> */}
-										{!!addCustom &&
-											addCustom.map((item) => (
-												<tbody key={item.id}>
-													<tr>
-														<td>
-															<img
-																src={item.imageBumbu}
-																alt="gambar"
-																className="w-10 h-10 object-cover mr-2"
-															/>
-														</td>
-														<td className="text-sm font-medium">
-															{item.namaBumbu}
-														</td>
-														<td className="text-sm font-medium">
-															Rp. {item.hargaBumbu}
-														</td>
-														<td className="text-sm font-medium">
-															{item.qty} gram
-														</td>
-													</tr>
-												</tbody>
-											))}
-									{/* </div> */}
-								</Table> 
-							</div>
-						</div>
-					</div>
-
+				</div>
+				<div className="tw-flex tw-flex-col">
 					<div>
-						<h1 className="titleSubtotal font-semibold font-opensans">
+						<h3 className="tw-font-opensans tw-pt-2 tw-mb-1 tw-font-bold">
+							{bumbuProduk.name}
+						</h3>
+						<span className="tw-font-opensans">
+							Rp. {bumbuProduk.harga}
+						</span>
+					</div>
+					<button
+						className="tw-bg-icon tw-rounded-xl tw-mt-2 tw-py-2 tw-px-4 tw-uppercase tw-font-opensans tw-font-bold tw-cursor-pointer tw-tracking-wider tw-text-white"
+						onClick={handleCustomBumbu}
+					>
+						Add Custom
+					</button>
+					<div className="tw-flex tw-flex-col tw-border-t tw-border-grey tw-mt-4 tw-py-2">
+						<span className="tw-font-opensans tw-font-bold">
+							Description:
+						</span>
+						<span className="tw-font-opensans">
+							{bumbuProduk.description}
+						</span>
+					</div>
+					<DisplayCustomBumbu addCustom = {addCustom}/>
+					<div className="tw-border-t tw-border-grey">
+						<h1 className="tw-font-bold tw-font-opensans tw-mt-2 tw-text-base">
 							Subtotal:
 						</h1>
-						<div className="flex ">
-							<h1 className="flex textSubtotal">Harga {bumbuProduk.name}: Rp. {bumbuProduk.harga}</h1>
+						<div className="tw-flex tw--mt-1">
+							<h1 className="tw-font-semibold tw-font-opensans tw-text-base mr-1">
+								Harga {bumbuProduk.name}: 
+							</h1>
+							<span className="tw-font-opensans">
+								Rp. {bumbuProduk.harga}
+							</span>
 						</div>
 						{totalItemCustom.length >= 1 ? (
-							<div>
-								<h1 className="flex textSubtotal">Harga total custom bumbu: Rp. {!!itemPrice && itemPrice}</h1>
+							<div className="tw-flex">
+								<h1 className="tw-font-semibold tw-font-opensans tw-text-base mr-1">
+									Harga Custom Bumbu:
+								</h1>
+								<span className="tw-font-opensans tw-text-base">
+									Rp. {itemPrice}
+								</span>
 							</div>
 						) : null}
-						<div className="flex textSubtotal">
-							<h1 className="flex textSubtotal">Total Harga: Rp. {totalprice}</h1>
+						<div className="tw-flex tw-flex-row">
+							<h1 className="tw-font-semibold tw-font-opensans tw-text-base mr-1">
+								Total Harga: 
+							</h1>
+							<span className="tw-font-opensans">
+								Rp. {totalprice}
+							</span>
 						</div>
 					</div>
-					<div className="lg:w-40">
+					<div className="tw-pt-2 lg:tw-pt-0">
 						<button
 							onClick={addCart}
-							className="bg-base rounded-xl py-2 text-md font-opensans cursor-pointer tracking-wider text-white filter drop-shadow-base w-full textBtnCustomRed"
+							className="tw-bg-base tw-w-full tw-rounded-xl tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-text-white"
 						>
 							Add to cart
 						</button>
 					</div>
-					{customPage && (
-						<CustomBumbu
-							customBumbu={customBumbu}
-							setCustomPage={setCustomPage}
-							addCustom={addCustom}
-							setAddCustom={setAddCustom}
-							totalItemCustom={totalItemCustom}
-							setTotalItemCustom={setTotalItemCustom}
-						/>
-					)}
-				</Col>
-			</Row>
-		</Container>
-	);
+				</div>
+			</div>
+			{customPage && (
+				<CustomBumbu
+					customBumbu={customBumbu}
+					setCustomPage={setCustomPage}
+					addCustom={addCustom}
+					setAddCustom={setAddCustom}
+					totalItemCustom={totalItemCustom}
+					setTotalItemCustom={setTotalItemCustom}
+				/>
+			)}
+		</div>
+	)
 }
 
 export default ProductDetails;
