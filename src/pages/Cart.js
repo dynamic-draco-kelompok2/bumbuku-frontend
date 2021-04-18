@@ -31,11 +31,14 @@ function Cart() {
 	return (
 		<>
 			{dataOrder.length === 0 ? (
-				<div>No Order</div>
+				<Container>
+
+					<Row className="tw-pt-40 mx-2"><p className="tw-font-opensans tw-font-bold titleCart tw-m-0 tw-text-basic">No Order Found</p></Row>
+				</Container>
 			) : (
 				<Container>
 					<Row className="tw-pt-40 mx-2">
-						<Col>
+						<Col lg={6} md={9}>
 							<div>
 								<p className="tw-font-opensans tw-font-bold titleCart tw-m-0">
 									Cart
@@ -54,9 +57,9 @@ function Cart() {
 					</Row>
 
 					{dataOrder.map((order, index) => (
-						<>
-							<Row>
-								<Col className="tw-bg-white borderCustom mr-5 mb-5 tw-ml-8">
+						<div key={index}>
+							<Row >
+								<Col className="tw-bg-white borderCustom mr-5 mb-5 tw-ml-8" sm={10} lg={6} md={10}>
 									<div key={index}>
 										<div className="" key="1">
 											<div className="">
@@ -83,7 +86,7 @@ function Cart() {
 										</div>
 									</div>
 								</Col>
-								<Col className="tw-mx-4 tw-mb-2">
+								<Col className="tw-mx-4 tw-mb-2" >
 									<h4 className="tw-font-opensans tw-font-bold titleTextCustom">
 										Custom:{" "}
 									</h4>
@@ -109,10 +112,10 @@ function Cart() {
 								</Col>
 								<div></div>
 							</Row>
-							<div className="lineListOrder">
+							<Row className="lineListOrder">
 								{/* <p >INI LINE PER ITEM</p> */}
-							</div>
-						</>
+							</Row>
+						</div>
 					))}
 
 					<Row>
@@ -185,16 +188,6 @@ function Cart() {
 									</p>
 								</Col>
 							</Row>
-						
-							{/* <p className="tw-pb-2 tw-font-opensans tw-font-regular">
-								Total Harga Custom: Rp. {totalHargaCustom}
-							</p>
-							<p className="tw-pb-2 tw-font-opensans tw-font-regular">
-								Total Item Custom: {CustomItem.length} Item
-							</p>
-							<p className="tw-text-xl tw-font-bold tw-font-regular">
-								Total Harga: Rp. {totalHargaBase + totalHargaCustom}
-							</p> */}
 						</Col>
 					</Row>
 					<div className="linePlaceOrder">
@@ -204,7 +197,7 @@ function Cart() {
 						<Button
 							type="submit"
 							variant="primary"
-							className="mx-4 mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
+							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
 						>
 							Place Order
 						</Button>
