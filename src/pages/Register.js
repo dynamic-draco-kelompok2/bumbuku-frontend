@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Container, Row, Col, Spinner, Form, Button, Image } from 'react-bootstrap';
-
+import { Helmet } from 'react-helmet'
 import { registerAction } from '../redux/actions/auth.actions';
 
 function Register() {
   const history = useHistory();
   const dispatch = useDispatch();
-
   const registerLoading = useSelector(state => state.auth)
-
   const [register, setRegister] = useState({
       name: "",
       email: "",
@@ -28,6 +26,11 @@ function Register() {
 
   return (
     <>
+    <Helmet>
+      <meta charSet="utf-8"/>
+      <title>Bumbuku - Register</title>
+      <meta name="description" content="about"/>
+    </Helmet>
     <Container fluid className="d-flex flex-row justify-content-between h-100 bg-white position-relative">
         {registerLoading.isLoading === true ?
           <>
