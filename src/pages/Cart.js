@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCart } from "../redux/actions/cart.action";
 import { Container, Row, Col, Button, Accordion, Card } from "react-bootstrap";
 import arrowDropdown from "../assets/icons/arrow-dropdown.svg";
+import { Helmet } from 'react-helmet'
 
 function Cart() {
 	const dataOrder = useSelector((state) => state.handleCart.data);
@@ -22,6 +23,11 @@ function Cart() {
 
 	return (
 		<>
+			<Helmet>
+        <meta charSet="utf-8"/>
+        <title>Bumbuku - Cart</title>
+        <meta name="description" content="about"/>
+      </Helmet>
 			{dataOrder.length === 0 ? (
 				<Container>
 					<Row className="tw-pt-40 mx-2">
