@@ -72,7 +72,7 @@ const NavbarMenu = () => {
               Category
             </Link>
             <div>
-              <div className="tw-absolute tw-bg-icon tw-w-5 tw-h-5 tw-rounded-full tw-flex tw-items-center tw--mt-2 tw-ml-6 tw-top-24 lg:tw-mt-0 lg:tw-top-2 lg:tw-right-20">
+              <div className="tw-absolute tw-bg-icon tw-w-5 tw-h-5 tw-rounded-full tw-flex tw-items-center tw-mt-4 tw-ml-7 tw-top-24 lg:tw-mt-0 lg:tw-top-2 lg:tw-right-20">
                 <span className="tw-text-xs tw-text-white tw-mx-auto">{dataOrder.length}</span>
               </div>
               <Link 
