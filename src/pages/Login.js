@@ -26,6 +26,17 @@ function Login() {
   return (
     <>
     <Container fluid className="d-flex flex-row justify-content-between h-100 bg-white position-relative">
+        {registerLoading.isLoading === true ?
+          <>
+            <div className="text-center tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-left-0 tw-z-20">
+            </div>
+            <Row className="position-absolute justify-content-center w-100 h-100 align-content-center align-items-center tw-z-30">
+              <Spinner className="" animation="border" variant="warning"/>
+            </Row>
+          </>
+          :
+            null
+        }
         <Row className="justify-content-center w-100">
             <Col md={7} className="mt-5">
                 <div>
@@ -40,11 +51,6 @@ function Login() {
                     </div>
                 </div>
                 <div className="mt-5">
-                    {registerLoading.isLoading === true ?
-                    <div className="text-center">
-                        <Spinner className="mt-3" animation="border" />
-                    </div>
-                    :
                     <Form onSubmit={(e) => dispatch(loginAction(login, e, history, setLogin))}>
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
@@ -64,7 +70,6 @@ function Login() {
                         Login
                     </Button>
                     </Form>
-                    }
                     <div className="tw-pt-12 text-center">
                       <p className="font-opensans text-m text-grey">
                         Belum mempunyai akun Bumbu KU ?
@@ -81,8 +86,8 @@ function Login() {
         <Row className="tw-bg-base w-100 d-none d-lg-block position-static">
             
         </Row>
-        <div className="position-absolute tw-bottom-0 tw-right-0 d-none d-lg-block tw-w-7/12">
-           <Image className="img-fluid object-fit-cover" src={require('../assets/images/Register-image.png').default} alt="Logo Bumbuku" height="100%"/>
+        <div className="position-absolute tw-bottom-0 tw-right-0 d-none d-lg-block tw-w-7/12 tw-z-10 tw-overflow-hidden">
+           <Image className="img-fluid object-fit-cover" src={require('../assets/images/Register-image.png').default} alt="Logo Bumbuku" width="100%"/>
         </div>
         
     </Container>
