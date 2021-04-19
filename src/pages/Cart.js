@@ -52,7 +52,7 @@ function Cart() {
 												<img
 													src={order.bumbuProduk_id.image}
 													alt="gambar"
-													className="tw-rounded tw-w-full tw-h-32 tw-object-cover tw-lg:max-w-lg "
+													className="tw-rounded tw-w-full tw-object-cover tw-lg:max-w-lg imgBaseCart"
 												/>
 												<h4 className="tw-text-lg tw-font-opensans tw-font-bold textBase">
 													Base : {order.bumbuProduk_id.name}

@@ -167,6 +167,16 @@ hr {
 	letter-spacing: -0.5px;
 	margin: 0 0 12px 8px;
 }
+.imgBaseCart {
+	height: 128px;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.imgBaseCart {
+		height: 238px;
+	}
+}
 
 .borderCustom {
 	border-radius: 18px;
@@ -174,6 +184,14 @@ hr {
 	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
 	height: 330px;
 }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.borderCustom {
+		height: 430px;
+	}
+}
+
 .borderCustomList {
 	border-radius: 18px;
 	background-color: #f9f9f9;
