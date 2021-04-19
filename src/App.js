@@ -2,15 +2,14 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './component/Navbar'
 import { useSelector } from 'react-redux';
-
 import Home from './pages/Home'
 import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register'
 import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
-
 import './App.css'
+import ProfileUser from './pages/ProfileUser';
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged);
@@ -42,6 +41,9 @@ function App() {
           </Route>
           <Route path="/productdetails/:id">
             <ProductDetails />
+          </Route>
+          <Route path="/profile-user">
+            {!isLogin ? <Redirect to="/"/> : <ProfileUser />}
           </Route>
           <Route>
             <PageNotFound />
