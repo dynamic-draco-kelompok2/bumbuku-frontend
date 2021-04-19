@@ -35,7 +35,9 @@ const Home = () => {
               null
           }
           <Hero />
-          <CardProduct bumbuProduk={bumbuProduk.data}/>
+          <div className="tw-mx-auto md:tw-mx-0">
+            <CardProduct bumbuProduk={bumbuProduk.data} />
+          </div>
         </Row>
       </Container>
     </>
