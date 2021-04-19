@@ -4,7 +4,8 @@ import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutAction } from '../redux/actions/auth.actions';
-import { getCart } from '../redux/actions/cart.action'
+
+import { getCart, cleanCart } from '../redux/actions/cart.action'
 
 const NavbarMenu = () => {
   const dataUser = localStorage.getItem("payload")
@@ -17,6 +18,7 @@ const NavbarMenu = () => {
   const handleLogOut = () => {
     localStorage.clear();
     dispatch(logoutAction());
+    dispatch(cleanCart());
     history.push('/');
   }
 
