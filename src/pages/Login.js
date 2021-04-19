@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Spinner, Form, Button, Image } from 'react-bootstrap';
-
+import { Helmet } from 'react-helmet'
 import { loginAction } from '../redux/actions/auth.actions';
 
 function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
-
   const registerLoading = useSelector(state => state.auth)
-
   const [login, setLogin] = useState({
     name: "",
     password: ""
@@ -25,6 +23,11 @@ function Login() {
 
   return (
     <>
+    <Helmet>
+      <meta charSet="utf-8"/>
+      <title>Bumbuku - Login</title>
+      <meta name="description" content="about"/>
+    </Helmet>
     <Container fluid className="d-flex flex-row justify-content-between h-100 bg-white position-relative">
         {registerLoading.isLoading === true ?
           <>
