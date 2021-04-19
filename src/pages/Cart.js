@@ -25,14 +25,11 @@ function Cart() {
 					<Row className="tw-pt-40 mx-2"><p className="tw-font-opensans tw-font-bold titleCart tw-m-0 tw-text-basic">No Order Found</p></Row>
 				</Container>
 			) : (
-				<Container>
-					<Row className="tw-pt-40 mx-2">
+				<Container className="tw-mt-10">
+					<Row className="mx-2">
 						<Col lg={6} md={9}>
 							<div>
-								<p className="tw-font-opensans tw-font-bold titleCart tw-m-0">
-									Cart
-								</p>
-								<p className="tw-font-opensans tw-font-regular subTitleCart tw-m-0">
+								<p className="tw-font-opensans tw-font-regular subTitleCart tw-m-0 ">
 									Pesanan Anda
 								</p>
 								<div>
@@ -55,19 +52,19 @@ function Cart() {
 												<img
 													src={order.bumbuProduk_id.image}
 													alt="gambar"
-													className="tw-rounded tw-w-full tw-h-52 tw-object-cover tw-lg:max-w-lg "
+													className="tw-rounded tw-w-full tw-h-32 tw-object-cover tw-lg:max-w-lg "
 												/>
 												<h4 className="tw-text-lg tw-font-opensans tw-font-bold textBase">
 													Base : {order.bumbuProduk_id.name}
 												</h4>
-												<p className="tw-py-1 tw-font-opensans tw-font-regular textHargaBase">
+												<p className="tw-pt-1 tw-font-opensans tw-font-regular textHargaBase">
 													Harga : Rp. {order.bumbuProduk_id.harga}
 												</p>
 												<div className="tw-grid tw-divide-y tw-text-grey">
 													<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
 														Description
 													</p>
-													<p className="tw-pt-4 tw-font-opensans tw-font-regular">
+													<p className="tw-pt-1 tw-font-opensans tw-font-regular deskripsiText">
 														{order.bumbuProduk_id.description}
 													</p>
 												</div>
@@ -83,12 +80,12 @@ function Cart() {
 										order.custom.map((custom, index) => (
 											<div
 												key={index}
-												className="tw-flex tw-m-2 tw-shadow-2xl tw-p-4 borderCustom"
+												className="tw-flex tw-shadow-2xl borderCustomList "
 											>
 												<img
 													src={custom.bumbuDasar_id.image}
 													alt="gambar custom"
-													className="tw-rounded-lg  tw-w-20 tw-h-20 tw-object-cover tw-lg:max-w-lg "
+													className="tw-rounded-lg tw-w-14 tw-h-14 tw-object-cover tw-lg:max-w-lg "
 												/>
 												<div>
 													<p className="tw-y-1 tw-font-opensans tw-font-bold textCustomBumbu">
