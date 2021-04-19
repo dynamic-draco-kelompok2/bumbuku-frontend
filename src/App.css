@@ -162,11 +162,12 @@ hr {
 }
 
 .titleTextCustom {
-	font-size: 21.5px;
-	color: #b23947;
+	font-size: 21.5px !important;
+	color: #b23947 !important;
 	letter-spacing: -0.5px;
-	margin: 0 0 12px 8px;
+	margin: 0 0 0 28px;
 }
+
 .imgBaseCart {
 	height: 128px;
 }
@@ -178,11 +179,25 @@ hr {
 	}
 }
 
+.card-header {
+	padding: 0 !important;
+}
+
 .borderCustom {
 	border-radius: 18px;
 	background-color: #f9f9f9;
 	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
-	height: 330px;
+	/* height: 330px; */
+}
+
+/* .accordion-toggle:focus {
+	outline: none !important; */
+/* outline: none !important;
+	border: none !important; */
+/* } */
+.btn-link:focus,
+a:focus {
+	outline: none !important;
 }
 
 /* Large devices (desktops, 992px and up) */
