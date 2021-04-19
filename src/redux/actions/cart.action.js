@@ -3,6 +3,7 @@ import axios from 'axios'
 export const GET_CART_REQUEST = 'GET_CART_REQUEST'
 export const GET_CART_SUCCESS = 'GET_CART_SUCCES'
 export const GET_CART_ERROR = 'GET_CART_ERROR'
+export const CLEAN_CART = 'CLEAN_CART'
 
 export const GET_CUSTOM_REQUEST = 'GET_CUSTOM_REQUEST'
 export const GET_CUSTOM_SUCCESS = 'GET_CUSTOM_SUCCES'
@@ -25,6 +26,12 @@ export const getCartError = (error) => {
   return {
     type: GET_CART_ERROR,
     error
+  }
+}
+
+export const cleanCart = () => {
+  return {
+    type: CLEAN_CART
   }
 }
 

@@ -2,6 +2,7 @@ import {
   GET_CART_REQUEST,
   GET_CART_SUCCESS,
   GET_CART_ERROR,
+  CLEAN_CART,
   GET_CUSTOM_REQUEST,
   GET_CUSTOM_SUCCESS,
   GET_CUSTOM_ERROR
@@ -35,6 +36,13 @@ const handleCart = (state = initialState, action) => {
         ...state,
         error: action.error,
         isLoading: false
+      }
+    case CLEAN_CART:
+      return {
+        ...state,
+        data: [],
+        custom: [],
+        totalCustom: 0
       }
     case GET_CUSTOM_REQUEST:
       return {
