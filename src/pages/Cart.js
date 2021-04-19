@@ -72,6 +72,7 @@ function Cart() {
 										</div>
 									</div>
 								</Col>
+								{/* {console.log(dataOrder)} */}
 								<Col className="tw-mx-4 tw-mb-2" >
 									<h4 className="tw-font-opensans tw-font-bold titleTextCustom">
 										Custom:{" "}

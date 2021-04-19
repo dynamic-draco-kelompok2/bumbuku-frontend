@@ -87,7 +87,7 @@ function Register() {
                     <div className="tw-pt-12 text-center">
                       <p className="font-opensans text-m text-grey">
                         Sudah mempunyai akun Bumbu KU ?
-                        <Link to='/register/'>
+                        <Link to='/login/'>
                           <b className="font-opensans text-md text-base ml-1 tw-text-basic"> 
                             Login
                           </b>
