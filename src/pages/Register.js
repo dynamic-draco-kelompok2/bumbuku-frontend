@@ -29,6 +29,17 @@ function Register() {
   return (
     <>
     <Container fluid className="d-flex flex-row justify-content-between h-100 bg-white position-relative">
+        {registerLoading.isLoading === true ?
+          <>
+            <div className="text-center tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-left-0 tw-z-20">
+            </div>
+            <Row className="position-absolute justify-content-center w-100 h-100 align-content-center align-items-center tw-z-30">
+              <Spinner className="" animation="border" variant="warning"/>
+            </Row>
+          </>
+          :
+            null
+        }
         <Row className="justify-content-center w-100">
             <Col md={7} className="mt-5">
                 <div>
@@ -44,11 +55,6 @@ function Register() {
                     </div>
                 </div>
                 <div className="mt-5">
-                    {registerLoading.isLoading === true ?
-                    <div className="text-center">
-                        <Spinner className="mt-3" animation="border" />
-                    </div>
-                    :
                     <Form onSubmit={(e) => dispatch(registerAction(register, e, history, setRegister))}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
@@ -56,7 +62,7 @@ function Register() {
                           className="rounded-3xl" 
                           type="text" 
                           placeholder="Your email"
-                          value={register.email} onChange={handleChange} name="name"/>
+                          value={register.email} onChange={handleChange} name="email"/>
                     </Form.Group>
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
@@ -83,7 +89,6 @@ function Register() {
                         Register
                     </Button>
                     </Form>
-                    }
                     <div className="tw-pt-12 text-center">
                       <p className="font-opensans text-m text-grey">
                         Sudah mempunyai akun Bumbu KU ?
