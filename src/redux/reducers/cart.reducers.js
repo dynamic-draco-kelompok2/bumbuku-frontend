@@ -76,7 +76,6 @@ function getCustomItem(dataOrder){
   // console.log(dataOrder)
   const getHargaCustom = dataOrder.filter((order) => {
 		return order.custom !== undefined
-
 	})
   // console.log(getHargaCustom)
   return getHargaCustom
