@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Logo from '../assets/images/Logo bumbukuok-01.png'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutAction } from '../redux/actions/auth.actions';
+import { getCart } from '../redux/actions/cart.action'
 
 const NavbarMenu = () => {
   const dataUser = localStorage.getItem("payload")
@@ -19,6 +20,12 @@ const NavbarMenu = () => {
     history.push('/');
   }
 
+  useEffect(() => {
+    if(user) {
+      dispatch(getCart(user._id))
+    }
+  }, [dispatch])
+
   return (
     <div className="">
       <Navbar 
@@ -26,12 +33,9 @@ const NavbarMenu = () => {
         expand="lg" 
         variant="dark"
       >
-        
-          <Navbar.Brand href="/" className="d-lg-none">
-            <img src={Logo} alt="logo" className="tw-h-8 tw-w-36"/>
-          </Navbar.Brand>
-    
-        
+        <Navbar.Brand href="/" className="d-lg-none">
+          <img src={Logo} alt="logo" className="tw-h-8 tw-w-36"/>
+        </Navbar.Brand>
         <Navbar.Toggle 
           aria-controls="basic-navbar-nav"
         />
