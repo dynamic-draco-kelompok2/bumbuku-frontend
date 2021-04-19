@@ -26,7 +26,7 @@ const NavbarMenu = () => {
     if(user) {
       dispatch(getCart(user._id))
     }
-  }, [dispatch])
+  })
 
   return (
     <div className="">
