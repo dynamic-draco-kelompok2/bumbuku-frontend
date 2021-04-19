@@ -10,6 +10,7 @@ import {
 const initialState = {
   dataById:[],
   data: [],
+  isLoading : false,
   error: null
 }
 
@@ -17,30 +18,36 @@ const handleBumbuProduk = (state = initialState, action) => {
   switch(action.type) {
     case GET_BUMBUPRODUK_REQUEST:
       return {
-        ...state
+        ...state,
+        isLoading: true
       }
     case GET_BUMBUPRODUK_SUCCESS:
       return {
         ...state,
+        isLoading: false,
         data: action.result
       }
     case GET_BUMBUPRODUK_ERROR:
       return {
         ...state,
+        isLoading: false,
         error: action.error
       }
     case GET_BUMBUPRODUKBYID_REQUEST:
       return {
-        ...state
+        ...state,
+        isLoading: true,
       }
     case GET_BUMBUPRODUKBYID_SUCCESS:
       return {
         ...state,
+        isLoading: false,
         dataById: action.result
       }
     case GET_BUMBUPRODUKBYID_ERROR:
       return {
         ...state,
+        isLoading: false,
         error: action.error
       }
     default:
