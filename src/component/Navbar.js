@@ -12,7 +12,6 @@ const NavbarMenu = () => {
   const history = useHistory();
   const isLogin = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  console.log(user.name)
 
   const handleLogOut = () => {
     localStorage.clear();
@@ -51,7 +50,7 @@ const NavbarMenu = () => {
               </Link>
             </Navbar.Brand>
             {user && (
-              <span className="tw-font-opensans tw-text-white tw--ml-2 tw-text-base">
+              <span className="tw-font-opensans tw-text-white lg:tw--ml-2 tw-text-base">
                 Hi, {user.name}
               </span>
             )}
@@ -71,16 +70,16 @@ const NavbarMenu = () => {
             >
               Category
             </Link>
-            <div>
-              <div className="tw-absolute tw-bg-icon tw-w-5 tw-h-5 tw-rounded-full tw-flex tw-items-center tw-mt-4 tw-ml-7 tw-top-24 lg:tw-mt-0 lg:tw-top-2 lg:tw-right-20">
-                <span className="tw-text-xs tw-text-white tw-mx-auto">{dataOrder.length}</span>
-              </div>
+            <div className="tw-flex tw-flex-row">
               <Link 
                 to="/cart" 
                 className="tw-text-white tw-my-3 lg:tw-mx-3 my-lg-0"
               >
                 Cart
               </Link>
+              <div className="tw-bg-icon tw-flex tw-rounded-full tw-w-5 tw-h-5 tw-mt-1 tw--ml-1 lg:tw--mt-2 lg:tw--ml-4 tw-items-center tw-text-center">
+                <span className="tw-text-xs tw-text-white tw-mx-auto">{dataOrder.length}</span>
+              </div>
             </div>
             {isLogin.isLogged
             ? 
