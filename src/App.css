@@ -16,15 +16,15 @@ body {
 }
 
 .descriptionTitle {
-	font-size: 18px;
+	font-size: 16px;
 	letter-spacing: -0.5px;
-	padding: 23px 0 9px 0;
+	padding: 0 0 4px 0;
 }
 
 .textDescription {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
-	font-size: 15.5px;
+	font-size: 13.5px;
 	padding: 18px 0 9px 0;
 	margin: 0;
 	color: #686868;
@@ -133,7 +133,7 @@ hr {
 .subTitleCart {
 	font-size: 29px;
 	letter-spacing: -0.5px;
-	padding: 68px 0 0px 0;
+	/* padding: 68px 0 0px 0; */
 }
 
 .textSubCart {
@@ -145,32 +145,63 @@ hr {
 }
 
 .textBase {
-	font-size: 32px !important;
-	margin: 52px 0 5px 0;
+	font-size: 25px !important;
+	margin: 16px 0 0px 0;
 	letter-spacing: -0.5px;
 	line-height: 1.2 !important;
 }
 
 .textHargaBase {
-	font-size: 24px;
+	font-size: 21px;
 	color: #4e4e4e;
 }
 
+.deskripsiText {
+	font-size: 15px;
+	line-height: 1.25 !important;
+}
+
 .titleTextCustom {
-	font-size: 24px;
+	font-size: 21.5px;
 	color: #b23947;
 	letter-spacing: -0.5px;
 	margin: 0 0 12px 8px;
+}
+.imgBaseCart {
+	height: 128px;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.imgBaseCart {
+		height: 238px;
+	}
 }
 
 .borderCustom {
 	border-radius: 18px;
 	background-color: #f9f9f9;
 	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
+	height: 330px;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.borderCustom {
+		height: 430px;
+	}
+}
+
+.borderCustomList {
+	border-radius: 18px;
+	background-color: #f9f9f9;
+	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
+	margin-bottom: 5px;
+	padding: 8px 0 0 10px;
 }
 
 .textCustomBumbu {
-	font-size: 18px;
+	font-size: 16px;
 	color: #b23947;
 	padding: 0 0 0 30px;
 	margin: 0;
@@ -178,7 +209,7 @@ hr {
 }
 
 .textCustomGram {
-	font-size: 16px;
+	font-size: 14px;
 	padding: 2px 0 0 30px;
 	color: #7c202b;
 }
