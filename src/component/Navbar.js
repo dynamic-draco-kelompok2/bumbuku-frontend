@@ -8,8 +8,7 @@ import { logoutAction } from '../redux/actions/auth.actions';
 import { getCart, cleanCart } from '../redux/actions/cart.action'
 
 const NavbarMenu = () => {
-  const dataUser = localStorage.getItem("payload")
-  const user = JSON.parse(dataUser)
+  const user = JSON.parse(localStorage.payload);
   const dataOrder = useSelector((state) => state.handleCart.data)
   const history = useHistory();
   const isLogin = useSelector(state => state.auth);
@@ -22,11 +21,11 @@ const NavbarMenu = () => {
     history.push('/');
   }
 
-  useEffect(() => {
-    if(user) {
+  useEffect(() => {    
+    if(user._id) {
       dispatch(getCart(user._id))
     }
-  }, [dispatch])
+  }, [dispatch, user._id])
 
   return (
     <div className="">
@@ -57,7 +56,7 @@ const NavbarMenu = () => {
             </Navbar.Brand>
             {user && (
               <span className="tw-font-opensans tw-text-white lg:tw--ml-2 tw-text-base">
-                Hi, {user.name}
+                Hi, {user.name} 
               </span>
             )}
           </div>
