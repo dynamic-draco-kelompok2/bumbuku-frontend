@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import Logo from '../assets/images/Logo bumbukuok-01.png'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'
@@ -8,7 +9,7 @@ import { logoutAction } from '../redux/actions/auth.actions';
 import { getCart, cleanCart } from '../redux/actions/cart.action'
 
 const NavbarMenu = () => {
-  const user = JSON.parse(localStorage.payload);
+  
   const dataOrder = useSelector((state) => state.handleCart.data)
   const history = useHistory();
   const isLogin = useSelector(state => state.auth);
@@ -22,10 +23,10 @@ const NavbarMenu = () => {
   }
 
   useEffect(() => {    
-    if(user._id) {
-      dispatch(getCart(user._id))
+    if(localStorage.payload) {
+      dispatch(getCart(JSON.parse(localStorage.payload)._id))
     }
-  }, [dispatch, user._id])
+  }, [dispatch])
 
   return (
     <div className="">
@@ -54,9 +55,9 @@ const NavbarMenu = () => {
                 />
               </Link>
             </Navbar.Brand>
-            {user && (
+            {isLogin.isLogged && (
               <span className="tw-font-opensans tw-text-white lg:tw--ml-2 tw-text-base">
-                Hi, {user.name} 
+                Hi, {JSON.parse(localStorage.payload).name} 
               </span>
             )}
           </div>

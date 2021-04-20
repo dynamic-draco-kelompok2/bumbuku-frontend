@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
+import EditProfile from '../component/EditProfile'
 
 const ProfileUser = () => {
+  const [editProfile, setEditProfile] = useState(false)
   const getUser = localStorage.getItem("payload")
   const userData = JSON.parse(getUser)
+
+  const handleEditProfile = () => {
+    setEditProfile(!editProfile)
+  }
 
   return (
     <>
@@ -44,8 +50,18 @@ const ProfileUser = () => {
                   {userData.alamat}
                 </span>
               </div>
+              <button 
+                className="tw-bg-base tw-mt-2 tw-font-opensans tw-text-white tw-p-2 rounded"
+                onClick={handleEditProfile}
+              >
+                Edit Profile
+            </button>
             </div>
           </div>
+          <EditProfile 
+            editProfile={editProfile}
+            setEditProfile={setEditProfile}
+          />
         </div>
       )}
     </>
