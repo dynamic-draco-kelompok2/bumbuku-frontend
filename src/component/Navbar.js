@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import Logo from '../assets/images/Logo bumbukuok-01.png'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'

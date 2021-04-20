@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { editAlamatUser } from '../redux/actions/user.actions'
 
 const EditProfile = ({editProfile, setEditProfile}) => {
-  const handleCloseModal = () => {
-    setEditProfile(false)
-  }
+  const dispatch = useDispatch()
   const getUser = localStorage.getItem("payload")
   const userData = JSON.parse(getUser)
-  console.log(userData)
+  const [updateAlamat, setUpdateAlamat] = useState("")
+
+  const handleCloseModal = () => {
+    setUpdateAlamat("")
+    setEditProfile(false)
+  }
+
+  const handleUpdate = (e) => {
+    const newAlamatUser = {...userData, alamat: updateAlamat}
+    e.preventDefault();
+    localStorage.removeItem("payload")
+    const updateUser = localStorage.setItem("payload", 
+      JSON.stringify(
+        newAlamatUser
+      )
+    )
+    // JSON.parse(updateUser)
+    dispatch(editAlamatUser({_id: userData._id, newAlamatUser}))
+    setEditProfile(false)
+  }
+
   return (
     <div>
       {editProfile && (
@@ -41,19 +61,31 @@ const EditProfile = ({editProfile, setEditProfile}) => {
             </div>
               <div className="tw-flex tw-flex-col tw-justify-center tw-mx-auto tw-items-center tw-w-72">
                 <form>
-                  <div className="tw-flex tw-flex-row tw-my-4 tw-justify-between tw-w-60">
+                  <div className="tw-flex tw-flex-row tw-my-4 tw-w-60">
                     <h4 className="tw-font-opensans tw-text-base">Name: </h4>
-                    <input className="tw-rounded tw-items-center tw-font-opensans" />
+                    <span className="tw-ml-4">
+                      {userData.name}
+                    </span>
                   </div>
-                  <div className="tw-flex tw-flex-row tw-my-4 tw-justify-between tw-w-60">
+                  <div className="tw-flex tw-flex-row tw-my-4 tw-w-60">
                     <h4 className="tw-font-opensans tw-text-base">Email: </h4>
-                    <input className="tw-rounded tw-items-center" />
+                    <span className="tw-ml-5">
+                      {userData.email}
+                    </span>
                   </div>
                   <div className="tw-flex tw-flex-row tw-my-4 tw-justify-between tw-w-60">
                     <h4 className="tw-font-opensans tw-text-base">Alamat: </h4>
-                    <input className="tw-rounded tw-items-center" />
+                    <input 
+                      className="tw-rounded tw-items-center tw-text-xs tw-w-full tw-ml-2 tw-pl-1 tw-font-opensans"
+                      value={updateAlamat}
+                      onChange={(e) => setUpdateAlamat(e.target.value)}
+                      placeholder={userData.alamat}
+                    />
                   </div>
-                  <button className="tw-bg-base tw-font-opensans tw-text-white tw-p-2 tw-rounded tw-w-24 tw-my-4">
+                  <button 
+                    className="tw-bg-base tw-font-opensans tw-text-white tw-p-2 tw-rounded tw-w-24 tw-my-4"
+                    onClick={handleUpdate}
+                  >
                     Update
                   </button>
                 </form>
@@ -69,3 +101,4 @@ const EditProfile = ({editProfile, setEditProfile}) => {
 }
 
 export default EditProfile
+
