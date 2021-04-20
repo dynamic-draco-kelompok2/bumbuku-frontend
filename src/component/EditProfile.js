@@ -17,12 +17,11 @@ const EditProfile = ({editProfile, setEditProfile}) => {
     const newAlamatUser = {...userData, alamat: updateAlamat}
     e.preventDefault();
     localStorage.removeItem("payload")
-    const updateUser = localStorage.setItem("payload", 
+    localStorage.setItem("payload", 
       JSON.stringify(
         newAlamatUser
       )
     )
-    // JSON.parse(updateUser)
     dispatch(editAlamatUser({_id: userData._id, newAlamatUser}))
     setEditProfile(false)
   }
