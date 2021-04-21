@@ -7,6 +7,7 @@ import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register'
 import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
+import BumbuDasarDetails from './pages/BumbuDasarDetails'
 import Cart from './pages/Cart'
 import './App.css'
 import ProfileUser from './pages/ProfileUser';
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/productdetails/:id">
             <ProductDetails />
+          </Route>
+          <Route path="/bumbudasardetails/">
+            <BumbuDasarDetails />
           </Route>
           <Route path="/category">
             <CategoryPage />
