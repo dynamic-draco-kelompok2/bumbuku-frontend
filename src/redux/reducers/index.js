@@ -6,6 +6,7 @@ import handleBumbuDasar from './bumbudasar.reducers'
 import handleCart from './cart.reducers'
 import handleOrder from './order.reducers';
 import handleUser from './user.reducer'
+import handleCategory from './categorybumbu.reducers';
 
 const rootReducer = combineReducers({
   auth, 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   handleCustomBumbu,
   handleCart,
   handleOrder,
-  handleUser
+  handleUser,
+  handleCategory
 })
 
 export default rootReducer;

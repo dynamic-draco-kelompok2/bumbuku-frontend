@@ -11,6 +11,7 @@ import BumbuDasarDetails from './pages/BumbuDasarDetails'
 import Cart from './pages/Cart'
 import './App.css'
 import ProfileUser from './pages/ProfileUser';
+import CategoryPage from './pages/CategoryPage';
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged);
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/bumbudasardetails/">
             <BumbuDasarDetails />
+          </Route>
+          <Route path="/category">
+            <CategoryPage />
           </Route>
           <Route path="/profile-user">
             {!isLogin ? <Redirect to="/"/> : <ProfileUser />}
