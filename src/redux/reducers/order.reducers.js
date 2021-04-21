@@ -1,7 +1,7 @@
 import {
-    POST_ORDER_REQUEST,
+    ORDER_REQUEST,
     POST_ORDER_SUCCESS,
-    POST_ORDER_ERROR,
+    ORDER_ERROR,
   } from '../actions/order.action'
   
   const initialState = {
@@ -11,7 +11,7 @@ import {
   
   const handleOrder = (state = initialState, action) => {
     switch(action.type) {
-      case POST_ORDER_REQUEST:
+      case ORDER_REQUEST:
         return {
           ...state,
           isLoading: true
@@ -21,7 +21,7 @@ import {
           ...state,
           isLoading: false
         }
-      case POST_ORDER_ERROR:
+      case ORDER_ERROR:
         return {
           ...state,
           isLoading: false,
