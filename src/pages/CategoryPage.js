@@ -22,6 +22,9 @@ const CategoryPage = () => {
   }
 
   const handleFilterButton = (category) => {
+    // if(category === 'All') {
+
+    // }
     const newItem = categoryBumbu.filter((item) => item.category === category)
     setAllBumbu(false)
     setBumbuCategory(true)
