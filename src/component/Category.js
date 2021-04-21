@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Category = ({paramsCategory, handleFilterButton, handleAllButton}) => {
   return (
