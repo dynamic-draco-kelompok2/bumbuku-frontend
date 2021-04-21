@@ -15,7 +15,7 @@ const DisplayCustomBumbu = ({addCustom}) => {
           </thead>
           <tbody>
             {!!addCustom && addCustom.map((item) => (
-              <tr>
+              <tr key={item.id}>
                 <td className="tw-py-1">
                   <img
                     src={item.imageBumbu}
