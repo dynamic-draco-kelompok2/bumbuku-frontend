@@ -8,8 +8,8 @@ import { Helmet } from 'react-helmet'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const bumbuProduk = useSelector((state) => state.handleBumbuProduk)
-  
+  const bumbuProduk = useSelector((state) => state.handleBumbuProduk.data)
+
   useEffect(() => {
     dispatch(getBumbuProduk())
   }, [dispatch])
@@ -36,7 +36,12 @@ const Home = () => {
           }
           <Hero />
           <div className="tw-mx-auto md:tw-mx-0">
-            <CardProduct bumbuProduk={bumbuProduk.data} />
+            {bumbuProduk.map((bumbu) => (
+              <CardProduct 
+                bumbu={bumbu} 
+                key={bumbu._id}
+              />
+            ))}
           </div>
         </Row>
       </Container>
