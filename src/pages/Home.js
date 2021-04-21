@@ -37,7 +37,7 @@ const Home = () => {
               null
           }
           <Hero />
-          <div className="tw-mx-auto md:tw-mx-0">
+          <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row">
             {bumbuProduk.map((bumbu) => (
               <CardProduct 
                 bumbu={bumbu} 
