@@ -22,9 +22,6 @@ const CategoryPage = () => {
   }
 
   const handleFilterButton = (category) => {
-    // if(category === 'All') {
-
-    // }
     const newItem = categoryBumbu.filter((item) => item.category === category)
     setAllBumbu(false)
     setBumbuCategory(true)
@@ -37,14 +34,14 @@ const CategoryPage = () => {
   }, [dispatch])
 
   return (
-    <div>
+    <div className="tw-p-4">
       <Category 
         paramsCategory={paramsCategory} 
         handleFilterButton={handleFilterButton}
         handleAllButton={handleAllButton}
       />
       {allBumbu && (
-        <div>
+        <div className="tw-mx-auto md:tw-mx-0">
           {bumbuProduk.map((bumbu) => (
             <CardProduct 
               bumbu={bumbu} 
@@ -54,7 +51,9 @@ const CategoryPage = () => {
         </div>
       )}
       {bumbuCategory && (
-        <ListBumbuCategory categoryBumbu={products}/>
+        <div className="tw-mx-auto md:tw-mx-0">
+          <ListBumbuCategory categoryBumbu={products}/>
+        </div>
       )}
     </div>
   )
