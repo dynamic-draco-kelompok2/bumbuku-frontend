@@ -1,17 +1,24 @@
 import axios from 'axios'
 
-export const GET_CART_REQUEST = 'GET_CART_REQUEST'
-export const GET_CART_SUCCESS = 'GET_CART_SUCCES'
-export const GET_CART_ERROR = 'GET_CART_ERROR'
+export const CART_REQUEST = 'CART_REQUEST'
+export const CART_ERROR = 'CART_ERROR'
+export const GET_CART_SUCCESS = 'GET_CART_SUCCESS'
+export const GET_CUSTOM_SUCCESS = 'GET_CUSTOM_SUCCESS'
+export const DELETE_CART_SUCCESS = 'DELETE_CART_SUCCESS'
+
 export const CLEAN_CART = 'CLEAN_CART'
 
-export const GET_CUSTOM_REQUEST = 'GET_CUSTOM_REQUEST'
-export const GET_CUSTOM_SUCCESS = 'GET_CUSTOM_SUCCES'
-export const GET_CUSTOM_ERROR = 'GET_CUSTOM_ERROR'
 
-export const getCartRequest = () => {
+export const cartRequest = () => {
   return {
-    type: GET_CART_REQUEST
+    type: CART_REQUEST
+  }
+}
+
+export const cartError = (error) => {
+  return {
+    type: CART_ERROR,
+    error
   }
 }
 
@@ -22,10 +29,18 @@ export const getCartSuccess = (result) => {
   }
 }
 
-export const getCartError = (error) => {
+export const getCustomSuccess = (result) => {
   return {
-    type: GET_CART_ERROR,
-    error
+    type: GET_CUSTOM_SUCCESS,
+    result,
+  }
+}
+
+export const deleteCartSuccess = (result, order) => {
+  return {
+    type: DELETE_CART_SUCCESS,
+    result,
+    order
   }
 }
 
@@ -35,30 +50,10 @@ export const cleanCart = () => {
   }
 }
 
-export const getCustomRequest = () => {
-  return {
-    type: GET_CUSTOM_REQUEST
-  }
-}
-
-export const getCustomSuccess = (result) => {
-  return {
-    type: GET_CUSTOM_SUCCESS,
-    result
-  }
-}
-
-export const getCustomError = (error) => {
-  return {
-    type: GET_CUSTOM_ERROR,
-    error
-  }
-}
-
 export const getCustom = (order_id) => {
   return function(dispatch) {
     const token = localStorage.token;
-    dispatch(getCustomRequest())
+    dispatch(cartRequest())
 
     axios
       .get(`https://bumbuku.herokuapp.com/custom/order/${order_id}`, {
@@ -67,14 +62,14 @@ export const getCustom = (order_id) => {
         }
       })
       .then((result) => dispatch(getCustomSuccess(result.data)))
-      .catch((error) => dispatch(getCustomError(error)))
+      .catch((error) => dispatch(cartError(error)))
   }
 }
 
 export const getCart = (user) => {
   return function(dispatch) {
     const token = localStorage.token;
-    dispatch(getCartRequest())
+    dispatch(cartRequest())
 
     axios
       .get(`https://bumbuku.herokuapp.com/order/user/${user}`, {
@@ -89,10 +84,31 @@ export const getCart = (user) => {
         })
         
         dispatch(getCartSuccess(result.data))})
-      .catch((error) => dispatch(getCartError(error)))
+      .catch((error) => dispatch(cartError(error)))
   }
 }
 
+export const deleteCart = (order) => {
+  return function(dispatch) {
+    const token = localStorage.token;
+    dispatch(cartRequest());
 
+    axios.delete(`https://bumbuku.herokuapp.com/order/${order._id}`, {
+      headers: {
+        Authorization: 'Bearer ' + token //the token is a variable which holds the token
+      }
+    })
+    .then(result => {
+      if(order.custom){
+        order.custom.forEach(item => {
+          axios.delete(`https://bumbuku.herokuapp.com/custom/${item._id}`)
+          .catch((error) => dispatch(cartError(error)))
+        })
+      }
+      dispatch(deleteCartSuccess(result.data, order))
+    })
+    .catch((error) => dispatch(cartError(error)))
+  }
+}
 
 

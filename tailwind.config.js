@@ -30,6 +30,7 @@ module.exports = {
       'grey': '#4E4E4E'
     },
     boxShadow: {
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       'base': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 25px 20px -12px rgba(178,57,71, 0.70);'
     },
     extend: {},

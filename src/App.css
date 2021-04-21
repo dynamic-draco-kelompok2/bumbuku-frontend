@@ -140,7 +140,7 @@ hr {
 	font-family: "Roboto";
 	font-weight: 300;
 	font-size: 17.5px;
-	margin: 24px 0 47px 0;
+	margin: 24px 0 15px 0;
 	color: #949698;
 }
 
@@ -184,9 +184,9 @@ hr {
 }
 
 .borderCustom {
-	border-radius: 18px;
+	border-radius: 8px;
 	background-color: #f9f9f9;
-	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
+	/* box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px; */
 	/* height: 330px; */
 }
 
@@ -209,8 +209,8 @@ a:focus {
 
 .borderCustomList {
 	border-radius: 18px;
-	background-color: #f9f9f9;
-	box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px;
+	/* background-color: #f9f9f9; */
+	/* box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px; */
 	margin-bottom: 5px;
 	padding: 8px 0 0 10px;
 }
@@ -259,4 +259,9 @@ a:focus {
 	.btnPlaceOrder {
 		width: 20% !important;
 	}
+}
+
+.cartCustomBody {
+	max-height: 321px;
+	overflow-y: auto;
 }

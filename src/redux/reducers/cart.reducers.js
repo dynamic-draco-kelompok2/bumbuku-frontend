@@ -1,11 +1,10 @@
 import {
-  GET_CART_REQUEST,
+  CART_REQUEST,
+  CART_ERROR,
   GET_CART_SUCCESS,
-  GET_CART_ERROR,
-  CLEAN_CART,
-  GET_CUSTOM_REQUEST,
   GET_CUSTOM_SUCCESS,
-  GET_CUSTOM_ERROR
+  DELETE_CART_SUCCESS,
+  CLEAN_CART
 } from '../actions/cart.action'
 
 const initialState = {
@@ -18,10 +17,16 @@ const initialState = {
 
 const handleCart = (state = initialState, action) => {
   switch(action.type) {
-    case GET_CART_REQUEST:
+    case CART_REQUEST:
       return {
         ...state,
         isLoading: true
+      }
+    case CART_ERROR:
+      return {
+        ...state,
+        error: action.error,
+        isLoading: false
       }
     case GET_CART_SUCCESS:
       return {
@@ -30,24 +35,6 @@ const handleCart = (state = initialState, action) => {
         custom: getCustomItem(action.result), 
         totalCustom: getTotal(getCustomItem(action.result)),
         isLoading: false
-      }
-    case GET_CART_ERROR:
-      return {
-        ...state,
-        error: action.error,
-        isLoading: false
-      }
-    case CLEAN_CART:
-      return {
-        ...state,
-        data: [],
-        custom: [],
-        totalCustom: 0
-      }
-    case GET_CUSTOM_REQUEST:
-      return {
-        ...state,
-        isLoading: true
       }
     case GET_CUSTOM_SUCCESS:
       // console.log(action);
@@ -60,8 +47,6 @@ const handleCart = (state = initialState, action) => {
         }
         return item
       })
-      // console.log(NewData);
-
       return {
         ...state,
         data: NewData,
@@ -69,11 +54,21 @@ const handleCart = (state = initialState, action) => {
         totalCustom: getTotal(getCustomItem(NewData)),
         isLoading: false
       }
-    case GET_CUSTOM_ERROR:
+    case DELETE_CART_SUCCESS:
+      const newData = state.data.filter(item => (item._id !== action.order._id));
       return {
         ...state,
-        error: action.error,
+        data: newData,
+        custom: getCustomItem(newData), 
+        totalCustom: getTotal(getCustomItem(newData)),
         isLoading: false
+      }
+    case CLEAN_CART:
+      return {
+        ...state,
+        data: [],
+        custom: [],
+        totalCustom: 0
       }
     default:
       return state

@@ -1,13 +1,12 @@
 import axios from 'axios'
 
-export const POST_ORDER_REQUEST = 'GET_CART_REQUEST'
-export const POST_ORDER_SUCCESS = 'GET_CART_SUCCES'
-export const POST_ORDER_ERROR = 'GET_CART_ERROR'
-
+export const ORDER_REQUEST = 'ORDER_REQUEST'
+export const ORDER_ERROR = 'ORDER_ERROR'
+export const POST_ORDER_SUCCESS = 'POST_ORDER_SUCCESS'
 
 export const postOrderRequest = () => {
   return {
-    type: POST_ORDER_REQUEST
+    type: ORDER_REQUEST
   }
 }
 
@@ -20,7 +19,7 @@ export const postOrderSuccess = (result) => {
 
 export const postOrderError = (error) => {
   return {
-    type: POST_ORDER_ERROR,
+    type: ORDER_ERROR,
     error
   }
 }
