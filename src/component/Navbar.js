@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import Logo from '../assets/images/Logo bumbukuok-01.png'
-import { Nav, Navbar, Form, FormControl } from 'react-bootstrap'
+import { Nav, Navbar, Form, FormControl, NavDropdown } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutAction } from '../redux/actions/auth.actions';
@@ -31,7 +31,7 @@ const NavbarMenu = () => {
   return (
     <div className="">
       <Navbar 
-        className="tw-bg-base d-flex justify-content-between" 
+        className="tw-bg-base d-flex justify-content-between px-4" 
         expand="lg" 
         variant="dark"
       >
@@ -55,11 +55,11 @@ const NavbarMenu = () => {
                 />
               </Link>
             </Navbar.Brand>
-            {isLogin.isLogged && (
+            {/* {isLogin.isLogged && (
               <span className="tw-font-opensans tw-text-white lg:tw--ml-2 tw-text-base">
                 Hi, {JSON.parse(localStorage.payload).name} 
               </span>
-            )}
+            )} */}
           </div>
           <Form className="tw-hidden lg:tw-flex lg:tw-w-1/2">
             <FormControl 
@@ -69,34 +69,40 @@ const NavbarMenu = () => {
             />
             <button className="tw-bg-icon tw-text-white tw-py-1 tw-px-4 tw-text-md tw-rounded tw-font-opensans">Search</button>
           </Form>
-          <Nav className="tw-font-opensans">
+          <Nav className="tw-font-opensans align-items-lg-center">
             <Link 
               to="/category" 
-              className="tw-text-white tw-my-3 lg:tw-mx-3 my-lg-0"
+              className="tw-text-white tw-my-3 lg:tw-mx-3"
             >
               Category
             </Link>
             <div className="tw-flex tw-flex-row">
               <Link 
                 to="/cart" 
-                className="tw-text-white tw-my-3 lg:tw-mx-3 my-lg-0"
+                className="tw-text-white tw-my-3 lg:tw-mx-3"
               >
                 Cart
               </Link>
-              <div className="tw-bg-icon tw-flex tw-rounded-full tw-w-5 tw-h-5 tw-mt-1 tw--ml-1 lg:tw--mt-2 lg:tw--ml-4 tw-items-center tw-text-center">
+              <div className="tw-bg-icon tw-flex tw-rounded-full tw-w-5 tw-h-5 tw-mt-1 tw--ml-1 lg:tw--ml-4 tw-items-center tw-text-center">
                 <span className="tw-text-xs tw-text-white tw-mx-auto">{dataOrder.length}</span>
               </div>
             </div>
+            <div className="horizontal-line d-none d-lg-block tw-bg-white tw-h-10"></div>
             {isLogin.isLogged
             ? 
-              <div>
-                <button 
-                  className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
-                  onClick={handleLogOut}
-                >
-                  Logout
-                </button>
-              </div>
+              <NavDropdown title={JSON.parse(localStorage.payload).name} id="basic-nav-dropdown" className="navDropDown">
+                <NavDropdown.Item href="/profile-user">Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#" onClick={handleLogOut} >Logout</NavDropdown.Item>
+              </NavDropdown>
+              // <div>
+              //   <button 
+              //     className="tw-text-white tw-my-3 lg:tw-mx-2 my-lg-0"
+              //     onClick={handleLogOut}
+              //   >
+              //     Logout
+              //   </button>
+              // </div>
             :
               <Link 
                 to="/login" 

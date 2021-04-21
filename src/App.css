@@ -265,3 +265,21 @@ a:focus {
 	max-height: 321px;
 	overflow-y: auto;
 }
+
+.navDropDown > a {
+	color: #fff !important;
+}
+
+.navDropDown > a:hover {
+	text-decoration: underline;
+}
+
+.navDropDown div {
+	right: 0;
+	left: auto;
+}
+
+.horizontal-line {
+    width: 1px;
+    margin: .5rem;
+}
