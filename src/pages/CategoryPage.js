@@ -41,7 +41,7 @@ const CategoryPage = () => {
         handleAllButton={handleAllButton}
       />
       {allBumbu && (
-        <div className="tw-mx-auto md:tw-mx-0">
+        <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4">
           {bumbuProduk.map((bumbu) => (
             <CardProduct 
               bumbu={bumbu} 
@@ -51,7 +51,7 @@ const CategoryPage = () => {
         </div>
       )}
       {bumbuCategory && (
-        <div className="tw-mx-auto md:tw-mx-0">
+        <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4">
           <ListBumbuCategory categoryBumbu={products}/>
         </div>
       )}
