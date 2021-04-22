@@ -242,7 +242,7 @@ function Cart() {
 							variant="primary"
 							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
 						>
-							Place Order
+							Beli
 						</Button>
 					</Row>
 				</Container>
