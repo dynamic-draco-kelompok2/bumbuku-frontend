@@ -23,10 +23,15 @@ const handleBumbuDasar = (state = initialState, action) => {
         isLoading: true
       }
     case GET_BUMBUDASAR_SUCCESS:
+      const listBumbu = action.result.map((item) => {
+        return {
+          ...item, quantity: 0
+        }
+      })
       return {
         ...state,
         isLoading: false,
-        data: action.result
+        data: listBumbu
       }
     case GET_BUMBUDASAR_ERROR:
       return {
