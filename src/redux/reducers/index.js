@@ -7,6 +7,7 @@ import handleCart from './cart.reducers'
 import handleOrder from './order.reducers';
 import handleUser from './user.reducer'
 import handleCategory from './categorybumbu.reducers';
+import upload from './upload.reducers'
 
 const rootReducer = combineReducers({
   auth, 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   handleCart,
   handleOrder,
   handleUser,
-  handleCategory
+  handleCategory,
+  upload
 })
 
 export default rootReducer;

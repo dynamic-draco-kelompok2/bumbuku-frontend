@@ -40,7 +40,7 @@ body {
 }
 
 hr {
-	margin-bottom: 28px !important;
+	margin-bottom: 15px !important;
 	margin-top: 4px !important;
 	background-color: #b23947;
 	height: 2px !important;
@@ -259,6 +259,9 @@ a:focus {
 	.btnPlaceOrder {
 		width: 20% !important;
 	}
+	.btnPlaceOrder.uploadBtn {
+		width: 25% !important;
+	}
 }
 
 .cartCustomBody {
@@ -283,3 +286,22 @@ a:focus {
     width: 1px;
     margin: .5rem;
 }
+
+.fw-600{
+	font-weight: 600;
+}
+
+.my-toast {
+	position: fixed;
+	z-index: 1;
+	bottom: 1rem;
+	right: 1rem;
+  }
+  
+.my-toast button {
+	color: #fff;
+}
+
+.my-progress-base div {
+	background-color: #B23947 !important;
+  }
