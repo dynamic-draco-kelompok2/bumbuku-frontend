@@ -65,10 +65,10 @@ function ProductDetails() {
 							</span>
 						</div>
 						<button
-							className="tw-bg-icon tw-rounded-xl tw-mt-2 tw-py-2 tw-px-4 tw-uppercase tw-font-opensans tw-font-bold tw-cursor-pointer tw-tracking-wider tw-text-white"
+							className="d-flex align-items-center justify-content-center tw-bg-icon tw-rounded-xl tw-mt-2 tw-py-2 tw-px-4 tw-font-opensans tw-cursor-pointer tw-tracking-wider tw-text-white"
 							onClick={handleCustomBumbu}
 						>
-							Add Custom
+							+ Tambah Bumbu
 						</button>
 						<div className="tw-flex tw-flex-col tw-border-t tw-border-grey tw-mt-4 tw-py-2">
 							<span className="tw-font-opensans tw-font-bold">
@@ -115,7 +115,7 @@ function ProductDetails() {
 								onClick={addCart}
 								className="tw-bg-base tw-w-full tw-rounded-xl tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-text-white"
 							>
-								Add to cart
+								+ Keranjang
 							</button>
 						</div>
 					</div>
