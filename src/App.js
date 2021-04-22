@@ -2,6 +2,9 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './component/Navbar'
 import { useSelector } from 'react-redux';
+import './App.css'
+
+// Page
 import Home from './pages/Home'
 import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register'
@@ -9,15 +12,15 @@ import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
 import BumbuDasarDetails from './pages/BumbuDasarDetails'
 import Cart from './pages/Cart'
-import './App.css'
 import ProfileUser from './pages/ProfileUser';
 import CategoryPage from './pages/CategoryPage';
+import Checkout from './pages/Checkout'
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged);
 
   return (
-    <div className="tw-bg-desktop tw-h-screen">
+    <div className="tw-bg-desktop">
       <Router>
       <Switch>
           <Route path="/register">
@@ -52,6 +55,9 @@ function App() {
           </Route>
           <Route path="/profile-user">
             {!isLogin ? <Redirect to="/"/> : <ProfileUser />}
+          </Route>
+          <Route path="/checkout">
+            {isLogin ? <Checkout /> : <Redirect to="/login"/>}
           </Route>
           <Route>
             <PageNotFound />

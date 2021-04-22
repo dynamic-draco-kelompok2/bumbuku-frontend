@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Button, Accordion, Card } from "react-bootstrap";
 import arrowDropdown from "../assets/icons/arrow-dropdown.svg";
+import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet'
 
 import { getCart, deleteCart } from "../redux/actions/cart.action";
 
 function Cart() {
+	const history = useHistory();
 	const dataOrder = useSelector((state) => state.handleCart.data);
 	const totalHargaCustom = useSelector((state) => state.handleCart.totalCustom);
 	const CustomItem = useSelector((state) => state.handleCart.custom);
@@ -24,6 +26,10 @@ function Cart() {
 
 	const deleteCartHandle = (order) => {
 		dispatch(deleteCart(order));
+	}
+
+	const beliHandle = () => {
+		history.push('/checkout')
 	}
 
 	return (
@@ -238,11 +244,12 @@ function Cart() {
 					</div>
 					<Row className="tw-pb-40">
 						<Button
+							onClick={() => beliHandle()}
 							type="submit"
 							variant="primary"
-							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
+							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder uploadbtn"
 						>
-							Place Order
+							Beli ({dataOrder.length})
 						</Button>
 					</Row>
 				</Container>
