@@ -49,9 +49,9 @@ function CardBumbuDasar(bumbuDasar) {
 	};
 	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
-	const addCart = (id) => {
+	const addCart = () => {
 		// console.log("kiriman ke cart", itemBumbuDasar);
-		dispatch(postOrderBumbuDasar(id, totalItemBumbuDasar));
+		dispatch(postOrderBumbuDasar(totalItemBumbuDasar));
 		console.log(totalItemBumbuDasar);
 	};
 
@@ -199,7 +199,7 @@ function CardBumbuDasar(bumbuDasar) {
 						<Button
 							type="submit"
 							variant="primary"
-							onClick={()=> addCart(totalItemBumbuDasar)}
+							onClick={addCart}
 							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
 						>
 							Add To Cart
