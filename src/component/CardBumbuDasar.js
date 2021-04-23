@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { useDispatch } from 'react-redux'
+import { postOrderBumbuDasar } from "../redux/actions/order.action";
+
 
 function CardBumbuDasar(bumbuDasar) {
+	const dispatch = useDispatch()
+
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
 	// console.log("productBumbuDasar", productBumbuDasar);
 
@@ -44,9 +49,10 @@ function CardBumbuDasar(bumbuDasar) {
 	};
 	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
-	const addCart = (itemBumbuDasar) => {
-		console.log("kiriman ke cart", itemBumbuDasar);
-		// dispatch(postOrder(id, addCustom));
+	const addCart = (id) => {
+		// console.log("kiriman ke cart", itemBumbuDasar);
+		dispatch(postOrderBumbuDasar(id, totalItemBumbuDasar));
+		console.log(totalItemBumbuDasar);
 	};
 
 	const itemPrice = totalItemBumbuDasar.reduce(
