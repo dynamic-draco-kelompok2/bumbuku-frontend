@@ -13,6 +13,9 @@ function Cart() {
 	const totalHargaCustom = useSelector((state) => state.handleCart.totalCustom);
 	const CustomItem = useSelector((state) => state.handleCart.custom);
 	const dispatch = useDispatch();
+	const dataOrderDasar = useSelector((state) => state)
+
+	console.log(dataOrderDasar)
 
 	useEffect(() => {
 		const User = JSON.parse(localStorage.payload)._id;
