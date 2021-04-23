@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCart } from './cart.action'
 
 export const ORDER_REQUEST = 'ORDER_REQUEST'
 export const ORDER_ERROR = 'ORDER_ERROR'
@@ -48,7 +49,7 @@ export const postOrderBumbuDasarError = (error) => {
   }
 }
 
-export const postOrder = (produkId, customData) => {
+export const postOrder = (produkId, customData, setShow) => {
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
@@ -83,31 +84,46 @@ export const postOrder = (produkId, customData) => {
           } else {
             dispatch(postOrderSuccess(result.data))
           }
+          dispatch(getCart(JSON.parse(localStorage.payload)._id))
+          setShow({
+            valid: true,
+            title: "Add Cart",
+            text: "Berhasil masukkan ke keranjang!",
+          });
         })
-      .catch((error) => dispatch(postOrderError(error)))
+      .catch((error) => {
+        dispatch(postOrderError(error));
+        setShow({
+          valid: true,
+          title: "Error",
+          text: "Gagal masukkan ke keranjang!",
+        });
+      })
   }
 }
 
-export const postOrderBumbuDasar = (bumbuDasarID, gramDasar) => {
+export const postOrderBumbuDasar = (bumbuDasar) => {
+  console.log(bumbuDasar)
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
     dispatch(postOrderBumbuDasarRequest())
 
-    const sendDataOrder = {
-      user_id: userId,
-      bumbuDasar_id: bumbuDasarID,
-      gram: gramDasar
-    }
-
-    axios
-      .post('https://bumbuku.herokuapp.com/order/', sendDataOrder, {
-        headers: {
-          Authorization: 'Bearer' + token
-        }
-      })
-      .then((result) => dispatch(postOrderBumbuDasarSuccess(result.data)))
-      .catch((error) => dispatch(postOrderBumbuDasarError(error)))
+    bumbuDasar.forEach((item) => {
+      const sendDataOrder = {
+        user_id: userId,
+        bumbuDasar_id: item._id,
+        gram: item.quantity
+      }
+      axios
+        .post('https://bumbuku.herokuapp.com/order/', sendDataOrder, {
+          headers: {
+            Authorization: 'Bearer' + token
+          }
+        })
+        .then((result) => dispatch(postOrderBumbuDasarSuccess(result.data)))
+        .catch((error) => dispatch(postOrderBumbuDasarError(error)))
+    })
   }
 }
 
