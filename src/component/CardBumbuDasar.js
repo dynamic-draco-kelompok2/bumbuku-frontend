@@ -4,14 +4,14 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 
 function CardBumbuDasar(bumbuDasar) {
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
-	console.log("productBumbuDasar", productBumbuDasar);
+	// console.log("productBumbuDasar", productBumbuDasar);
 
 	const [counter, setCounter] = useState(1);
 
 	const [totalItemBumbuDasar, setTotalItemBumbuDasar] = useState([]);
 
 	const handleCounter = (accumNumber, id) => {
-		console.log("handle counter dpt");
+		// console.log("handle counter dpt");
 		const deleteBumbu = totalItemBumbuDasar.filter((item) => item._id !== id);
 		const bumbu = totalItemBumbuDasar.find((item) => item._id === id);
 		if (accumNumber === -1) {
