@@ -89,9 +89,16 @@ export const postOrder = (produkId, customData, setShow) => {
             valid: true,
             title: "Add Cart",
             text: "Berhasil masukkan ke keranjang!",
-        });
+          });
         })
-      .catch((error) => dispatch(postOrderError(error)))
+      .catch((error) => {
+        dispatch(postOrderError(error));
+        setShow({
+          valid: true,
+          title: "Error",
+          text: "Gagal masukkan ke keranjang!",
+        });
+      })
   }
 }
 
