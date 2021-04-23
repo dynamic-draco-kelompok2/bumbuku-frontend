@@ -5,7 +5,7 @@ import { getBumbuById } from "../redux/actions/bumbuproduk.actions";
 import { getCustomBumbu } from "../redux/actions/custombumbu.actions";
 import DisplayCustomBumbu from "../component/DisplayCustomBumbu";
 import CustomBumbu from "../component/CustomBumbu";
-import { Container, Row, Col, Button, Toast } from "react-bootstrap";
+import { Container, Row, Col, Button, Toast, Spinner } from "react-bootstrap";
 import { Helmet } from 'react-helmet'
 
 import { postOrder } from "../redux/actions/order.action";
@@ -17,15 +17,29 @@ function ProductDetails() {
 	const dispatch = useDispatch();
 	const customBumbu = useSelector((state) => state.handleCustomBumbu.data);
 	const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById);
+	const orderLoading = useSelector((state) => state.handleOrder);
 	const [show, setShow] = useState({
         valid: false,
         title: "",
         text: "",
     });
-
 	let { id } = useParams();
 
 	const handleCustomBumbu = () => {
+		// const data = ["asd","qwe","kkk","bbb"]
+		// const promise = new Promise((resolve) => {
+        //     console.log("inside");
+		// 	resolve();
+		// })
+		// promise.then(() => {
+		// 	console.log("done");
+		// })
+
+		// data.forEach((item, index, array) => {
+		// 	console.log(item);
+		// 	if(index === array.length -1) console.log("done")
+		// })
+		
 		setCustomPage(!customPage);
 	};
 
@@ -38,8 +52,7 @@ function ProductDetails() {
 	const totalprice = bumbuProduk.harga + itemPrice;
 
 	const addCart = () => {
-		dispatch(postOrder(id, addCustom, setShow));
-
+		dispatch(postOrder(id, addCustom, setShow, setAddCustom, setTotalItemCustom));
 	};
 
 	useEffect(() => {
@@ -55,6 +68,13 @@ function ProductDetails() {
 			<title>Bumbuku - Details Product</title>
 			<meta name="description" content="about"/>
       	</Helmet>
+		  {orderLoading.isLoading &&
+            <div className="tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-left-0 hidden md:flex tw-z-30">
+                <div className="h-100 d-flex align-items-center justify-content-center">
+					<Spinner className="" animation="border" variant="warning"/>
+                </div>
+            </div>
+        	}
 			<Container>
 				<Row className="d-flex justify-content-center">
 				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>

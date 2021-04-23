@@ -33,10 +33,15 @@ function Checkout() {
 		dispatch(getCart(User));
 	}, [dispatch]);
 
-	const totalHargaBase = dataCheckout.data.reduce(
-		(total, value) => total + value.bumbuProduk_id.harga,
-		0
-	);
+	const totalHargaBase = dataCheckout.data.reduce((total, value) => {
+        let harga = 0;
+        if(value.bumbuProduk_id){
+            harga = value.bumbuProduk_id.harga;
+        }else{
+            harga = value.bumbuDasar_id.harga * value.gram;
+        }
+        return total + harga
+    },0);
 
     const uploadHandle = (e) => {
         if(e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png"){

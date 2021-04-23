@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { postOrderBumbuDasar } from "../redux/actions/order.action";
+import { Container, Row, Col, Button, Toast } from "react-bootstrap";
+import { useDispatch } from 'react-redux'
+import { postOrderBumbuDasar } from '../redux/actions/order.action';
 
 function CardBumbuDasar(bumbuDasar) {
 	const dispatch = useDispatch();
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
-	// console.log("productBumbuDasar", productBumbuDasar);
+	const [show, setShow] = useState({
+        valid: false,
+        title: "",
+        text: "",
+    });
 
 	const [counter, setCounter] = useState(1);
 
@@ -48,7 +52,7 @@ function CardBumbuDasar(bumbuDasar) {
 	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
 	const addCart = () => {
-		dispatch(postOrderBumbuDasar(totalItemBumbuDasar));
+		dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow))
 	};
 
 	const itemPrice = totalItemBumbuDasar.reduce(
@@ -65,6 +69,19 @@ function CardBumbuDasar(bumbuDasar) {
 	return (
 		<>
 			<Container>
+				<Row className="d-flex justify-content-center">
+				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
+				<Toast.Header className="tw-bg-base text-white">
+					<img
+					src="holder.js/20x20?text=%20"
+					className="rounded mr-2"
+					alt=""
+					/>
+					<strong className="mr-auto">{show.title}</strong>
+				</Toast.Header>
+				<Toast.Body className="f-bold">{show.text}</Toast.Body>
+				</Toast>
+				</Row>
 				<div className="tw-flex tw-flex-col tw-w-full tw-flex-wrap tw-items-center md:tw-flex-row mt-5 ">
 					{productBumbuDasar.map((bumbu, index) => (
 						<Row className="mx-2" key={index}>
