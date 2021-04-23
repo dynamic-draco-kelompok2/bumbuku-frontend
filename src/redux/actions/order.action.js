@@ -22,7 +22,12 @@ export const postOrderSuccess = (result) => {
   }
 }
 
-export const postOrderError = (error) => {
+export const postOrderError = (error, setShow) => {
+  setShow({
+    valid: true,
+    title: "Error",
+    text: "Gagal masukkan ke keranjang!",
+  })
   return {
     type: ORDER_ERROR,
     error
@@ -49,7 +54,7 @@ export const postOrderBumbuDasarError = (error) => {
   }
 }
 
-export const postOrder = (produkId, customData, setShow) => {
+export const postOrder = (produkId, customData, setShow, setAddCustom, setTotalItemCustom) => {
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
@@ -67,7 +72,7 @@ export const postOrder = (produkId, customData, setShow) => {
         }})
       .then((result) => {
           if(customData.length > 0){
-            customData.forEach(item => {
+            customData.forEach((item, index, array) => {
                 const dataCustomSend = {
                     order_id: result.data._id,
                     bumbuDasar_id: item.id,
@@ -77,27 +82,33 @@ export const postOrder = (produkId, customData, setShow) => {
                     headers: {
                         Authorization: 'Bearer ' + token
                     }})
-                .catch(e => dispatch(postOrderError(e)))
+                .catch(e => dispatch(postOrderError(e, setShow)))
+                if(index === array.length -1){
+                  dispatch(postOrderSuccess(result.data))
+                  dispatch(getCart(JSON.parse(localStorage.payload)._id))
+                  setShow({
+                    valid: true,
+                    title: "Add Cart",
+                    text: "Berhasil masukkan ke keranjang!",
+                  });
+                  setAddCustom([]);
+                  setTotalItemCustom([]);
+                }
             })
-            dispatch(postOrderSuccess(result.data))
-            
           } else {
             dispatch(postOrderSuccess(result.data))
+            dispatch(getCart(JSON.parse(localStorage.payload)._id))
+              setShow({
+                valid: true,
+                title: "Add Cart",
+                text: "Berhasil masukkan ke keranjang!",
+              });
+              setAddCustom([]);
+              setTotalItemCustom([]);
           }
-          dispatch(getCart(JSON.parse(localStorage.payload)._id))
-          setShow({
-            valid: true,
-            title: "Add Cart",
-            text: "Berhasil masukkan ke keranjang!",
-          });
         })
       .catch((error) => {
-        dispatch(postOrderError(error));
-        setShow({
-          valid: true,
-          title: "Error",
-          text: "Gagal masukkan ke keranjang!",
-        });
+        dispatch(postOrderError(error, setShow));
       })
   }
 }
