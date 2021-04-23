@@ -45,8 +45,7 @@ function ProductDetails() {
 
 	const itemPrice = totalItemCustom.reduce(
 		(accumulation, currentItem) =>
-			accumulation + currentItem.hargaBumbu * currentItem.qty,
-		0
+			accumulation + currentItem.hargaBumbu * currentItem.qty, 0
 	);
 
 	const totalprice = bumbuProduk.harga + itemPrice;
