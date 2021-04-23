@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from 'react-redux'
-<<<<<<< HEAD
-import { postOrderBumbuDasar } from "../redux/actions/order.action";
-
-
-function CardBumbuDasar(bumbuDasar) {
-	const dispatch = useDispatch()
-
-=======
 import { postOrderBumbuDasar } from '../redux/actions/order.action';
 
 function CardBumbuDasar(bumbuDasar) {
 	const dispatch = useDispatch()
->>>>>>> f1692244ac3fd7420b87a1ca57c6d819d3253ac5
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
 	// console.log("productBumbuDasar", productBumbuDasar);
 
