@@ -102,26 +102,28 @@ export const postOrder = (produkId, customData, setShow) => {
   }
 }
 
-export const postOrderBumbuDasar = (bumbuDasarID, gramDasar) => {
+export const postOrderBumbuDasar = (bumbuDasar) => {
+  console.log(bumbuDasar)
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
     dispatch(postOrderBumbuDasarRequest())
 
-    const sendDataOrder = {
-      user_id: userId,
-      bumbuDasar_id: bumbuDasarID,
-      gram: gramDasar
-    }
-
-    axios
-      .post('https://bumbuku.herokuapp.com/order/', sendDataOrder, {
-        headers: {
-          Authorization: 'Bearer' + token
-        }
-      })
-      .then((result) => dispatch(postOrderBumbuDasarSuccess(result.data)))
-      .catch((error) => dispatch(postOrderBumbuDasarError(error)))
+    bumbuDasar.forEach((item) => {
+      const sendDataOrder = {
+        user_id: userId,
+        bumbuDasar_id: item._id,
+        gram: item.quantity
+      }
+      axios
+        .post('https://bumbuku.herokuapp.com/order/', sendDataOrder, {
+          headers: {
+            Authorization: 'Bearer' + token
+          }
+        })
+        .then((result) => dispatch(postOrderBumbuDasarSuccess(result.data)))
+        .catch((error) => dispatch(postOrderBumbuDasarError(error)))
+    })
   }
 }
 
