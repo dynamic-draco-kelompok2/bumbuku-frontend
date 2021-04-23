@@ -283,11 +283,11 @@ a:focus {
 }
 
 .horizontal-line {
-    width: 1px;
-    margin: .5rem;
+	width: 1px;
+	margin: 0.5rem;
 }
 
-.fw-600{
+.fw-600 {
 	font-weight: 600;
 }
 
@@ -296,12 +296,58 @@ a:focus {
 	z-index: 1;
 	bottom: 1rem;
 	right: 1rem;
-  }
-  
+}
+
 .my-toast button {
 	color: #fff;
 }
 
 .my-progress-base div {
-	background-color: #B23947 !important;
-  }
+	background-color: #b23947 !important;
+}
+
+/* hal profile */
+
+.titleProfile {
+	font-size: 30px;
+	margin: 34px 0 0 0;
+}
+
+.subTitleProfile {
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 17.5px;
+	margin: 24px 0 15px 0;
+	color: #949698;
+}
+
+.photoUserProfile {
+	width: 147px;
+	height: 147px;
+	margin-top: 47px;
+}
+.txtNamaUser {
+	font-family: "Roboto";
+	font-weight: 700;
+	font-size: 23.5px;
+	margin: 28px 0 0 0;
+	color: #4e4e4e;
+}
+.txtAlamatUser {
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 14px;
+	margin: 8px 0 0 0;
+}
+
+.txtEmailUser {
+	color: #666666;
+	font-family: "Roboto";
+	font-weight: 300;
+	font-size: 18.5px;
+	margin-left: 7px;
+}
+
+.colorIconEmail {
+	color: #666666;
+}

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useDispatch } from 'react-redux'
-import { postOrderBumbuDasar } from '../redux/actions/order.action';
+import { useDispatch } from "react-redux";
+import { postOrderBumbuDasar } from "../redux/actions/order.action";
 
 function CardBumbuDasar(bumbuDasar) {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
 	// console.log("productBumbuDasar", productBumbuDasar);
 
 	const [counter, setCounter] = useState(1);
 
 	const [totalItemBumbuDasar, setTotalItemBumbuDasar] = useState([]);
-	
+
 	const handleCounter = (accumNumber, id) => {
 		const deleteBumbu = totalItemBumbuDasar.filter((item) => item._id !== id);
 		const bumbu = totalItemBumbuDasar.find((item) => item._id === id);
@@ -39,7 +39,7 @@ function CardBumbuDasar(bumbuDasar) {
 	};
 
 	const handleAddButton = (bumbu) => {
-		let bumbuToAdd = {...bumbu, quantity: bumbu.quantity+1}
+		let bumbuToAdd = { ...bumbu, quantity: bumbu.quantity + 1 };
 		// console.log(bumbuToAdd);
 
 		setTotalItemBumbuDasar([bumbuToAdd, ...totalItemBumbuDasar]);
@@ -48,7 +48,7 @@ function CardBumbuDasar(bumbuDasar) {
 	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
 	const addCart = () => {
-		dispatch(postOrderBumbuDasar(totalItemBumbuDasar))
+		dispatch(postOrderBumbuDasar(totalItemBumbuDasar));
 	};
 
 	const itemPrice = totalItemBumbuDasar.reduce(
@@ -58,8 +58,7 @@ function CardBumbuDasar(bumbuDasar) {
 	);
 
 	const jmlQuantity = totalItemBumbuDasar.reduce(
-		(accumulation, currentItem) =>
-			accumulation + currentItem.quantity,
+		(accumulation, currentItem) => accumulation + currentItem.quantity,
 		0
 	);
 
@@ -141,66 +140,61 @@ function CardBumbuDasar(bumbuDasar) {
 				</div>
 			</Container>
 			<Container className="tw-mt-10">
-			<Row className="lineListOrder">
-						{/* <p >INI LINE PER ITEM</p> */}
-					</Row>
+				<Row className="lineListOrder">{/* <p >INI LINE PER ITEM</p> */}</Row>
 
-			<Row>
-						<Col className="tw-ml-4">
-				
-							<Row>
-								<Col>
-									<p className="tw-pb-1 tw-font-opensans tw-font-regular">
-										Total Item Bumbu Dasar:
-									</p>
-								</Col>
-								<Col>
-									<p className="tw-pb-1 tw-font-opensans tw-font-regular">
+				<Row>
+					<Col className="tw-ml-4">
+						<Row>
+							<Col>
+								<p className="tw-pb-1 tw-font-opensans tw-font-regular">
+									Total Item Bumbu Dasar:
+								</p>
+							</Col>
+							<Col>
+								<p className="tw-pb-1 tw-font-opensans tw-font-regular">
 									{totalItemBumbuDasar.length} Item
-									</p>
-								</Col>
-							</Row>
-							<Row>
-								<Col>
-									<p className="tw-pb-1 tw-font-opensans tw-font-regular">
-										Total Quantity:
-									</p>
-								</Col>
-								<Col>
-									<p className="tw-pb-1 tw-font-opensans tw-font-regular">
+								</p>
+							</Col>
+						</Row>
+						<Row>
+							<Col>
+								<p className="tw-pb-1 tw-font-opensans tw-font-regular">
+									Total Quantity:
+								</p>
+							</Col>
+							<Col>
+								<p className="tw-pb-1 tw-font-opensans tw-font-regular">
 									{jmlQuantity} gram
-									</p>
-								</Col>
-							</Row>
-					
-							<Row>
-								<Col>
-									<p className="tw-font-opensans tw-font-bold txtTotalHarga">
-										Total Harga:
-									</p>
-								</Col>
-								<Col>
-									<p className="tw-font-opensans tw-font-bold txtTotalHarga">
-										Rp. {itemPrice}
-									</p>
-								</Col>
-							</Row>
-						</Col>
-					</Row>
-					<div className="linePlaceOrder">
-						{/* <p >INI LINE PER ITEM</p> */}
-					</div>
-				
+								</p>
+							</Col>
+						</Row>
+
+						<Row>
+							<Col>
+								<p className="tw-font-opensans tw-font-bold txtTotalHarga">
+									Total Harga:
+								</p>
+							</Col>
+							<Col>
+								<p className="tw-font-opensans tw-font-bold txtTotalHarga">
+									Rp. {itemPrice}
+								</p>
+							</Col>
+						</Row>
+					</Col>
+				</Row>
+				<div className="linePlaceOrder">{/* <p >INI LINE PER ITEM</p> */}</div>
+
 				<Row className="tw-pb-40">
-						<Button
-							type="submit"
-							variant="primary"
-							onClick={addCart}
-							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
-						>
-							Add To Cart
-						</Button>
-					</Row>
+					<Button
+						type="submit"
+						variant="primary"
+						onClick={addCart}
+						className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
+					>
+						Add To Cart
+					</Button>
+				</Row>
 			</Container>
 		</>
 	);
