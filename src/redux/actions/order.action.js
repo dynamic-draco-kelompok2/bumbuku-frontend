@@ -102,7 +102,7 @@ export const postOrder = (produkId, customData, setShow) => {
   }
 }
 
-export const postOrderBumbuDasar = (bumbuDasar) => {
+export const postOrderBumbuDasar = (bumbuDasar, setShow) => {
   console.log(bumbuDasar)
   return function(dispatch) {
     const token = localStorage.token;
@@ -121,8 +121,23 @@ export const postOrderBumbuDasar = (bumbuDasar) => {
             Authorization: 'Bearer' + token
           }
         })
-        .then((result) => dispatch(postOrderBumbuDasarSuccess(result.data)))
-        .catch((error) => dispatch(postOrderBumbuDasarError(error)))
+        .then((result) => {
+          dispatch(postOrderBumbuDasarSuccess(result.data));
+          dispatch(getCart(JSON.parse(localStorage.payload)._id))
+          setShow({
+            valid: true,
+            title: "Add Cart",
+            text: "Berhasil masukkan ke keranjang!",
+          });
+        })
+        .catch((error) => {
+          dispatch(postOrderError(error));
+          setShow({
+            valid: true,
+            title: "Error",
+            text: "Gagal masukkan ke keranjang!",
+          });
+        })
     })
   }
 }
