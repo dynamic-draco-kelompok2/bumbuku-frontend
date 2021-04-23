@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 function CardBumbuDasar(bumbuDasar) {
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
-	console.log("productBumbuDasar", productBumbuDasar);
+	// console.log("productBumbuDasar", productBumbuDasar);
 
 	const [counter, setCounter] = useState(1);
 
 	const [totalItemBumbuDasar, setTotalItemBumbuDasar] = useState([]);
-
+	
 	const handleCounter = (accumNumber, id) => {
-		console.log("handle counter dpt");
 		const deleteBumbu = totalItemBumbuDasar.filter((item) => item._id !== id);
 		const bumbu = totalItemBumbuDasar.find((item) => item._id === id);
 		if (accumNumber === -1) {
@@ -38,17 +36,16 @@ function CardBumbuDasar(bumbuDasar) {
 	};
 
 	const handleAddButton = (bumbu) => {
-		// console.log("tes");
+		let bumbuToAdd = {...bumbu, quantity: bumbu.quantity+1}
+		// console.log(bumbuToAdd);
 
-		console.log("idBumbuDasar", bumbu);
-		bumbu.quantity += 1;
-		setTotalItemBumbuDasar([bumbu, ...totalItemBumbuDasar]);
+		setTotalItemBumbuDasar([bumbuToAdd, ...totalItemBumbuDasar]);
 		setCounter(counter);
 	};
 	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
-	const addCart = () => {
-		console.log("tes");
+	const addCart = (itemBumbuDasar) => {
+		console.log("kiriman ke cart", itemBumbuDasar);
 		// dispatch(postOrder(id, addCustom));
 	};
 
@@ -57,24 +54,18 @@ function CardBumbuDasar(bumbuDasar) {
 			accumulation + currentItem.harga * currentItem.quantity,
 		0
 	);
-	console.log(itemPrice);
 
 	const jmlQuantity = totalItemBumbuDasar.reduce(
 		(accumulation, currentItem) =>
-		// console.log(currentItem.quantity),
 			accumulation + currentItem.quantity,
 		0
 	);
-	console.log(itemPrice);
-
-	// const totalprice = bumbuProduk.harga + itemPrice;
 
 	return (
 		<>
 			<Container>
 				<div className="tw-flex tw-flex-col tw-w-full tw-flex-wrap tw-items-center md:tw-flex-row mt-5 ">
 					{productBumbuDasar.map((bumbu, index) => (
-						// <Link key={index} to={`/productdetails/${bumbu._id}`}>
 						<Row className="mx-2" key={index}>
 							<Col className="tw-w-56  tw-bg-white tw-m-2 tw-rounded tw-shadow-2xl">
 								<Row>
@@ -144,8 +135,6 @@ function CardBumbuDasar(bumbuDasar) {
 								</Row>
 							</Col>
 						</Row>
-
-						// </Link>
 					))}
 				</div>
 			</Container>
@@ -204,7 +193,7 @@ function CardBumbuDasar(bumbuDasar) {
 						<Button
 							type="submit"
 							variant="primary"
-							onClick={addCart}
+							onClick={()=> addCart(totalItemBumbuDasar)}
 							className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
 						>
 							Add To Cart
