@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getBumbuById } from "../redux/actions/bumbuproduk.actions";
 import { getCustomBumbu } from "../redux/actions/custombumbu.actions";
-import { postOrder } from "../redux/actions/order.action";
 import DisplayCustomBumbu from "../component/DisplayCustomBumbu";
 import CustomBumbu from "../component/CustomBumbu";
+import { Container, Row, Col, Button, Toast } from "react-bootstrap";
 import { Helmet } from 'react-helmet'
+
+import { postOrder } from "../redux/actions/order.action";
 
 function ProductDetails() {
 	const [customPage, setCustomPage] = useState(false);
@@ -15,6 +17,12 @@ function ProductDetails() {
 	const dispatch = useDispatch();
 	const customBumbu = useSelector((state) => state.handleCustomBumbu.data);
 	const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById);
+	const [show, setShow] = useState({
+        valid: false,
+        title: "",
+        text: "",
+    });
+
 	let { id } = useParams();
 
 	const handleCustomBumbu = () => {
@@ -30,7 +38,8 @@ function ProductDetails() {
 	const totalprice = bumbuProduk.harga + itemPrice;
 
 	const addCart = () => {
-		dispatch(postOrder(id, addCustom));
+		dispatch(postOrder(id, addCustom, setShow));
+
 	};
 
 	useEffect(() => {
@@ -41,21 +50,34 @@ function ProductDetails() {
 	
 	return (
 		<>
-			<Helmet>
-        <meta charSet="utf-8"/>
-        <title>Bumbuku - Details Product</title>
-        <meta name="description" content="about"/>
-      </Helmet>
-			<div className="tw-bg-desktop">
-				<div className="tw-flex tw-flex-col tw-bg-desktop p-4 lg:tw-flex-row lg:tw-justify-between lg:tw-max-w-5xl tw-mx-auto">
-					<div className="my-auto">
+		<Helmet>
+			<meta charSet="utf-8"/>
+			<title>Bumbuku - Details Product</title>
+			<meta name="description" content="about"/>
+      	</Helmet>
+			<Container>
+				<Row className="d-flex justify-content-center">
+				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
+				<Toast.Header className="tw-bg-base text-white">
+					<img
+					src="holder.js/20x20?text=%20"
+					className="rounded mr-2"
+					alt=""
+					/>
+					<strong className="mr-auto">{show.title}</strong>
+				</Toast.Header>
+				<Toast.Body className="f-bold">{show.text}</Toast.Body>
+				</Toast>
+				</Row>
+				<Row className="mx-2 tw-mt-10">
+					<Col xs={12} lg={6}>
 						<img
 							src={bumbuProduk.image}
 							alt="gambar"
 							className="tw-rounded tw-w-full tw-h-48 tw-object-cover md:tw-h-96 lg:tw-max-w-md lg:tw-h-72"
 						/>
-					</div>
-					<div className="tw-flex tw-flex-col lg:tw-w-96">
+					</Col>
+					<Col xs={12} lg={6}>
 						<div>
 							<h3 className="tw-font-opensans tw-pt-2 tw-mb-1 tw-font-bold">
 								{bumbuProduk.name}
@@ -64,12 +86,12 @@ function ProductDetails() {
 								Rp. {bumbuProduk.harga}
 							</span>
 						</div>
-						<button
-							className="d-flex align-items-center justify-content-center tw-bg-icon tw-rounded-xl tw-mt-2 tw-py-2 tw-px-4 tw-font-opensans tw-cursor-pointer tw-tracking-wider tw-text-white"
+						<Button
+							className="mb-4 d-flex align-items-center justify-content-center tw-bg-icon tw-rounded-xl tw-mt-2 tw-py-2 tw-px-4 tw-font-opensans tw-cursor-pointer tw-tracking-wider tw-text-white tw-border-icon tw-shadow-icon"
 							onClick={handleCustomBumbu}
 						>
 							+ Tambah Bumbu
-						</button>
+						</Button>
 						<div className="tw-flex tw-flex-col tw-border-t tw-border-grey tw-mt-4 tw-py-2">
 							<span className="tw-font-opensans tw-font-bold">
 								Description:
@@ -111,16 +133,17 @@ function ProductDetails() {
 							</div>
 						</div>
 						<div className="tw-mt-2">
-							<button
+							<Button
 								onClick={addCart}
-								className="tw-bg-base tw-w-full tw-rounded-xl tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-text-white"
+								className="tw-bg-base tw-px-4 tw-rounded-xl tw-py-2 tw-text-md tw-font-opensans tw-cursor-pointer tw-text-white tw-border-base tw-shadow-base"
 							>
 								+ Keranjang
-							</button>
+							</Button>
 						</div>
-					</div>
-				</div>
-				{customPage && (
+					</Col>
+				</Row>
+			</Container>
+			{customPage && (
 					<CustomBumbu
 						customBumbu={customBumbu}
 						setCustomPage={setCustomPage}
@@ -129,8 +152,7 @@ function ProductDetails() {
 						totalItemCustom={totalItemCustom}
 						setTotalItemCustom={setTotalItemCustom}
 					/>
-				)}
-			</div>
+			)}
 		</>
 	)
 }
