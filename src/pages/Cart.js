@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Button, Accordion, Card } from "react-bootstrap";
@@ -18,13 +19,17 @@ function Cart() {
 		const User = JSON.parse(localStorage.payload)._id;
 		dispatch(getCart(User));
 	}, [dispatch]);
-	console.log(dataOrder)
-	// const totalHargaBase = dataOrder.reduce(
-	// 	(product, dasar) => 
-	// );
 
-	// console.log(totalHargaBase)
-
+	const totalHarga = dataOrder.reduce((total, value) => {
+		let harga = 0
+		if(value.bumbuProduk_id) {
+			harga = value.bumbuProduk_id.harga
+		} else {
+			harga = value.bumbuDasar_id.harga * value.gram
+		}
+		return total + harga
+	},0)
+	
 	const deleteCartHandle = (order) => {
 		dispatch(deleteCart(order));
 	}
@@ -216,7 +221,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-pb-2 tw-font-opensans tw-font-regular">
-										{/* Rp. {totalHargaBase} */}
+										Rp. {totalHarga}
 									</p>
 								</Col>
 							</Row>
@@ -264,7 +269,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-font-opensans tw-font-bold txtTotalHarga">
-										{/* Rp. {totalHargaBase + totalHargaCustom} */}
+										Rp. {totalHarga + totalHargaCustom}
 									</p>
 								</Col>
 							</Row>
