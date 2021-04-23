@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCart } from './cart.action'
 
 export const ORDER_REQUEST = 'ORDER_REQUEST'
 export const ORDER_ERROR = 'ORDER_ERROR'
@@ -48,7 +49,7 @@ export const postOrderBumbuDasarError = (error) => {
   }
 }
 
-export const postOrder = (produkId, customData) => {
+export const postOrder = (produkId, customData, setShow) => {
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
@@ -83,6 +84,12 @@ export const postOrder = (produkId, customData) => {
           } else {
             dispatch(postOrderSuccess(result.data))
           }
+          dispatch(getCart(JSON.parse(localStorage.payload)._id))
+          setShow({
+            valid: true,
+            title: "Add Cart",
+            text: "Berhasil masukkan ke keranjang!",
+        });
         })
       .catch((error) => dispatch(postOrderError(error)))
   }

@@ -17,7 +17,11 @@ function ProductDetails() {
 	const dispatch = useDispatch();
 	const customBumbu = useSelector((state) => state.handleCustomBumbu.data);
 	const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById);
-	const [show, setShow] = useState(false);
+	const [show, setShow] = useState({
+        valid: false,
+        title: "",
+        text: "",
+    });
 
 	let { id } = useParams();
 
@@ -34,7 +38,7 @@ function ProductDetails() {
 	const totalprice = bumbuProduk.harga + itemPrice;
 
 	const addCart = () => {
-		dispatch(postOrder(id, addCustom));
+		dispatch(postOrder(id, addCustom, setShow));
 
 	};
 
@@ -53,7 +57,7 @@ function ProductDetails() {
       	</Helmet>
 			<Container>
 				<Row className="d-flex justify-content-center">
-				<Toast className="my-toast" onClose={() => setShow(false)} show={show} delay={9000} autohide>
+				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
 				<Toast.Header className="tw-bg-base text-white">
 					<img
 					src="holder.js/20x20?text=%20"
