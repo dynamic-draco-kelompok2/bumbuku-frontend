@@ -90,8 +90,16 @@ const NavbarMenu = () => {
             <div className="horizontal-line d-none d-lg-block tw-bg-white tw-h-10"></div>
             {isLogin.isLogged
             ? 
-              <NavDropdown title={JSON.parse(localStorage.payload).name} id="basic-nav-dropdown" className="navDropDown">
-                <NavDropdown.Item href="/profile-user">Profile</NavDropdown.Item>
+              <NavDropdown 
+                title={JSON.parse(localStorage.payload).name} 
+                id="basic-nav-dropdown" 
+                className="navDropDown"
+              >
+                <NavDropdown.Item 
+                  href="/profile-user"
+                >
+                  Profile
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#" onClick={handleLogOut} >Logout</NavDropdown.Item>
               </NavDropdown>
