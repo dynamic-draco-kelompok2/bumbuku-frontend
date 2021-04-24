@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Button, Accordion, Card } from "react-bootstrap";
@@ -13,20 +14,22 @@ function Cart() {
 	const totalHargaCustom = useSelector((state) => state.handleCart.totalCustom);
 	const CustomItem = useSelector((state) => state.handleCart.custom);
 	const dispatch = useDispatch();
-	const dataOrderDasar = useSelector((state) => state)
-
-	console.log(dataOrderDasar)
 
 	useEffect(() => {
 		const User = JSON.parse(localStorage.payload)._id;
 		dispatch(getCart(User));
 	}, [dispatch]);
 
-	const totalHargaBase = dataOrder.reduce(
-		(total, value) => total + value.bumbuProduk_id.harga,
-		0
-	);
-
+	const totalHarga = dataOrder.reduce((total, value) => {
+		let harga = 0
+		if(value.bumbuProduk_id) {
+			harga = value.bumbuProduk_id.harga
+		} else {
+			harga = value.bumbuDasar_id.harga * value.gram
+		}
+		return total + harga
+	},0)
+	
 	const deleteCartHandle = (order) => {
 		dispatch(deleteCart(order));
 	}
@@ -68,8 +71,11 @@ function Cart() {
 						</Col>
 					</Row>
 
-					{dataOrder.map((order, index) => (
-						<div key={index}>
+					{dataOrder.map((order, index) => {
+						// console.log(order)
+						// console.log(order.bumbuProduk_id)
+						return (
+							<div key={index}>
 							<Row className="lineListOrder">
 								{/* <p >INI LINE PER ITEM</p> */}
 							</Row>
@@ -80,29 +86,55 @@ function Cart() {
 									lg={6}
 									md={10}
 								>
-									<div key={index} className="tw-bg-white borderCustom tw-shadow-xl">
-										<img
-											src={order.bumbuProduk_id.image}
-											alt="gambar"
-											className="tw-rounded tw-w-full tw-object-cover tw-lg:max-w-lg imgBaseCart tw-rounded-b-none"
-										/>
-										<div className="px-3">
-											<h4 className="tw-text-lg tw-font-opensans tw-font-bold textBase">
-												{order.bumbuProduk_id.name}
-											</h4>
-											<p className="tw-pt-1 tw-font-opensans tw-font-regular textHargaBase">
-												Rp. {order.bumbuProduk_id.harga}
-											</p>
-											<div className="tw-grid tw-divide-y tw-text-grey">
-												<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
-													Description
-												</p>
-												<p className="tw-pt-1 tw-font-opensans tw-font-regular deskripsiText">
-													{order.bumbuProduk_id.description}
-												</p>
-											</div>
-										</div>
-										
+									<div className="tw-bg-white borderCustom tw-shadow-xl">
+										{!!order.bumbuProduk_id 
+											?
+												<div>
+													<img
+														src={order.bumbuProduk_id.image}
+														alt="gambar"
+														className="tw-rounded tw-w-full tw-object-cover tw-lg:max-w-lg imgBaseCart tw-rounded-b-none"
+													/>
+													<div className="px-3">
+														<h4 className="tw-text-lg tw-font-opensans tw-font-bold textBase">
+															{order.bumbuProduk_id.name}
+														</h4>
+														<p className="tw-pt-1 tw-font-opensans tw-font-regular textHargaBase">
+															Rp. {order.bumbuProduk_id.harga}
+														</p>
+														<div className="tw-grid tw-divide-y tw-text-grey">
+															<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
+																Description
+															</p>
+															<p className="tw-pt-1 tw-font-opensans tw-font-regular deskripsiText">
+																{order.bumbuProduk_id.description}
+															</p>
+														</div>
+													</div>
+												</div>
+											:
+												<div className="px-3">
+													<img
+														src={order.bumbuDasar_id.image}
+														alt="gambar"
+														className="tw-rounded tw-w-full tw-object-cover tw-lg:max-w-lg imgBaseCart tw-rounded-b-none"
+													/>
+													<h4 className="tw-text-lg tw-font-opensans tw-font-bold textBase">
+														{order.bumbuDasar_id.name}
+													</h4>
+													<p className="tw-pt-1 tw-font-opensans tw-font-regular textHargaBase">
+														Rp. {order.bumbuDasar_id.harga}
+													</p>
+													<div className="tw-grid tw-divide-y tw-text-grey">
+														<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
+															Description
+														</p>
+														<p className="tw-pt-1 tw-font-opensans tw-font-regular deskripsiText">
+															{order.bumbuDasar_id.description}
+														</p>
+													</div>
+												</div>
+										}
 									</div>
 								</Col>
 
@@ -164,12 +196,13 @@ function Cart() {
 							</Row>
 
 						</div>
-					))}
+						)
+						
+					})}
 
 					<Row className="lineListOrder">
 						{/* <p >INI LINE PER ITEM</p> */}
 					</Row>
-
 					<Row>
 						<Col className="tw-ml-4 tw-mb-6">
 							<h4 className="text-lg font-semibold font-opensans">
@@ -188,7 +221,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-pb-2 tw-font-opensans tw-font-regular">
-										Rp. {totalHargaBase}
+										Rp. {totalHarga}
 									</p>
 								</Col>
 							</Row>
@@ -236,7 +269,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-font-opensans tw-font-bold txtTotalHarga">
-										Rp. {totalHargaBase + totalHargaCustom}
+										Rp. {totalHarga + totalHargaCustom}
 									</p>
 								</Col>
 							</Row>
