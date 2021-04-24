@@ -31,7 +31,7 @@ function Register() {
       <title>Bumbuku - Register</title>
       <meta name="description" content="about"/>
     </Helmet>
-    <Container fluid className="d-flex flex-row justify-content-between h-100 bg-white position-relative">
+    <Container fluid className="d-flex flex-row justify-content-between bg-white position-relative vh-100">
         {registerLoading.isLoading === true ?
           <>
             <div className="text-center tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-left-0 tw-z-20">
