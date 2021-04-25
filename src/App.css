@@ -351,3 +351,7 @@ a:focus {
 .colorIconEmail {
 	color: #666666;
 }
+
+.noToogle > a.dropdown-toggle::after {
+	content: none !important;
+}

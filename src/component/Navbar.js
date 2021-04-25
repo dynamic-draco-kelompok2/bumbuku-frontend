@@ -4,12 +4,16 @@ import Logo from "../assets/images/Logo bumbukuok-01.png";
 import { Nav, Navbar, Form, FormControl, NavDropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutAction } from "../redux/actions/auth.actions";
 
+import NotifReview from './NotifReview';
+
+import { logoutAction } from "../redux/actions/auth.actions";
 import { getCart, cleanCart } from "../redux/actions/cart.action";
+import { getReview } from "../redux/actions/review.action";
 
 const NavbarMenu = () => {
 	const dataOrder = useSelector((state) => state.handleCart.data);
+	const review = useSelector((state) => state.handleReview);
 	const history = useHistory();
 	const isLogin = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
@@ -24,6 +28,7 @@ const NavbarMenu = () => {
 	useEffect(() => {
 		if (localStorage.payload) {
 			dispatch(getCart(JSON.parse(localStorage.payload)._id));
+			dispatch(getReview(JSON.parse(localStorage.payload)._id));
 		}
 	}, [dispatch]);
 
@@ -90,8 +95,30 @@ const NavbarMenu = () => {
 								</span>
 							</div>
 						</div>
+						{isLogin.isLogged && 
+							<NavDropdown 
+								title={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell-fill" viewBox="0 0 16 16">
+								<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+								</svg>}
+								id="alert-dropdown"
+								className="navDropDown noToogle"
+								>
+								{review.data.map((item, index, arr) => {
+									console.log("jalan");
+									return <NotifReview key={index} item={item} index={index} arr={arr} />			
+								})}
+								{/* <NavDropdown.Item href="/profile-user">
+									Profile
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item href="#" onClick={handleLogOut}>
+									Logout
+								</NavDropdown.Item> */}
+							</NavDropdown>
+						}
 						<div className="horizontal-line d-none d-lg-block tw-bg-white tw-h-10"></div>
 						{isLogin.isLogged ? (
+							<>
 							<NavDropdown
 								title={JSON.parse(localStorage.payload).name}
 								id="basic-nav-dropdown"
@@ -105,6 +132,7 @@ const NavbarMenu = () => {
 									Logout
 								</NavDropdown.Item>
 							</NavDropdown>
+							</>
 						) : (
 							// <div>
 							//   <button
