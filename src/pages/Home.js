@@ -7,6 +7,7 @@ import { Container, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import gbrBumbuDasar from "../assets/images/beli-bumbu-dasar-saja.jpg";
 import { Helmet } from "react-helmet";
+import Footer from '../component/Footer'
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Home = () => {
 				<title>Bumbuku - Home Page</title>
 				<meta name="description" content="about" />
 			</Helmet>
-			<Container fluid className="tw-bg-desktop md:tw-h-screen">
+			<Container fluid className="tw-bg-desktop">
 				<Row>
 					{bumbuProduk.isLoading === true ? (
 						<>
@@ -58,6 +59,7 @@ const Home = () => {
 					</div>
 				</Row>
 			</Container>
+			<Footer />
 		</>
 	);
 };
