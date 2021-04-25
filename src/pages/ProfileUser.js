@@ -19,7 +19,7 @@ const ProfileUser = () => {
 				<title>Bumbuku - Your Profile's</title>
 				<meta name="description" content="about" />
 			</Helmet>
-			<Container>
+			<Container className="tw-mb-10">
 				{userData && (
 					<div className="tw-flex tw-flex-col tw-items-center tw-text-center">
 						<h1 className="tw-font-opensans tw-font-regular tw-text-center titleProfile">
@@ -77,7 +77,7 @@ const ProfileUser = () => {
 									type="submit"
 									variant="primary"
 									onClick={handleEditProfile}
-									className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
+									className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnProfile"
 								>
 									Edit Profile
 								</Button>
