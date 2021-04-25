@@ -14,7 +14,8 @@ import BumbuDasarDetails from './pages/BumbuDasarDetails'
 import Cart from './pages/Cart'
 import ProfileUser from './pages/ProfileUser';
 import CategoryPage from './pages/CategoryPage';
-import Checkout from './pages/Checkout'
+import Checkout from './pages/Checkout';
+import ReviewProdukPage from './pages/ReviewProdukPage';
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged);
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route path="/checkout">
             {isLogin ? <Checkout /> : <Redirect to="/login"/>}
+          </Route>
+          <Route path="/review-produk/:id">
+            {isLogin ? <ReviewProdukPage /> : <Redirect to="/login"/>}
           </Route>
           <Route>
             <PageNotFound />

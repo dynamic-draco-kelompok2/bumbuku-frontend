@@ -1,6 +1,7 @@
 import {
     REQUEST,
     REVIEW_SUCCESS,
+    DELETE_REVIEW_SUCCESS,
     FAILED
   } from '../actions/review.action'
   
@@ -22,6 +23,13 @@ import {
           ...state,
           isLoading: false,
           data: action.result
+        }
+      case DELETE_REVIEW_SUCCESS:
+        const newData = state.data.filter(item => item._id !== action.id)
+        return {
+          ...state,
+          isLoading: false,
+          data: newData
         }
       case FAILED:
         return {

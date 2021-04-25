@@ -2,6 +2,7 @@ import {
   GET_BUMBUPRODUK_REQUEST,
   GET_BUMBUPRODUK_SUCCESS,
   GET_BUMBUPRODUK_ERROR,
+  PUT_BUMBUPRODUK_SUCCESS,
   GET_BUMBUPRODUKBYID_REQUEST,
   GET_BUMBUPRODUKBYID_SUCCESS,
   GET_BUMBUPRODUKBYID_ERROR
@@ -26,6 +27,11 @@ const handleBumbuProduk = (state = initialState, action) => {
         ...state,
         isLoading: false,
         data: action.result
+      }
+    case PUT_BUMBUPRODUK_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
       }
     case GET_BUMBUPRODUK_ERROR:
       return {
