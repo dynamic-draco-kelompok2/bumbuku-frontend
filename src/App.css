@@ -133,7 +133,6 @@ hr {
 .subTitleCart {
 	font-size: 29px;
 	letter-spacing: -0.5px;
-	/* padding: 68px 0 0px 0; */
 }
 
 .textSubCart {
@@ -186,15 +185,8 @@ hr {
 .borderCustom {
 	border-radius: 8px;
 	background-color: #f9f9f9;
-	/* box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px; */
-	/* height: 330px; */
 }
 
-/* .accordion-toggle:focus {
-	outline: none !important; */
-/* outline: none !important;
-	border: none !important; */
-/* } */
 .btn-link:focus,
 a:focus {
 	outline: none !important;
@@ -209,8 +201,6 @@ a:focus {
 
 .borderCustomList {
 	border-radius: 18px;
-	/* background-color: #f9f9f9; */
-	/* box-shadow: rgba(196, 110, 110, 0.25) 0px 25px 50px -12px; */
 	margin-bottom: 5px;
 	padding: 8px 0 0 10px;
 }
@@ -247,7 +237,7 @@ a:focus {
 	font-size: 26px;
 }
 .btnPlaceOrder {
-	margin: 0 15px 0 15px !important;
+	margin: 0 15px 0 0 !important;
 }
 .btnPlaceOrder:hover {
 	font-weight: 700;
@@ -257,7 +247,10 @@ a:focus {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	.btnPlaceOrder {
-		width: 20% !important;
+		width: 25% !important;
+	}
+	.btnProfile {
+		width: 70% !important;
 	}
 	.btnPlaceOrder.uploadBtn {
 		width: 25% !important;
@@ -336,7 +329,7 @@ a:focus {
 .txtAlamatUser {
 	font-family: "Roboto";
 	font-weight: 300;
-	font-size: 14px;
+	/* font-size: 14px; */
 	margin: 8px 0 0 0;
 }
 
@@ -355,3 +348,7 @@ a:focus {
 .noToogle > a.dropdown-toggle::after {
 	content: none !important;
 }
+.txtAlamatEditProfile {
+	margin-left: 5px !important;
+}
+
