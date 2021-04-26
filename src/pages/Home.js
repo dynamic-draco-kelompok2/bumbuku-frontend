@@ -24,7 +24,7 @@ const Home = () => {
 				<title>Bumbuku - Home Page</title>
 				<meta name="description" content="about" />
 			</Helmet>
-			<Container fluid className="tw-bg-desktop">
+			<Container fluid className="tw-bg-desktop tw-h-full">
 				<Row>
 					{bumbuProduk.isLoading === true ? (
 						<>
