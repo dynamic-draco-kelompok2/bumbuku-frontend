@@ -60,14 +60,16 @@ function Login() {
                         <Form.Control required 
                           type="text" 
                           placeholder="Your username"
-                          value={login.name} onChange={handleChange} name="name"/>
+                          value={login.name} onChange={handleChange} name="name"
+                          autoComplete="username"/>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control required  
                           type="password" 
                           placeholder="Password"
-                          value={login.password} onChange={handleChange} name="password"/>
+                          value={login.password} onChange={handleChange} name="password"
+                          autoComplete="current-password"/>
                     </Form.Group>
                     <Button type="submit" variant="primary" className="mt-3 w-100 tw-bg-base tw-border-base tw-shadow-base">
                         Login

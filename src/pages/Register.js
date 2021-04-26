@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Container, Row, Col, Spinner, Form, Button, Image } from 'react-bootstrap';
 import { Helmet } from 'react-helmet'
@@ -9,6 +9,13 @@ function Register() {
   const history = useHistory();
   const dispatch = useDispatch();
   const registerLoading = useSelector(state => state.auth)
+
+  const [validasi, setValidasi] = useState({
+    name: false,
+    email: false,
+    password: false,
+  })
+
   const [register, setRegister] = useState({
       name: "",
       email: "",
@@ -16,13 +23,54 @@ function Register() {
       alamat: ""
   })
 
+  const checkValidAll = (pattern, value, input) => {
+    if(pattern.test(value)){
+      setValidasi({
+        ...validasi,
+        [input] : true
+      })
+    } else {
+      setValidasi({
+        ...validasi,
+        [input] : false
+      })
+    }
+  }
+
   const handleChange= (e) => {
       setRegister({
           ...register,
           [e.target.name] : e.target.value
-      })
+        })
+        let passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        let usernameRegex = /^.{4,}$/
+
+        switch(e.target.name){
+          case 'email': 
+            checkValidAll(emailRegex, e.target.value, e.target.name);
+            break
+          case 'password':
+            checkValidAll(passRegex, e.target.value, e.target.name);
+            break
+          case 'name':
+          checkValidAll(usernameRegex, e.target.value, e.target.name);
+          break
+          default:
+        }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if( validasi.email && validasi.name && validasi.password){
+      dispatch(registerAction(register, e, history, setRegister))
+    }
+  }
+
+  useEffect(() => {
+  
+  }, [register])
 
   return (
     <>
@@ -58,7 +106,7 @@ function Register() {
                     </div>
                 </div>
                 <div className="mt-5">
-                    <Form onSubmit={(e) => dispatch(registerAction(register, e, history, setRegister))}>
+                    <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control required 
@@ -72,14 +120,15 @@ function Register() {
                         <Form.Control required 
                           type="text" 
                           placeholder="Your username"
-                          value={register.name} onChange={handleChange} name="name"/>
+                          value={register.name} onChange={handleChange} name="name"
+                          autoComplete="username"/>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control required  
                           type="password" 
                           placeholder="Password"
-                          value={register.password} onChange={handleChange} name="password"/>
+                          value={register.password} onChange={handleChange} name="password" autoComplete="current-password"/>
                     </Form.Group>
                     <Form.Group controlId="formAddress">
                         <Form.Label>Alamat</Form.Label>
