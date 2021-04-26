@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getBumbuById } from "../redux/actions/bumbuproduk.actions";
-import { getCustomBumbu } from "../redux/actions/custombumbu.actions";
 import DisplayCustomBumbu from "../component/DisplayCustomBumbu";
 import CustomBumbu from "../component/CustomBumbu";
 import { Container, Row, Col, Button, Toast, Spinner } from "react-bootstrap";
+import { RatingStar } from "rating-star";
 import { Helmet } from 'react-helmet'
+import CommentReview from '../component/CommentReview';
 
 import { postOrder } from "../redux/actions/order.action";
+import { getBumbuById } from "../redux/actions/bumbuproduk.actions";
+import { getCustomBumbu } from "../redux/actions/custombumbu.actions";
+import { getComment } from '../redux/actions/commentproduk.actions';
 
 function ProductDetails() {
 	const [customPage, setCustomPage] = useState(false);
@@ -18,6 +21,10 @@ function ProductDetails() {
 	const customBumbu = useSelector((state) => state.handleCustomBumbu.data);
 	const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById);
 	const orderLoading = useSelector((state) => state.handleOrder);
+	const commentProduk = useSelector((state) => state.commentProduk);
+
+	console.log(commentProduk);
+
 	const [show, setShow] = useState({
         valid: false,
         title: "",
@@ -57,6 +64,7 @@ function ProductDetails() {
 	useEffect(() => {
 		dispatch(getBumbuById(id));
 		dispatch(getCustomBumbu());
+		dispatch(getComment(id));
 	}, [dispatch, id]);
 
 	
@@ -160,6 +168,25 @@ function ProductDetails() {
 							</Button>
 						</div>
 					</Col>
+					<Col xs={12} className="mt-3">
+						<RatingStar
+							clickable={false}
+							maxScore={5}
+							id="123"
+							rating={ bumbuProduk.overal_star ? bumbuProduk.overal_star : 0}
+						/>
+					</Col>
+					{commentProduk.data.length === 0 ? 
+					<Col xs={11} className="mt-3">
+						No review yet
+					</Col>
+					:
+					<Col xs={11} className="mt-3">
+						<h3 className="tw-font-opensans tw-pt-2 tw-mb-1 tw-font-bold">Review</h3>
+						<hr></hr>
+					</Col>
+					}
+					{commentProduk.data.map((item, index) => (<CommentReview key={index} item={item} />))}
 				</Row>
 			</Container>
 			{customPage && (

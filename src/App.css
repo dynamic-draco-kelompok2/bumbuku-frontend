@@ -345,6 +345,10 @@ a:focus {
 	color: #666666;
 }
 
+.noToogle > a.dropdown-toggle::after {
+	content: none !important;
+}
 .txtAlamatEditProfile {
 	margin-left: 5px !important;
 }
+
