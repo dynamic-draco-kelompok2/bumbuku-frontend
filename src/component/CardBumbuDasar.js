@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button, Toast } from "react-bootstrap";
-import { useDispatch } from 'react-redux'
+import { Container, Row, Col, Button, Toast, Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux'
 import { postOrderBumbuDasar } from '../redux/actions/order.action';
+import { Helmet } from 'react-helmet';
 
 function CardBumbuDasar(bumbuDasar) {
 	const dispatch = useDispatch();
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
+	const orderLoading = useSelector(state => state.handleOrder);
 	const [show, setShow] = useState({
         valid: false,
         title: "",
@@ -44,15 +46,13 @@ function CardBumbuDasar(bumbuDasar) {
 
 	const handleAddButton = (bumbu) => {
 		let bumbuToAdd = { ...bumbu, quantity: bumbu.quantity + 1 };
-		// console.log(bumbuToAdd);
 
 		setTotalItemBumbuDasar([bumbuToAdd, ...totalItemBumbuDasar]);
 		setCounter(counter);
 	};
-	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
 	const addCart = () => {
-		dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow))
+		dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow, setTotalItemBumbuDasar));
 	};
 
 	const itemPrice = totalItemBumbuDasar.reduce(
@@ -68,6 +68,18 @@ function CardBumbuDasar(bumbuDasar) {
 
 	return (
 		<>
+			<Helmet>
+			<meta charSet="utf-8"/>
+			<title>Bumbuku - Details Product</title>
+			<meta name="description" content="about"/>
+      		</Helmet>
+			{orderLoading.isLoading &&
+            <div className="tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-left-0 hidden md:flex tw-z-30">
+                <div className="h-100 d-flex align-items-center justify-content-center">
+					<Spinner className="" animation="border" variant="warning"/>
+                </div>
+            </div>
+        	}
 			<Container>
 				<Row className="d-flex justify-content-center">
 				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
@@ -209,7 +221,7 @@ function CardBumbuDasar(bumbuDasar) {
 						onClick={addCart}
 						className="mt-3 tw-rounded-lg tw-py-2 tw-w-full tw-bg-base tw-border-base tw-shadow-base btnPlaceOrder"
 					>
-						Add To Cart
+						+ Keranjang
 					</Button>
 				</Row>
 			</Container>

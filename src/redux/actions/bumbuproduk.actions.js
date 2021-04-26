@@ -4,6 +4,8 @@ export const GET_BUMBUPRODUK_REQUEST = 'GET_BUMBUPRODUK_REQUEST'
 export const GET_BUMBUPRODUK_SUCCESS = 'GET_BUMBUPRODUK_SUCCES'
 export const GET_BUMBUPRODUK_ERROR = 'GET_BUMBUPRODUK_ERROR'
 
+export const PUT_BUMBUPRODUK_SUCCESS = 'PUT_BUMBUPRODUK_SUCCESS'
+
 export const GET_BUMBUPRODUKBYID_REQUEST = 'GET_BUMBUPRODUKBYID_REQUEST'
 export const GET_BUMBUPRODUKBYID_SUCCESS = 'GET_BUMBUPRODUKBYID_SUCCESS'
 export const GET_BUMBUPRODUKBYID_ERROR = 'GET_BUMBUPRODUKBYID_ERROR'
@@ -25,6 +27,12 @@ export const getBumbuProdukError = (error) => {
   return {
     type: GET_BUMBUPRODUK_ERROR,
     error
+  }
+}
+
+export const putBumbuByIdSuccess = () => {
+  return {
+    type: PUT_BUMBUPRODUK_SUCCESS,
   }
 }
 
@@ -68,4 +76,15 @@ export const getBumbuById = (_id) => {
       .then((result) => dispatch(getBumbuByIdSuccess(result.data)))
       .catch((error) => dispatch(getBumbuByIdError(error)))
   }
+}
+
+export const putBumbuById = (_id, data) => (dispatch) => {
+  dispatch(getBumbuByIdRequest())
+  return axios
+    .put(`https://bumbuku.herokuapp.com/bumbuproduk/${_id}`, data)
+    .then((result) => {
+      dispatch(putBumbuByIdSuccess())
+      dispatch(getBumbuProduk())
+    })
+    .catch((error) => dispatch(getBumbuByIdError(error)))
 }

@@ -1,15 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import Logo from "../assets/images/Logo bumbukuok-01.png";
-import { Nav, Navbar, Form, FormControl, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutAction } from "../redux/actions/auth.actions";
 
+import NotifReview from './NotifReview';
+
+import { logoutAction } from "../redux/actions/auth.actions";
 import { getCart, cleanCart } from "../redux/actions/cart.action";
+import { getReview } from "../redux/actions/review.action";
 
 const NavbarMenu = () => {
 	const dataOrder = useSelector((state) => state.handleCart.data);
+	const review = useSelector((state) => state.handleReview);
 	const history = useHistory();
 	const isLogin = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
@@ -24,7 +28,9 @@ const NavbarMenu = () => {
 	useEffect(() => {
 		if (localStorage.payload) {
 			dispatch(getCart(JSON.parse(localStorage.payload)._id));
+			dispatch(getReview(JSON.parse(localStorage.payload)._id));
 		}
+		
 	}, [dispatch]);
 
 	return (
@@ -54,21 +60,11 @@ const NavbarMenu = () => {
               </span>
             )} */}
 					</div>
-					<Form className="tw-hidden lg:tw-flex lg:tw-w-1/2">
-						<FormControl
-							type="text"
-							placeholder="Search"
-							className="mr-sm-2 focus:tw-outline-none tw-font-opensans"
-						/>
-						<button className="tw-bg-icon tw-text-white tw-py-1 tw-px-4 tw-text-md tw-rounded tw-font-opensans">
-							Search
-						</button>
-					</Form>
 					<Nav className="tw-font-opensans align-items-lg-center">
-						<Link to="/category" className="tw-text-white tw-my-3 lg:tw-mx-3">
+						<Link to="/category" className="tw-text-white tw-my-3 lg:tw-mx-3 nav-link">
 							Category
 						</Link>
-						<div className="tw-flex tw-flex-row">
+						<div onClick={() => history.push('/cart')} className="tw-flex tw-flex-row nav-link pr-0 tw-cursor-pointer">
 							<Link to="/cart" className="tw-text-white tw-my-3 lg:tw-mx-3">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -84,14 +80,51 @@ const NavbarMenu = () => {
 									/>
 								</svg>{" "}
 							</Link>
-							<div className="tw-bg-icon tw-flex tw-rounded-full tw-w-5 tw-h-5 tw-mt-1 tw--ml-1 lg:tw--ml-4 tw-items-center tw-text-center">
-								<span className="tw-text-xs tw-text-white tw-mx-auto">
+							<div className={`${dataOrder.length > 0 ? "visible" : "invisible"} tw-bg-icon tw-flex tw-rounded-full tw-w-5 tw-h-5 tw-mt-1 tw--ml-1 lg:tw--ml-4 tw-items-center tw-text-center`}>
+								<span className={`${dataOrder.length > 0 ? "visible" : "invisible"} tw-text-xs tw-text-white tw-mx-auto`}>
 									{dataOrder.length}
 								</span>
 							</div>
 						</div>
+						{isLogin.isLogged && 
+							<NavDropdown 
+								title={
+								<div className="d-flex flex-row ">
+									<div className="tw-my-3 lg:tw-mx-3">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell-fill" viewBox="0 0 16 16">
+										<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+										</svg>
+									</div>
+									<div className={`${review.data.length > 0 ? "visible" : "invisible"} tw-bg-icon tw-flex tw-rounded-full tw-w-5 tw-h-5 tw-mt-1 tw--ml-1 lg:tw--ml-4 tw-items-center tw-text-center`}>
+									<span className="tw-text-xs tw-text-white tw-mx-auto">
+										{review.data.length}
+									</span>
+									</div>
+								</div>
+								}
+								id="alert-dropdown"
+								className="navDropDown noToogle"
+								>
+								{review.data.length === 0 && 
+									<NavDropdown.Item className="disabled text-dark">
+										Kosong!
+									</NavDropdown.Item>
+								}
+								{review.data.map((item, index, arr) => {
+									return <NotifReview key={index} item={item} index={index} arr={arr} />			
+								})}
+								{/* <NavDropdown.Item href="/profile-user">
+									Profile
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item href="#" onClick={handleLogOut}>
+									Logout
+								</NavDropdown.Item> */}
+							</NavDropdown>
+						}
 						<div className="horizontal-line d-none d-lg-block tw-bg-white tw-h-10"></div>
 						{isLogin.isLogged ? (
+							<>
 							<NavDropdown
 								title={JSON.parse(localStorage.payload).name}
 								id="basic-nav-dropdown"
@@ -105,6 +138,7 @@ const NavbarMenu = () => {
 									Logout
 								</NavDropdown.Item>
 							</NavDropdown>
+							</>
 						) : (
 							// <div>
 							//   <button
