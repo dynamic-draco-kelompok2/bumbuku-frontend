@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Container, Row, Col, Spinner, Form, Button, Image } from 'react-bootstrap';
 import { Helmet } from 'react-helmet'
@@ -9,6 +9,13 @@ function Register() {
   const history = useHistory();
   const dispatch = useDispatch();
   const registerLoading = useSelector(state => state.auth)
+
+  const [validasi, setValidasi] = useState({
+    name: false,
+    email: false,
+    password: false,
+  })
+
   const [register, setRegister] = useState({
       name: "",
       email: "",
@@ -16,13 +23,61 @@ function Register() {
       alamat: ""
   })
 
+  const checkValidAll = (pattern, value, input) => {
+    if(pattern.test(value)){
+      setValidasi({
+        ...validasi,
+        [input] : true
+      })
+    } else {
+      setValidasi({
+        ...validasi,
+        [input] : false
+      })
+    }
+  }
+  console.log(validasi)
+
   const handleChange= (e) => {
+    // console.log(e) 
       setRegister({
           ...register,
           [e.target.name] : e.target.value
-      })
+        })
+        let passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        let usernameRegex = /^.{4,}$/
+
+        switch(e.target.name){
+          case 'email': 
+            checkValidAll(emailRegex, e.target.value, e.target.name);
+            break
+          case 'password':
+            checkValidAll(passRegex, e.target.value, e.target.name);
+            break
+          case 'name':
+          checkValidAll(usernameRegex, e.target.value, e.target.name);
+          break
+          default:
+        }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(e);
+    console.log(validasi);
+    
+
+    if( validasi.email && validasi.name && validasi.password){
+
+      // console.log('yes')
+      dispatch(registerAction(register, e, history, setRegister))
+    }
+  }
+
+  useEffect(() => {
+  
+  }, [register])
 
   return (
     <>
@@ -58,7 +113,7 @@ function Register() {
                     </div>
                 </div>
                 <div className="mt-5">
-                    <Form onSubmit={(e) => dispatch(registerAction(register, e, history, setRegister))}>
+                    <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control required 
