@@ -11,17 +11,17 @@ export const commentRequest = () => {
     };
 };
 
-export const getcommentSuccess = (data) => {
+export const getcommentSuccess = (result) => {
     return {
         type: GET_COMMENT_SUCCESS,
-        payload: data
+        result
     };
 };
 
-export const postcommentSuccess = (data) => {
+export const postcommentSuccess = (result) => {
     return {
         type: POST_COMMENT_SUCCESS,
-        payload: data
+        result
     };
 };
 
@@ -32,16 +32,28 @@ export const commentFailed = (err) => {
     };
 };
 
-export const postComment = (event, data) => (dispatch) => {
-    event.preventDefault();
+export const postComment = (data) => (dispatch) => {
     dispatch(commentRequest());
     
     return axios
     .post("https://bumbuku.herokuapp.com/comment/", data)
     .then(result => {
-        dispatch(commentSuccess());
+        dispatch(postcommentSuccess(result.data));
     })
     .catch(err => {
         dispatch(commentFailed(err))
     })
 };
+
+export const getComment = (product_id) => (dispatch) => {
+    dispatch(commentRequest());
+
+    return axios
+    .get(`https://bumbuku.herokuapp.com/comment/product/${product_id}`)
+    .then(result => {
+        dispatch(getcommentSuccess(result.data));
+    })
+    .catch(err => {
+        dispatch(commentFailed(err))
+    })
+}

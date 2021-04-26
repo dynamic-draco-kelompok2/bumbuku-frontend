@@ -105,6 +105,11 @@ const NavbarMenu = () => {
 								id="alert-dropdown"
 								className="navDropDown noToogle"
 								>
+								{review.data.length === 0 && 
+									<NavDropdown.Item className="disabled text-dark">
+										Kosong!
+									</NavDropdown.Item>
+								}
 								{review.data.map((item, index, arr) => {
 									return <NotifReview key={index} item={item} index={index} arr={arr} />			
 								})}

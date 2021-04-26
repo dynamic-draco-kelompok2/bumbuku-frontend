@@ -1,9 +1,12 @@
 import axios from 'axios';
+import { postComment } from './commentproduk.actions';
+import { putBumbuById } from './bumbuproduk.actions';
 
 export const REQUEST = 'REQUEST'
 export const REVIEW_SUCCESS = 'REVIEW_SUCCESS'
 export const DELETE_REVIEW_SUCCESS = 'DELETE_REVIEW_SUCCESS'
 export const FAILED = 'FAILED'
+export const REVIEWBYID = 'REVIEWBYID'
 
 export const getReviewRequest = () => {
   return {
@@ -32,6 +35,24 @@ export const getReviewFailed = (error) => {
   }
 }
 
+export const getReviewByIDSuccess = (data) => {
+  return {
+    type: REVIEWBYID,
+    data
+  }
+}
+
+export const getReviewByID = (id) => {
+  return function(dispatch) {
+    dispatch(getReviewRequest())
+
+    axios
+      .get(`https://bumbuku.herokuapp.com/review/${id}`)
+      .then((result) => dispatch(getReviewByIDSuccess(result.data)))
+      .catch((error) => dispatch(getReviewFailed(error)))
+  }
+}
+
 export const getReview = (userId) => {
   return function(dispatch) {
     dispatch(getReviewRequest())
@@ -43,13 +64,29 @@ export const getReview = (userId) => {
   }
 }
 
-export const deleteReview = (id) => {
+export const deleteReview = (id, setShow, dataComment, idProduk, dataBumbu) => {
   return function(dispatch) {
     dispatch(getReviewRequest())
 
     axios
       .delete(`https://bumbuku.herokuapp.com/review/${id}`)
-      .then((result) => dispatch(deleteReviewSuccess(id)))
-      .catch((error) => dispatch(getReviewFailed(error)))
+      .then((result) => {
+        dispatch(postComment(dataComment));
+        dispatch(putBumbuById(idProduk, dataBumbu));
+        dispatch(deleteReviewSuccess(id));
+        setShow({
+          valid: true,
+          title: "Success",
+          text: "Review anda telah dikirim",
+      })
+      })
+      .catch((error) => {
+        dispatch(getReviewFailed(error))
+        setShow({
+          valid: true,
+          title: "Error",
+          text: "Failed to submit review",
+      })
+      })
   }
 }

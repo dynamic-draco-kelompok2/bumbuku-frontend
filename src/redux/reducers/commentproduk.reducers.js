@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { COMMENT_REQUEST, COMMENT_FAILED, GET_COMMENT_SUCCESS, POST_COMMENT_SUCCESS, } from '../actions/commentproduk.actions'
 
 const initialState = {
@@ -8,7 +7,7 @@ const initialState = {
     error: false,
 }
 
-const upload = (state = initialState, action) => {
+const commentProduk = (state = initialState, action) => {
     switch (action.type){
         case COMMENT_REQUEST: 
             return {
@@ -23,10 +22,19 @@ const upload = (state = initialState, action) => {
                 isLoading: false,
             };
         
-        case COMMENT_SUCCESS:
+        case GET_COMMENT_SUCCESS:
             return{
+                ...state,
                 isLoading: false,
                 data: action.result
+            };
+
+        case POST_COMMENT_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                data: [...state.data,
+                    action.result]
             };
 
         default:
@@ -34,4 +42,4 @@ const upload = (state = initialState, action) => {
     }
 }
 
-export default upload;
+export default commentProduk;

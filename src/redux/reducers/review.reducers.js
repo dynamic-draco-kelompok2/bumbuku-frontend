@@ -2,12 +2,15 @@ import {
     REQUEST,
     REVIEW_SUCCESS,
     DELETE_REVIEW_SUCCESS,
-    FAILED
+    FAILED,
+    REVIEWBYID
   } from '../actions/review.action'
   
   const initialState = {
     data: [],
-    isLoading: false,
+    dataByID: {},
+    isLoading: true,
+    isLoadingByID: true,
     error: null
   }
   
@@ -37,6 +40,13 @@ import {
           isLoading: false,
           error: action.error
         }
+      case REVIEWBYID:
+        return {
+          ...state,
+          dataByID: action.data,
+          isLoadingByID: false,
+        }
+      
       default: 
         return state
     }
