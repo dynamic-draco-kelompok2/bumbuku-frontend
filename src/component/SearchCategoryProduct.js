@@ -14,7 +14,7 @@ const SearchCategoryProduct = ({searchCategoryProduk, setSearchCategoryProduk}) 
           onChange={(e) => setSearchCategoryProduk(e.target.value)}
 				/>
 				<button className="tw-bg-icon tw-hidden lg:tw-flex tw-text-white tw-py-1 tw-px-4 tw-text-md tw-rounded tw-font-opensans">
-					test
+					Search
 				</button>
         <div className="tw-flex tw-mt-2 tw-ml-2 lg:tw-hidden">
           <Magnifier />
