@@ -81,9 +81,22 @@ const CategoryPage = () => {
           ))}
         </div>
       )}
+      {console.log(products)}
       {bumbuCategory && (
         <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4">
-          <ListBumbuCategory categoryBumbu={products}/>
+          {products.filter((item) => {
+            if(searchCategoryProduk === "") {
+              return item
+            } else if(item.name.toLowerCase().includes(searchCategoryProduk.toLowerCase())) {
+              return item
+            }
+            return null
+          }).map((item) => (
+            <ListBumbuCategory 
+              categoryBumbu={item} 
+              key={item._id}
+            />
+          ))}
         </div>
       )}
     </div>
