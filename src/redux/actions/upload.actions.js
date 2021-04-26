@@ -42,6 +42,31 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
     })
     .then(result => {
         dataCheckout.forEach((item, index, arr) => {
+
+            if(item.bumbuProduk_id === undefined){
+                axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
+                        headers: {
+                            Authorization: 'Bearer ' + token
+                        }})
+                    .then(() => {
+                        if(item.custom){
+                            item.custom.forEach(itemCustom => {
+                                dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        setShow({
+                            valid: true,
+                            title: "Failed",
+                            text: "Kesalahan pada sistem"
+                        });
+                        setProgressBar(0);
+                        console.log(err);
+                        dispatch(uploadFailed(err))
+                    })
+            } else{
+
             const dataReview = {
                 user_id: userId,
                 bumbuProduk_id: item.bumbuProduk_id._id
@@ -86,6 +111,7 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
                     console.log(err);
                     dispatch(uploadFailed(err))
                 })
+            }
 
             if(index === arr.length-1){
                 setShow({
@@ -108,7 +134,7 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
             text: "Upload gagal!"
         });
         setProgressBar(0);
-        console.log(err);
+        console.log(err)
         dispatch(uploadFailed(err))
     })
 };
