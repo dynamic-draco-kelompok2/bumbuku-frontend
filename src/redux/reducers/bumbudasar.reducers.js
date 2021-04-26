@@ -17,7 +17,6 @@ const initialState = {
 const handleBumbuDasar = (state = initialState, action) => {
   switch(action.type) {
     case GET_BUMBUDASAR_REQUEST:
-      console.log("data bumbu dasar");
       return {
         ...state,
         isLoading: true
