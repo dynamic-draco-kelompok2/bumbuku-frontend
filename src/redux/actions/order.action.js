@@ -113,7 +113,7 @@ export const postOrder = (produkId, customData, setShow, setAddCustom, setTotalI
   }
 }
 
-export const postOrderBumbuDasar = (bumbuDasar, setShow) => {
+export const postOrderBumbuDasar = (bumbuDasar, setShow, setTotalItemBumbuDasar) => {
   console.log(bumbuDasar)
   return function(dispatch) {
     const token = localStorage.token;
@@ -140,6 +140,7 @@ export const postOrderBumbuDasar = (bumbuDasar, setShow) => {
             title: "Add Cart",
             text: "Berhasil masukkan ke keranjang!",
           });
+          setTotalItemBumbuDasar([]);
         })
         .catch((error) => {
           dispatch(postOrderError(error));
