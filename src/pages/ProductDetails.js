@@ -23,8 +23,6 @@ function ProductDetails() {
 	const orderLoading = useSelector((state) => state.handleOrder);
 	const commentProduk = useSelector((state) => state.commentProduk);
 
-	console.log(commentProduk);
-
 	const [show, setShow] = useState({
         valid: false,
         title: "",

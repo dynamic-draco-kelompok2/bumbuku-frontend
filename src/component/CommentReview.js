@@ -1,9 +1,8 @@
 import React from 'react'
-import { Container, Row, Col, Button, Toast, Spinner } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 function CommentReview(props) {
 
-    console.log(props.item)
     return (
         <>
         <Col xs={10} className="mt-3 ml-3">

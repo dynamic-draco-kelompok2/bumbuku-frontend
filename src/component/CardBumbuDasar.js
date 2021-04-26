@@ -44,12 +44,10 @@ function CardBumbuDasar(bumbuDasar) {
 
 	const handleAddButton = (bumbu) => {
 		let bumbuToAdd = { ...bumbu, quantity: bumbu.quantity + 1 };
-		// console.log(bumbuToAdd);
 
 		setTotalItemBumbuDasar([bumbuToAdd, ...totalItemBumbuDasar]);
 		setCounter(counter);
 	};
-	console.log("total item BumbuDasar", totalItemBumbuDasar);
 
 	const addCart = () => {
 		dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow))

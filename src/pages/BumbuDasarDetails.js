@@ -7,7 +7,6 @@ import { getBumbuDasar } from "../redux/actions/bumbudasar.actions";
 function BumbuDasarDetails() {
   const dispatch = useDispatch();
 	const bumbuDasar = useSelector((state) => state.handleBumbuDasar);
-	console.log(bumbuDasar);
 
 	useEffect(() => {
 		dispatch(getBumbuDasar());
