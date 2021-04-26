@@ -140,10 +140,18 @@ function Checkout() {
                     </div>
                     <div className="d-flex justify-content-sm-between flex-column flex-sm-row">
                     <p className="tw-pb-0 pb-lg-2 mb-1 mb-sm-3 tw-font-opensans tw-font-regular fw-600">
+							Total harga pesanan :
+						</p>
+                        <p className="tw-pb-2 tw-font-opensans tw-font-regular">
+							Rp. {(totalHargaBase + dataCheckout.totalCustom).toLocaleString().replaceAll(",", ".")}
+						</p>
+                    </div>
+                    <div className="d-flex justify-content-sm-between flex-column flex-sm-row">
+                    <p className="tw-pb-0 pb-lg-2 mb-1 mb-sm-3 tw-font-opensans tw-font-regular fw-600">
 							Total harga :
 						</p>
                         <p className="tw-font-opensans tw-font-bold txtTotalHarga">
-							Rp. {(totalHargaBase + dataCheckout.totalCustom).toLocaleString().replaceAll(",", ".")}
+							Rp. {(totalHargaBase + dataCheckout.totalCustom + 10000).toLocaleString().replaceAll(",", ".")}
 						</p>
                     </div>
                 </Col>
