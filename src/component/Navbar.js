@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import Logo from "../assets/images/Logo bumbukuok-01.png";
-import { Nav, Navbar, Form, FormControl, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutAction } from "../redux/actions/auth.actions";
@@ -54,16 +54,6 @@ const NavbarMenu = () => {
               </span>
             )} */}
 					</div>
-					<Form className="tw-hidden lg:tw-flex lg:tw-w-1/2">
-						<FormControl
-							type="text"
-							placeholder="Search"
-							className="mr-sm-2 focus:tw-outline-none tw-font-opensans"
-						/>
-						<button className="tw-bg-icon tw-text-white tw-py-1 tw-px-4 tw-text-md tw-rounded tw-font-opensans">
-							Search
-						</button>
-					</Form>
 					<Nav className="tw-font-opensans align-items-lg-center">
 						<Link to="/category" className="tw-text-white tw-my-3 lg:tw-mx-3">
 							Category

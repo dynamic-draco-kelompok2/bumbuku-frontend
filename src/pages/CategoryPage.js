@@ -6,6 +6,7 @@ import { getBumbuProduk } from '../redux/actions/bumbuproduk.actions'
 import Category from '../component/Category'
 import CardProduct from '../component/CardProduct'
 import ListBumbuCategory from '../component/ListBumbuCategory'
+import SearchBarProduct from '../component/SearchBarProduct'
 
 const CategoryPage = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,9 @@ const CategoryPage = () => {
 
   return (
     <div className="tw-p-4">
+      <div className="tw-mx-auto">
+        <SearchBarProduct />
+      </div>
       <Category 
         paramsCategory={paramsCategory} 
         handleFilterButton={handleFilterButton}
