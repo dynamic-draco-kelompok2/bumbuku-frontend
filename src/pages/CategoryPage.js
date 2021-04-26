@@ -81,13 +81,12 @@ const CategoryPage = () => {
           ))}
         </div>
       )}
-      {console.log(products)}
       {bumbuCategory && (
         <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4">
           {products.filter((item) => {
             if(searchCategoryProduk === "") {
               return item
-            } else if(item.name.toLowerCase().includes(searchCategoryProduk.toLowerCase())) {
+            } else if(item.bumbuProduk_id.name.toLowerCase().includes(searchCategoryProduk.toLowerCase())) {
               return item
             }
             return null
