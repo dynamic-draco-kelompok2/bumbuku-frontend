@@ -114,7 +114,7 @@ export const postOrder = (produkId, customData, setShow, setAddCustom, setTotalI
 }
 
 export const postOrderBumbuDasar = (bumbuDasar, setShow, setTotalItemBumbuDasar) => {
-  console.log(bumbuDasar)
+  // console.log(bumbuDasar)
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
