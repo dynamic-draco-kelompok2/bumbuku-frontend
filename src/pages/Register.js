@@ -36,8 +36,10 @@ function Register() {
       })
     }
   }
+  console.log(validasi)
 
   const handleChange= (e) => {
+    // console.log(e) 
       setRegister({
           ...register,
           [e.target.name] : e.target.value
@@ -62,8 +64,13 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(e);
+    console.log(validasi);
+    
 
     if( validasi.email && validasi.name && validasi.password){
+
+      // console.log('yes')
       dispatch(registerAction(register, e, history, setRegister))
     }
   }
@@ -120,15 +127,14 @@ function Register() {
                         <Form.Control required 
                           type="text" 
                           placeholder="Your username"
-                          value={register.name} onChange={handleChange} name="name"
-                          autoComplete="username"/>
+                          value={register.name} onChange={handleChange} name="name"/>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control required  
                           type="password" 
                           placeholder="Password"
-                          value={register.password} onChange={handleChange} name="password" autoComplete="current-password"/>
+                          value={register.password} onChange={handleChange} name="password"/>
                     </Form.Group>
                     <Form.Group controlId="formAddress">
                         <Form.Label>Alamat</Form.Label>
