@@ -24,7 +24,6 @@ function Register() {
   })
 
   const checkValidAll = (pattern, value, input) => {
-    console.log(value)
     if(pattern.test(value)){
       setValidasi({
         ...validasi,
@@ -37,10 +36,9 @@ function Register() {
       })
     }
   }
-  console.log(validasi)
+  // console.log(validasi)
 
   const handleChange= (e) => {
-    // console.log(e) 
       setRegister({
           ...register,
           [e.target.name] : e.target.value
@@ -55,7 +53,6 @@ function Register() {
             break
           case 'password':
             checkValidAll(passRegex, e.target.value, e.target.name);
-            // alert('tes')
             break
           case 'name':
           checkValidAll(usernameRegex, e.target.value, e.target.name);
@@ -66,13 +63,9 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e);
-    console.log(validasi);
-    
+    // console.log(validasi);
 
     if( validasi.email && validasi.name && validasi.password){
-
-      // console.log('yes')
       dispatch(registerAction(register, e, history, setRegister))
     }
   }
