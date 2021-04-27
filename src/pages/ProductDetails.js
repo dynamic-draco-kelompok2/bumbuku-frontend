@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import DisplayCustomBumbu from "../component/DisplayCustomBumbu";
 import CustomBumbu from "../component/CustomBumbu";
-import { Container, Row, Col, Button, Toast, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Button, Toast, Spinner, Pagination } from "react-bootstrap";
 import { RatingStar } from "rating-star";
 import { Helmet } from 'react-helmet'
 import CommentReview from '../component/CommentReview';
@@ -65,6 +65,38 @@ function ProductDetails() {
 		dispatch(getComment(id));
 	}, [dispatch, id]);
 
+
+	// Pagination
+	// const [loading, setLoading] = useState(false);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [postPerPage] = useState(5);
+
+	const indexOfLastPost = currentPage * postPerPage;
+	const indexOfFirstPost = indexOfLastPost - postPerPage;
+	const currentPosts = commentProduk.data.slice(indexOfFirstPost, indexOfLastPost);
+
+	let paginationActive = currentPage;
+	let paginationItems = [];
+	let paginationLastNum = Math.round(commentProduk.data.length / 5)
+	for (let number = 1; number <= paginationLastNum; number++) {
+		paginationItems.push(
+		  <Pagination.Item key={number} active={number === paginationActive} onClick={() => setCurrentPage(number)}>
+			{number}
+		  </Pagination.Item>,
+		);
+	  }
+
+	const paginate = (item) => {
+		console.log(item)
+		const num = currentPage + item
+
+		if(num <= paginationLastNum && num > 0){
+			setCurrentPage(num);
+		}
+	}
+
+	// console.log(currentPosts);
+	// console.log(commentProduk.data.length)
 	
 	return (
 		<>
@@ -99,8 +131,20 @@ function ProductDetails() {
 						<img
 							src={bumbuProduk.image}
 							alt="gambar"
-							className="tw-rounded tw-w-full tw-h-48 tw-object-cover md:tw-h-96 lg:tw-max-w-md lg:tw-h-72"
+							className="tw-rounded tw-w-full tw-h-48 tw-object-cover md:tw-h-96 lg:tw-max-w-mdz lg:tw-h-72"
 						/>
+						<div className="d-flex justify-content-between mt-3">
+							<div className="tw-font-opensans tw-font-bold p-2">Rating</div>
+							<div className="">
+								<RatingStar
+								clickable={false}
+								maxScore={5}
+								id={bumbuProduk._id ? bumbuProduk._id : `0`}
+								rating={ bumbuProduk.overal_star ? bumbuProduk.overal_star : 0}
+								/>
+							</div>
+							
+						</div>
 					</Col>
 					<Col xs={12} lg={6}>
 						<div>
@@ -166,25 +210,36 @@ function ProductDetails() {
 							</Button>
 						</div>
 					</Col>
-					<Col xs={12} className="mt-3">
+					{/* <Col xs={12} className="mt-3">
 						<RatingStar
 							clickable={false}
 							maxScore={5}
 							id="123"
 							rating={ bumbuProduk.overal_star ? bumbuProduk.overal_star : 0}
 						/>
-					</Col>
+					</Col> */}
 					{commentProduk.data.length === 0 ? 
-					<Col xs={11} className="mt-3">
+					<Col xs={11} className="mt-5 text-center pt-5">
 						No review yet
 					</Col>
 					:
-					<Col xs={11} className="mt-3">
+					<>
+					<Col xs={11} className="mt-5">
 						<h3 className="tw-font-opensans tw-pt-2 tw-mb-1 tw-font-bold">Review</h3>
 						<hr></hr>
 					</Col>
+					<CommentReview item={currentPosts} />
+					<Col xs={11} className="justify-content-center d-flex">
+						<Pagination>
+							<Pagination.Prev onClick={() => paginate(-1)} />
+							{paginationItems}
+							<Pagination.Next onClick={() => paginate(1)} />
+						</Pagination>
+					</Col>
+					</>
 					}
-					{commentProduk.data.map((item, index) => (<CommentReview key={index} item={item} />))}
+					{/* {commentProduk.data.map((item, index) => (<CommentReview key={index} item={item} />))} */}
+					
 				</Row>
 			</Container>
 			{customPage && (

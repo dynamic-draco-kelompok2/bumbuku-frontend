@@ -1,15 +1,31 @@
 import React from 'react'
-import { Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import { RatingStar } from "rating-star";
 
 function CommentReview(props) {
-
     return (
         <>
-        <Col xs={10} className="mt-3 ml-3">
-            <div className="tw-font-bold tw-font-opensans tw-mt-2 tw-text-base">{props.item.username}</div>
-            <div className="tw-font-opensans ml-3">{props.item.comment}</div>
+        {props.item.map(item => (
+            <Col key={item._id} xs={11} className="mt-3 px-3">
+            <Row>
+                <Col xs={12} lg={2}>
+                    <div className="tw-font-bold tw-font-opensans tw-mt-2 tw-text-base">{item.username}</div>
+                </Col>
+                <Col xs={12} lg={9}>
+                    <RatingStar
+                        clickable={false}
+                        maxScore={5}
+                        id={item._id}
+                        rating={parseInt(item.rating)}
+                        classname=""
+                    />
+                    <div className="tw-font-opensans ml-3 mt-3">{item.comment}</div>
+                </Col>
+            </Row>
             <div className="linePlaceOrder"></div>
-        </Col>
+            </Col>
+        ))}
+        
         </>
     )
 }
