@@ -24,6 +24,7 @@ function Register() {
   })
 
   const checkValidAll = (pattern, value, input) => {
+    console.log(value)
     if(pattern.test(value)){
       setValidasi({
         ...validasi,
@@ -54,6 +55,7 @@ function Register() {
             break
           case 'password':
             checkValidAll(passRegex, e.target.value, e.target.name);
+            // alert('tes')
             break
           case 'name':
           checkValidAll(usernameRegex, e.target.value, e.target.name);
@@ -115,26 +117,67 @@ function Register() {
                 <div className="mt-5">
                     <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control required 
-                          className="rounded-3xl" 
-                          type="text" 
-                          placeholder="Your email"
-                          value={register.email} onChange={handleChange} name="email"/>
+                      <Form.Label>Email <span className="tw-text-basic tw-font-opensans">*</span></Form.Label>
+                      <Form.Control required type="email" placeholder="Enter email" 
+                      className="rounded-3xl" 
+                      value={register.email} onChange={handleChange} 
+                      name="email"/>
+                          {validasi.email === false ? 
+                          (register.email === '' ? (
+                            <></>
+                          ) : ( <Form.Text id="text-muted" muted>
+                          <span className="tw-text-basic tw-font-opensans">
+                          alamat email belum benar
+                          </span>
+                          </Form.Text>))
+                          :
+                          (<></>)
+                          }           
                     </Form.Group>
                     <Form.Group controlId="formBasicUsername">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>Username <span className="tw-text-basic tw-font-opensans">*</span></Form.Label>
                         <Form.Control required 
                           type="text" 
                           placeholder="Your username"
-                          value={register.name} onChange={handleChange} name="name"/>
+                          value={register.name} onChange={handleChange} name="name"
+                          autoComplete="username"/>
+                          {validasi.name === false ? 
+                          (register.name === '' ? (
+                            <Form.Text className="text-muted tw-pt-1">
+                            Minimal 4 karakter.
+                          </Form.Text>
+                          ) : ( <Form.Text id="text-muted" muted>
+                          <span className="tw-text-basic tw-font-opensans">
+                          masukkan minimal 4 karakter
+                          </span>
+                          </Form.Text>))
+                          :
+                          (<></>)
+                          }
+                 
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control required  
+                        <Form.Label>Password <span className="tw-text-basic tw-font-opensans">*</span></Form.Label>
+                        <Form.Control required 
                           type="password" 
                           placeholder="Password"
-                          value={register.password} onChange={handleChange} name="password"/>
+                          value={register.password} onChange={handleChange} name="password"
+                          autoComplete="current-password"/>
+                          {validasi.password === false ? 
+                          (register.password === '' ? (
+                            <Form.Text id="passwordHelpBlock" muted>
+                            Minimal 8 karakter terdiri dari huruf kapital angka dan simbol.
+
+                            </Form.Text>
+                          ) : ( <Form.Text id="passwordHelpBlock" muted>
+                          <span className="tw-text-basic tw-font-opensans">
+                          password belum sesuai format
+                          </span>
+                          </Form.Text>))
+                          :
+                          (<></>)
+                          }
+                
                     </Form.Group>
                     <Form.Group controlId="formAddress">
                         <Form.Label>Alamat</Form.Label>
