@@ -21,21 +21,23 @@ const Hero = () => {
   ])
 
   return (
-    <Carousel 
-      activeIndex={index} 
-      onSelect={handleSelect}
-      className=""
-    >
-      {banners.map((banner => (
-        <Carousel.Item key={banner.id}>
-          <img
-            className="d-block w-100"
-            src={banner.img}
-            alt="First slide"
-          />
-        </Carousel.Item>
-      )))}
-    </Carousel>
+    <div className="w-100 d-flex justify-content-center">
+      <Carousel 
+        activeIndex={index} 
+        onSelect={handleSelect}
+        className=""
+      >
+        {banners.map((banner => (
+          <Carousel.Item key={banner.id}>
+            <img
+              className="d-block w-100"
+              src={banner.img}
+              alt="First slide"
+            />
+          </Carousel.Item>
+        )))}
+      </Carousel>
+    </div>
   )
 }
 
