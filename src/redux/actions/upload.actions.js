@@ -3,6 +3,10 @@ import axios from 'axios';
 export const UPLOAD_REQUEST = "UPLOAD_REQUEST";
 export const UPLOAD_FAILED = "UPLOAD_FAILED";
 export const UPLOAD_SUCCESS = "UPLOAD_SUCCESS";
+export const POST_HISTORY_TRANSAKSI_REQUEST = "POST_HISTORY_TRANSAKSI_REQUEST"
+export const POST_HISTORY_TRANSAKSI_SUCCESS = "POST_HISTORY_TRANSAKSI_SUCCESS"
+export const POST_HISTORY_TRANSAKSI_ERROR = "POST_HISTORY_TRANSAKSI_ERROR"
+
 
 export const uploadRequest = () => {
     return {
@@ -24,6 +28,26 @@ export const uploadFailed = (err) => {
     };
 };
 
+export const postHistoryTransaksiRequest = () => {
+    return {
+        type: POST_HISTORY_TRANSAKSI_REQUEST
+    }
+}
+
+export const postHistoryTransaksiSuccess = (result) => {
+    return {
+        type: POST_HISTORY_TRANSAKSI_SUCCESS,
+        result
+    }
+}
+
+export const postHistoryTransaksiError = (error) => {
+    return {
+        type: POST_HISTORY_TRANSAKSI_ERROR,
+        error
+    }
+}
+
 export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout, history) => (dispatch) => {
     event.preventDefault();
     dispatch(uploadRequest());
@@ -43,75 +67,75 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
     .then(result => {
         dataCheckout.forEach((item, index, arr) => {
 
-            if(item.bumbuProduk_id === undefined){
-                axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
-                        headers: {
-                            Authorization: 'Bearer ' + token
-                        }})
-                    .then(() => {
-                        if(item.custom){
-                            item.custom.forEach(itemCustom => {
-                                dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
-                            })
-                        }
-                    })
-                    .catch(err => {
-                        setShow({
-                            valid: true,
-                            title: "Failed",
-                            text: "Kesalahan pada sistem"
-                        });
-                        setProgressBar(0);
-                        console.log(err);
-                        dispatch(uploadFailed(err))
-                    })
-            } else{
+            // if(item.bumbuProduk_id === undefined){
+                // axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
+                //         headers: {
+                //             Authorization: 'Bearer ' + token
+                //         }})
+                //     .then(() => {
+                //         if(item.custom){
+                //             item.custom.forEach(itemCustom => {
+                //                 dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
+                //             })
+                //         }
+                //     })
+                //     .catch(err => {
+                //         setShow({
+                //             valid: true,
+                //             title: "Failed",
+                //             text: "Kesalahan pada sistem"
+                //         });
+                //         setProgressBar(0);
+                //         console.log(err);
+                //         dispatch(uploadFailed(err))
+                //     })
+            // } else{
 
-            const dataReview = {
-                user_id: userId,
-                bumbuProduk_id: item.bumbuProduk_id._id
-            }
+            // const dataReview = {
+            //     user_id: userId,
+            //     bumbuProduk_id: item.bumbuProduk_id._id
+            // }
 
-            axios.post('https://bumbuku.herokuapp.com/review/', dataReview, {
-                headers: {
-                    Authorization: 'Bearer ' + token
-                }})
-                .then(() => {
+            // axios.post('https://bumbuku.herokuapp.com/review/', dataReview, {
+            //     headers: {
+            //         Authorization: 'Bearer ' + token
+            //     }})
+            //     .then(() => {
 
-                    axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
-                        headers: {
-                            Authorization: 'Bearer ' + token
-                        }})
-                    .then(() => {
-                        if(item.custom){
-                            item.custom.forEach(itemCustom => {
-                                dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
-                            })
-                        }
-                    })
-                    .catch(err => {
-                        setShow({
-                            valid: true,
-                            title: "Failed",
-                            text: "Kesalahan pada sistem"
-                        });
-                        setProgressBar(0);
-                        console.log(err);
-                        dispatch(uploadFailed(err))
-                    })
+            //         axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
+            //             headers: {
+            //                 Authorization: 'Bearer ' + token
+            //             }})
+            //         .then(() => {
+            //             if(item.custom){
+            //                 item.custom.forEach(itemCustom => {
+            //                     dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
+            //                 })
+            //             }
+            //         })
+            //         .catch(err => {
+            //             setShow({
+            //                 valid: true,
+            //                 title: "Failed",
+            //                 text: "Kesalahan pada sistem"
+            //             });
+            //             setProgressBar(0);
+            //             console.log(err);
+            //             dispatch(uploadFailed(err))
+            //         })
 
-                })
-                .catch(err => {
-                    setShow({
-                        valid: true,
-                        title: "Failed",
-                        text: "Kesalahan pada sistem"
-                    });
-                    setProgressBar(0);
-                    console.log(err);
-                    dispatch(uploadFailed(err))
-                })
-            }
+            //     })
+            //     .catch(err => {
+            //         setShow({
+            //             valid: true,
+            //             title: "Failed",
+            //             text: "Kesalahan pada sistem"
+            //         });
+            //         setProgressBar(0);
+            //         console.log(err);
+            //         dispatch(uploadFailed(err))
+            //     })
+            // }
 
             if(index === arr.length-1){
                 setShow({
@@ -120,9 +144,25 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
                     text: "Upload berhasil, pesanan anda sedang diproses!"
                 });
                 setProgressBar(0);
-                
                 dispatch(uploadSuccess());
-                setTimeout(function(){ window.location.href = "./"},5000);
+
+                dataCheckout.forEach((items) => {
+                    const dataHistory = {
+                        orders_id: items._id,
+                        user_id: userId
+                    }
+                    console.log('history', dataHistory)
+                    console.log('items', items)
+                    axios
+                    .post('http://localhost:9999/history-transaksi', dataHistory, {
+                        headers: {
+                            Authorization: 'Bearer' + token
+                        }
+                    })
+                    .then((result) => dispatch(postHistoryTransaksiSuccess(result.data)))
+                    .catch((error) => dispatch(postHistoryTransaksiError(error)))
+                })
+                // setTimeout(function(){ window.location.href = "./"},5000);
             }
         })
         
