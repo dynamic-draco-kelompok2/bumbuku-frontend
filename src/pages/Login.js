@@ -9,12 +9,18 @@ function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
   const registerLoading = useSelector(state => state.auth)
+
   const [login, setLogin] = useState({
     name: "",
     password: ""
   })
 
+  const [fail, setFail] = useState({
+    result: true
+  })
+
   const handleChange= (e) => {
+    // console.log(e.target.value)
     setLogin({
         ...login,
         [e.target.name] : e.target.value
@@ -54,7 +60,8 @@ function Login() {
                     </div>
                 </div>
                 <div className="mt-5">
-                    <Form onSubmit={(e) => dispatch(loginAction(login, e, history, setLogin))}>
+                    <Form onSubmit={(e) => dispatch(loginAction(login, e, history, setLogin, setFail))}>
+                    {/* <Form onSubmit={handleSubmit}> */}
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control required 
@@ -62,15 +69,25 @@ function Login() {
                           placeholder="Your username"
                           value={login.name} onChange={handleChange} name="name"
                           autoComplete="username"/>
-                    </Form.Group>
+                                 
+                    </Form.Group>                   
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control required  
+                        <Form.Control required 
                           type="password" 
                           placeholder="Password"
                           value={login.password} onChange={handleChange} name="password"
                           autoComplete="current-password"/>
-                    </Form.Group>
+                          {fail.result === false ? 
+                          ( <Form.Text id="text-muted" muted>
+                          <span className="tw-text-basic tw-font-opensans">
+                          maaf, email dan password anda salah
+                          </span>
+                          </Form.Text>)
+                          :
+                          (<></>)
+                          }               
+                    </Form.Group>                        
                     <Button type="submit" variant="primary" className="mt-3 w-100 tw-bg-base tw-border-base tw-shadow-base">
                         Login
                     </Button>

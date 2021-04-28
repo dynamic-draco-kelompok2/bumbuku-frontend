@@ -136,7 +136,7 @@ function Register() {
                           autoComplete="username"/>
                           {validasi.name === false ? 
                           (register.name === '' ? (
-                            <Form.Text className="text-muted tw-pt-1">
+                            <Form.Text className="text-muted">
                             Minimal 4 karakter.
                           </Form.Text>
                           ) : ( <Form.Text id="text-muted" muted>

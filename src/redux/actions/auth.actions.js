@@ -67,7 +67,7 @@ export const registerAction = (data, event, history, setRegister) => (dispatch) 
     
 };
 
-export const loginAction = (data, event, history, setLogin) => (dispatch) => {
+export const loginAction = (data, event, history, setLogin, setFail) => (dispatch) => {
     event.preventDefault();
     dispatch(authRequest());
     
@@ -85,7 +85,9 @@ export const loginAction = (data, event, history, setLogin) => (dispatch) => {
                     ...data,
                     password: ""
                 })
-                alert('username or password invalid');
+                setFail({
+                    result: false
+                })
                 dispatch(authFailed("invalid"));
             }
             
