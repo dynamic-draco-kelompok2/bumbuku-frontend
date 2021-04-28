@@ -351,3 +351,9 @@ a:focus {
 .txtAlamatEditProfile {
 	margin-left: 5px !important;
 }
+
+.one-edge-shadow {
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.25);
+	position: relative;
+	z-index: 9999;
+}

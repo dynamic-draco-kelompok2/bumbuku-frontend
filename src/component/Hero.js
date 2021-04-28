@@ -24,7 +24,7 @@ const Hero = () => {
     <Carousel 
       activeIndex={index} 
       onSelect={handleSelect}
-      className="pt-1"
+      className=""
     >
       {banners.map((banner => (
         <Carousel.Item key={banner.id}>
