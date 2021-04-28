@@ -162,7 +162,11 @@ function Checkout() {
                     <div className="tw-pb-20">
                         <div className="d-none">
                             <Form.File id="formcheck-api-custom" custom>
-                            <Form.File.Input ref={uploadRef} onChange={uploadHandle} required accept="image/png,image/jpeg"/>
+                            <Form.File.Input 
+                                ref={uploadRef} 
+                                onChange={uploadHandle} 
+                                required accept="image/png,image/jpeg"
+                            />
                             <Form.File.Label data-browse="Browse">
                                 Choose File
                             </Form.File.Label>

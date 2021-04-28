@@ -57,7 +57,7 @@ const ProfileUser = () => {
 									{userData.alamat}
 								</div>
 								<div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-my-10">
-									<h4 className="tw-font-opensans- tw-text-lg tw-font-semibold">
+									<h4 className="tw-font-opensans tw-text-lg tw-font-semibold">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											width="16"
