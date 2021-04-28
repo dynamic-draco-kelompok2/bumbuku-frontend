@@ -36,7 +36,7 @@ const NavbarMenu = () => {
 	return (
 		<div className="">
 			<Navbar
-				className="tw-bg-base d-flex justify-content-between px-4"
+				className="tw-bg-base d-flex justify-content-between px-4 one-edge-shadow"
 				expand="lg"
 				variant="dark"
 			>
