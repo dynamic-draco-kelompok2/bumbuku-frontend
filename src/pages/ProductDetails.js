@@ -229,6 +229,7 @@ function ProductDetails() {
 						<hr></hr>
 					</Col>
 					<CommentReview item={currentPosts} />
+					{commentProduk.data.length > 5 &&
 					<Col xs={11} className="justify-content-center d-flex">
 						<Pagination>
 							<Pagination.Prev onClick={() => paginate(-1)} />
@@ -236,6 +237,7 @@ function ProductDetails() {
 							<Pagination.Next onClick={() => paginate(1)} />
 						</Pagination>
 					</Col>
+					}
 					</>
 					}
 					{/* {commentProduk.data.map((item, index) => (<CommentReview key={index} item={item} />))} */}
