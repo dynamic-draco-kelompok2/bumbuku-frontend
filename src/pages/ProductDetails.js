@@ -80,7 +80,7 @@ function ProductDetails() {
 	let paginationLastNum = Math.round(commentProduk.data.length / 5)
 	for (let number = 1; number <= paginationLastNum; number++) {
 		paginationItems.push(
-		  <Pagination.Item key={number} active={number === paginationActive} onClick={() => setCurrentPage(number)}>
+		  <Pagination.Item key={number} active={number === paginationActive} onClick={() => setCurrentPage(number)} className="pagination-bg-red pagination-color-red">
 			{number}
 		  </Pagination.Item>,
 		);
@@ -232,9 +232,9 @@ function ProductDetails() {
 					{commentProduk.data.length > 5 &&
 					<Col xs={11} className="justify-content-center d-flex">
 						<Pagination>
-							<Pagination.Prev onClick={() => paginate(-1)} />
+							<Pagination.Prev className="pagination-color-red" onClick={() => paginate(-1)} />
 							{paginationItems}
-							<Pagination.Next onClick={() => paginate(1)} />
+							<Pagination.Next className="pagination-color-red" onClick={() => paginate(1)} />
 						</Pagination>
 					</Col>
 					}

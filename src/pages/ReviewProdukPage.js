@@ -156,7 +156,9 @@ function ReviewProdukPage() {
 						</Col>
 						{alert.status ? (
 							<Col xs={12} className="mt-3">
+								<div className="tw-font-opensans tw-pt-2 tw-mb-1 tw-font-bold text-center mt-5">
 								Terima kasih telah memberi review
+								</div>
 							</Col>
 						) : (
 							<Col xs={12} className="mt-3 tw-pb-16 mt-5 px-4 pt-2 cardBox">

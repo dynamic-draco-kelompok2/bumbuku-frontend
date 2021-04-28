@@ -22,7 +22,7 @@ const Hero = () => {
   ])
 
   return (
-    <div className="w-100 d-flex justify-content-center">
+    <div className="w-100">
       <Carousel 
         activeIndex={index} 
         onSelect={handleSelect}
