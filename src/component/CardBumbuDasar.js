@@ -214,7 +214,7 @@ function CardBumbuDasar(bumbuDasar) {
 				</Row>
 				<div className="linePlaceOrder">{/* <p >INI LINE PER ITEM</p> */}</div>
 
-				<Row className="tw-pb-40">
+				<Row className="tw-pb-20">
 					<Button
 						type="submit"
 						variant="primary"

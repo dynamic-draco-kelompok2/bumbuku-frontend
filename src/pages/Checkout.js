@@ -62,7 +62,7 @@ function Checkout() {
             <title>Bumbuku - Checkout</title>
             <meta name="description" content="about"/>
         </Helmet>
-        <Container>
+        <Container className="h-footer">
             <Row className="d-flex justify-content-center">
             <Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
             <Toast.Header className="tw-bg-base text-white">
@@ -159,7 +159,7 @@ function Checkout() {
 					{/* <p >INI LINE PER ITEM</p> */}
 				</Col>
                 <Col xs={12}>
-                    <div className="">
+                    <div className="tw-pb-20">
                         <div className="d-none">
                             <Form.File id="formcheck-api-custom" custom>
                             <Form.File.Input ref={uploadRef} onChange={uploadHandle} required accept="image/png,image/jpeg"/>

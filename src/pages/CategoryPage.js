@@ -44,7 +44,7 @@ const CategoryPage = () => {
   }, [dispatch])
 
   return (
-    <div className="tw-p-4">
+    <div className="tw-p-4 h-footer">
       <div className="tw-mx-auto">
         {showSearchCategory && (
           <SearchCategoryProduct 

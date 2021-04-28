@@ -3,7 +3,7 @@ import Instagram from '../assets/icons/Instagram'
 
 const Footer = () => {
   return (
-    <div className="tw-bg-base tw-w-full">
+    <div className="tw-bg-base tw-w-full mt-5 footer">
       <div className="tw-flex tw-flex-col md:tw-flex-row md:tw-justify-between p-4">
         <div>
           <h1 className="tw-font-opensans tw-text-white tw-text-base">

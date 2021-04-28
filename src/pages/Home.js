@@ -7,7 +7,7 @@ import { Container, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import gbrBumbuDasar from "../assets/images/beli-bumbu-dasar-saja.jpg";
 import { Helmet } from "react-helmet";
-import Footer from '../component/Footer'
+
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Home = () => {
 				<title>Bumbuku - Home Page</title>
 				<meta name="description" content="about" />
 			</Helmet>
-			<Container fluid className="tw-bg-desktop tw-h-full">
+			<Container fluid className="tw-bg-desktop tw-h-full mb-5">
 				<Row>
 					{bumbuProduk.isLoading === true ? (
 						<>
@@ -35,7 +35,7 @@ const Home = () => {
 						</>
 					) : null}
 					<Hero />
-					<div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row">
+					<div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row md:tw-justify-center mt-5 h-footer">
 						<Link
 							// key={index}
 							to={`/bumbudasardetails/`}
@@ -59,7 +59,6 @@ const Home = () => {
 					</div>
 				</Row>
 			</Container>
-			<Footer />
 		</>
 	);
 };

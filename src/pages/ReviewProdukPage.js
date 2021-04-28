@@ -83,7 +83,7 @@ function ReviewProdukPage() {
                 </div>
             </div>
         :
-        <Container>
+        <Container className="h-footer">
             <Row className="d-flex justify-content-center">
 				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
 				<Toast.Header className="tw-bg-base text-white">
@@ -97,7 +97,7 @@ function ReviewProdukPage() {
 				<Toast.Body className="f-bold">{show.text}</Toast.Body>
 				</Toast>
             </Row>
-            <Row className="mx-2 tw-mt-10">
+            <Row className="mx-2 tw-mt-10 tw-mb-10">
                 <Col xs={12} lg={6}>
 					<img
 						src={reviewByID.bumbuProduk_id.image}

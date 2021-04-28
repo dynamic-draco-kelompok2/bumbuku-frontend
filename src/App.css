@@ -3,7 +3,33 @@
 /* Hal Product Details */
 body {
 	background-color: #eeeeee !important;
+	min-height: 100vh !important;
+	min-height: -webkit-fill-available;
 }
+
+html {
+	height: -webkit-fill-available;
+}
+
+.footer {
+    position: absolute;
+    /* height: 120px; */
+	bottom: 0;
+	/* width: 100%; */
+    /* margin-top: -200px; */
+}
+
+@media (min-width: 768px) {
+	.h-footer {
+		margin-bottom: 120px !important;
+	}
+}
+
+.h-footer {
+	margin-bottom: 185px;
+}
+
+
 
 .textTitle {
 	font-size: 32px;
