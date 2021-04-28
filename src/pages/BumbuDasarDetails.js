@@ -15,7 +15,7 @@ function BumbuDasarDetails() {
 
 
   return (
-    <div>
+    <div className="h-footer">
 			<CardBumbuDasar bumbuDasar={bumbuDasar.data} />
     </div>
   )

@@ -16,12 +16,13 @@ import ProfileUser from './pages/ProfileUser';
 import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
 import ReviewProdukPage from './pages/ReviewProdukPage';
+import Footer from './component/Footer'
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged);
 
   return (
-    <div className="tw-bg-desktop">
+    <div className="tw-bg-desktop tw-min-h-screen position-relative flex-column d-flex">
       <Router>
       <Switch>
           <Route path="/register">
@@ -66,6 +67,15 @@ function App() {
           <Route>
             <PageNotFound />
           </Route>
+        </Switch>
+        <Switch>
+            <Route path="/register">
+            </Route>
+            <Route path="/login">
+            </Route>
+            <Route path="/">
+              <Footer />
+            </Route>
         </Switch>
       </Router>
     </div>

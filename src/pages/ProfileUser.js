@@ -19,9 +19,9 @@ const ProfileUser = () => {
 				<title>Bumbuku - Your Profile's</title>
 				<meta name="description" content="about" />
 			</Helmet>
-			<Container className="tw-mb-10">
+			<Container className="h-footer">
 				{userData && (
-					<div className="tw-flex tw-flex-col tw-items-center tw-text-center">
+					<div className="tw-flex tw-flex-col tw-items-center tw-text-center tw-mb-10">
 						<h1 className="tw-font-opensans tw-font-regular tw-text-center titleProfile">
 							Your Profile
 						</h1>

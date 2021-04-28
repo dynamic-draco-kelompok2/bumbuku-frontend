@@ -54,7 +54,7 @@ function Cart() {
 					</Row>
 				</Container>
 			) : (
-				<Container className="tw-mt-10">
+				<Container className="tw-mt-10 h-footer">
 					<Row className="mx-2">
 						<Col lg={6} md={9}>
 							<div>
@@ -278,7 +278,7 @@ function Cart() {
 					<div className="linePlaceOrder">
 						{/* <p >INI LINE PER ITEM</p> */}
 					</div>
-					<Row className="tw-pb-40">
+					<Row className="tw-pb-20">
 						<Button
 							onClick={() => beliHandle()}
 							type="submit"

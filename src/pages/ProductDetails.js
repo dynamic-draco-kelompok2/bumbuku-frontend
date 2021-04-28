@@ -112,7 +112,7 @@ function ProductDetails() {
                 </div>
             </div>
         	}
-			<Container>
+			<Container className="h-footer">
 				<Row className="d-flex justify-content-center">
 				<Toast className="my-toast" onClose={() => setShow({...show,valid:false})} show={show.valid} delay={9000} autohide>
 				<Toast.Header className="tw-bg-base text-white">
