@@ -180,17 +180,3 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
         dispatch(uploadFailed(err))
     })
 };
-
-const deleteCustomBumbuProduk = (itemCustom, setShow, setProgressBar) => (dispatch) => {
-    return axios.delete(`https://bumbuku.herokuapp.com/custom/${itemCustom._id}`)
-    .catch(err => {
-        setShow({
-            valid: true,
-            title: "Failed",
-            text: "Kesalahan pada sistem"
-        });
-        setProgressBar(0);
-        console.log(err);
-        dispatch(uploadFailed(err))
-    })
-}
