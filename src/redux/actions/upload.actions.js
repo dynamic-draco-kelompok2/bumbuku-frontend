@@ -67,75 +67,79 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
     .then(result => {
         dataCheckout.forEach((item, index, arr) => {
 
-            // if(item.bumbuProduk_id === undefined){
-                // axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
-                //         headers: {
-                //             Authorization: 'Bearer ' + token
-                //         }})
-                //     .then(() => {
-                //         if(item.custom){
-                //             item.custom.forEach(itemCustom => {
-                //                 dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
-                //             })
-                //         }
-                //     })
-                //     .catch(err => {
-                //         setShow({
-                //             valid: true,
-                //             title: "Failed",
-                //             text: "Kesalahan pada sistem"
-                //         });
-                //         setProgressBar(0);
-                //         console.log(err);
-                //         dispatch(uploadFailed(err))
-                //     })
-            // } else{
+            const endTransaction = {
+                status_transaction: false
+            }
 
-            // const dataReview = {
-            //     user_id: userId,
-            //     bumbuProduk_id: item.bumbuProduk_id._id
-            // }
+            if(item.bumbuProduk_id === undefined){      
+                axios.put(`https://bumbuku.herokuapp.com/order/${item._id}`, endTransaction, {
+                        headers: {
+                            Authorization: 'Bearer ' + token
+                        }})
+                    .then(() => {
+                        if(item.custom){
+                            item.custom.forEach(itemCustom => {
+                                dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        setShow({
+                            valid: true,
+                            title: "Failed",
+                            text: "Kesalahan pada sistem"
+                        });
+                        setProgressBar(0);
+                        console.log(err);
+                        dispatch(uploadFailed(err))
+                    })
+            } else{
 
-            // axios.post('https://bumbuku.herokuapp.com/review/', dataReview, {
-            //     headers: {
-            //         Authorization: 'Bearer ' + token
-            //     }})
-            //     .then(() => {
+            const dataReview = {
+                user_id: userId,
+                bumbuProduk_id: item.bumbuProduk_id._id
+            }
 
-            //         axios.delete(`https://bumbuku.herokuapp.com/order/${item._id}`, {
-            //             headers: {
-            //                 Authorization: 'Bearer ' + token
-            //             }})
-            //         .then(() => {
-            //             if(item.custom){
-            //                 item.custom.forEach(itemCustom => {
-            //                     dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
-            //                 })
-            //             }
-            //         })
-            //         .catch(err => {
-            //             setShow({
-            //                 valid: true,
-            //                 title: "Failed",
-            //                 text: "Kesalahan pada sistem"
-            //             });
-            //             setProgressBar(0);
-            //             console.log(err);
-            //             dispatch(uploadFailed(err))
-            //         })
+            axios.post('https://bumbuku.herokuapp.com/review/', dataReview, {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }})
+                .then(() => {
 
-            //     })
-            //     .catch(err => {
-            //         setShow({
-            //             valid: true,
-            //             title: "Failed",
-            //             text: "Kesalahan pada sistem"
-            //         });
-            //         setProgressBar(0);
-            //         console.log(err);
-            //         dispatch(uploadFailed(err))
-            //     })
-            // }
+                    axios.put(`https://bumbuku.herokuapp.com/order/${item._id}`, endTransaction, {
+                        headers: {
+                            Authorization: 'Bearer ' + token
+                        }})
+                    .then(() => {
+                        if(item.custom){
+                            item.custom.forEach(itemCustom => {
+                                dispatch(deleteCustomBumbuProduk(itemCustom, setShow, setProgressBar))
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        setShow({
+                            valid: true,
+                            title: "Failed",
+                            text: "Kesalahan pada sistem"
+                        });
+                        setProgressBar(0);
+                        console.log(err);
+                        dispatch(uploadFailed(err))
+                    })
+
+                })
+                .catch(err => {
+                    setShow({
+                        valid: true,
+                        title: "Failed",
+                        text: "Kesalahan pada sistem"
+                    });
+                    setProgressBar(0);
+                    console.log(err);
+                    dispatch(uploadFailed(err))
+                })
+            }
 
             if(index === arr.length-1){
                 setShow({
@@ -151,10 +155,8 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
                         orders_id: items._id,
                         user_id: userId
                     }
-                    console.log('history', dataHistory)
-                    console.log('items', items)
                     axios
-                    .post('http://localhost:9999/history-transaksi', dataHistory, {
+                    .post('https://bumbuku.herokuapp.com/history-transaksi', dataHistory, {
                         headers: {
                             Authorization: 'Bearer' + token
                         }
