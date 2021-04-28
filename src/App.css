@@ -12,11 +12,11 @@ html {
 }
 
 .footer {
-    position: absolute;
-    /* height: 120px; */
+	position: absolute;
+	/* height: 120px; */
 	bottom: 0;
 	/* width: 100%; */
-    /* margin-top: -200px; */
+	/* margin-top: -200px; */
 }
 
 @media (min-width: 768px) {
@@ -28,8 +28,6 @@ html {
 .h-footer {
 	margin-bottom: 185px;
 }
-
-
 
 .textTitle {
 	font-size: 32px;
@@ -382,4 +380,32 @@ a:focus {
 	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.25);
 	position: relative;
 	z-index: 9999;
+}
+
+.cardBox {
+	background-color: white;
+	border-radius: 12px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+		rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+	margin-bottom: 30px !important;
+}
+
+.roundImg {
+	border-radius: 4px !important;
+}
+
+.desc {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 15.5px;
+	/* padding: 18px 0 9px 0; */
+	margin: 0;
+	color: #686868;
+}
+
+.gpTImw {
+	padding: 3px 0 0 0 !important;
+}
+.letterSpace {
+	letter-spacing: -0.2px;
 }
