@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import EditProfile from "../component/EditProfile";
 import { Container, Button} from "react-bootstrap";
+import { Link } from 'react-router-dom'
 
 const ProfileUser = () => {
 	const [editProfile, setEditProfile] = useState(false);
@@ -72,7 +73,14 @@ const ProfileUser = () => {
 									<span className="txtEmailUser">{userData.email}</span>
 								</div>
 								{/* <div className="tw-justify-center"> */}
-
+								{/* <div className="tw-bg-base tw-p-2 tw-px-3 tw-rounded-xl"> */}
+									<Link 
+										to="/history"
+										className="tw-text-white tw-font-opensans tw-no-underline"
+									>
+										History Transaksi
+									</Link>
+								{/* </div> */}
 								<Button
 									type="submit"
 									variant="primary"
