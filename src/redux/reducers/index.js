@@ -10,6 +10,7 @@ import handleCategory from './categorybumbu.reducers';
 import upload from './upload.reducers';
 import handleReview from './review.reducers';
 import commentProduk from './commentproduk.reducers'
+import handleHistoryTransaksi from './historytransaksi.reducers';
 
 const rootReducer = combineReducers({
   auth, 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   handleCategory,
   upload,
   handleReview,
-  commentProduk
+  commentProduk,
+  handleHistoryTransaksi
 })
 
 export default rootReducer;
