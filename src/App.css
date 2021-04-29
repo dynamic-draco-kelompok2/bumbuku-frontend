@@ -29,6 +29,16 @@ html {
 	margin-bottom: 185px;
 }
 
+.pagination-color-red > a span, .pagination-color-red > a, .pagination-color-red > a:hover{
+	color: #B23947;
+}
+
+.pagination-bg-red.active > span {
+	background-color: #B23947 !important;
+	border-color: #B23947 !important;
+	color: #fff;
+}
+
 .textTitle {
 	font-size: 32px;
 	letter-spacing: -0.5px;

@@ -164,7 +164,7 @@ export const uploadAction = (image, event, setShow, setProgressBar, dataCheckout
                     .then((result) => dispatch(postHistoryTransaksiSuccess(result.data)))
                     .catch((error) => dispatch(postHistoryTransaksiError(error)))
                 })
-                // setTimeout(function(){ window.location.href = "./"},5000);
+                setTimeout(function(){ window.location.href = "./"},5000);
             }
         })
         
