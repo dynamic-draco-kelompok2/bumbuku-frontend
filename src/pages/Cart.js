@@ -113,12 +113,13 @@ function Cart() {
 													</div>
 												</div>
 											:
-												<div className="px-3">
+												<div className="">
 													<img
 														src={order.bumbuDasar_id.image}
 														alt="gambar"
 														className="tw-rounded tw-w-full tw-object-cover tw-lg:max-w-lg imgBaseCart tw-rounded-b-none"
 													/>
+													<div className="px-3">
 													<h4 className="tw-text-lg tw-font-opensans tw-font-bold textBase">
 														{order.bumbuDasar_id.name}
 													</h4>
@@ -127,11 +128,12 @@ function Cart() {
 													</p>
 													<div className="tw-grid tw-divide-y tw-text-grey">
 														<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
-															Description
+															Quantity
 														</p>
 														<p className="tw-pt-1 tw-font-opensans tw-font-regular deskripsiText">
-															{order.bumbuDasar_id.description}
+															{order.gram} Gram
 														</p>
+													</div>
 													</div>
 												</div>
 										}
