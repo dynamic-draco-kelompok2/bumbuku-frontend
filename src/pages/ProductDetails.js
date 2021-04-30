@@ -152,7 +152,7 @@ function ProductDetails() {
 								{bumbuProduk.name}
 							</h3>
 							<span className="tw-font-opensans">
-								Rp. {(bumbuProduk.harga).toLocaleString().replaceAll(",", ".")}
+								Rp. {bumbuProduk.harga && (bumbuProduk.harga).toLocaleString().replaceAll(",", ".")}
 							</span>
 						</div>
 						<Button
@@ -179,7 +179,7 @@ function ProductDetails() {
 									Harga {bumbuProduk.name}: 
 								</h1>
 								<span className="tw-font-opensans">
-									Rp. {(bumbuProduk.harga).toLocaleString().replaceAll(",", ".")}
+									Rp. {bumbuProduk.harga && (bumbuProduk.harga).toLocaleString().replaceAll(",", ".")}
 								</span>
 							</div>
 							{totalItemCustom.length >= 1 ? (
