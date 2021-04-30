@@ -206,7 +206,7 @@ function CardBumbuDasar(bumbuDasar) {
 							</Col>
 							<Col>
 								<p className="tw-font-opensans tw-font-bold txtTotalHarga">
-									Rp. {itemPrice}
+									Rp. {itemPrice.toLocaleString().replaceAll(",", ".")}
 								</p>
 							</Col>
 						</Row>

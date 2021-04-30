@@ -20,7 +20,7 @@ function CardProduct(bumbu) {
             />
             <div className="tw-p-2">
               <h4 className="tw-text-black tw-font-opensans">{itemBumbu.name}</h4>
-              <span className="tw-text-black tw-font-opensans">Rp. {itemBumbu.harga}</span>
+              <span className="tw-text-black tw-font-opensans">Rp. {(itemBumbu.harga).toLocaleString().replaceAll(",", ".")}</span>
             </div>
           </div>
         </Link>
