@@ -28,7 +28,7 @@ export const getCategoryBumbu = () => {
   return function(dispatch) {
     dispatch(getCategoryBumbuRequest())
     axios
-      .get('http://bumbuku.herokuapp.com/category')
+      .get('https://bumbuku.herokuapp.com/category')
       .then((result) => dispatch(getCategoryBumbuSuccess(result.data)))
       .catch((error) => dispatch(getCategoryBumbuError(error)))
   }
