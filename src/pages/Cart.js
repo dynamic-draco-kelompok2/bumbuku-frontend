@@ -100,7 +100,7 @@ function Cart() {
 															{order.bumbuProduk_id.name}
 														</h4>
 														<p className="tw-pt-1 tw-font-opensans tw-font-regular textHargaBase">
-															Rp. {order.bumbuProduk_id.harga}
+															Rp. {order.bumbuProduk_id.harga.toLocaleString().replaceAll(",", ".")}
 														</p>
 														<div className="tw-grid tw-divide-y tw-text-grey">
 															<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
@@ -124,7 +124,7 @@ function Cart() {
 														{order.bumbuDasar_id.name}
 													</h4>
 													<p className="tw-pt-1 tw-font-opensans tw-font-regular textHargaBase">
-														Rp. {order.bumbuDasar_id.harga}
+														Rp. {order.bumbuDasar_id.harga.toLocaleString().replaceAll(",", ".")}
 													</p>
 													<div className="tw-grid tw-divide-y tw-text-grey">
 														<p className="tw-font-opensans tw-font-semibold descriptionTitle tw-text-black tw-m-0">
@@ -223,7 +223,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-pb-2 tw-font-opensans tw-font-regular">
-										Rp. {totalHarga}
+										Rp. {totalHarga.toLocaleString().replaceAll(",", ".")}
 									</p>
 								</Col>
 							</Row>
@@ -247,7 +247,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-pb-2 tw-font-opensans tw-font-regular">
-										Rp. {totalHargaCustom}
+										Rp. {totalHargaCustom.toLocaleString().replaceAll(",", ".")}
 									</p>
 								</Col>
 							</Row>
@@ -271,7 +271,7 @@ function Cart() {
 								</Col>
 								<Col>
 									<p className="tw-font-opensans tw-font-bold txtTotalHarga">
-										Rp. {totalHarga + totalHargaCustom}
+										Rp. {(totalHarga + totalHargaCustom).toLocaleString().replaceAll(",", ".")}
 									</p>
 								</Col>
 							</Row>
