@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Button, Toast, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux'
 import { postOrderBumbuDasar } from '../redux/actions/order.action';
 import { Helmet } from 'react-helmet';
 
 function CardBumbuDasar(bumbuDasar) {
+	const history = useHistory();
+	const isLogin = useSelector(state => state.auth.isLogged);
 	const dispatch = useDispatch();
 	const productBumbuDasar = bumbuDasar.bumbuDasar;
 	const orderLoading = useSelector(state => state.handleOrder);
@@ -52,7 +55,15 @@ function CardBumbuDasar(bumbuDasar) {
 	};
 
 	const addCart = () => {
-		dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow, setTotalItemBumbuDasar));
+		if(totalItemBumbuDasar.length === 0){
+			setShow({
+				valid: true,
+				title: "Alert",
+				text: "Anda belum memilih produk !",
+			})
+		}else{
+			dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow, setTotalItemBumbuDasar, history, isLogin));
+		}
 	};
 
 	const itemPrice = totalItemBumbuDasar.reduce(

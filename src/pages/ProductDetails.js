@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import DisplayCustomBumbu from "../component/DisplayCustomBumbu";
 import CustomBumbu from "../component/CustomBumbu";
@@ -14,10 +14,12 @@ import { getCustomBumbu } from "../redux/actions/custombumbu.actions";
 import { getComment } from '../redux/actions/commentproduk.actions';
 
 function ProductDetails() {
+	const history = useHistory();
 	const [customPage, setCustomPage] = useState(false);
 	const [addCustom, setAddCustom] = useState([]);
 	const [totalItemCustom, setTotalItemCustom] = useState([]);
 	const dispatch = useDispatch();
+	const isLogin = useSelector(state => state.auth.isLogged);
 	const customBumbu = useSelector((state) => state.handleCustomBumbu.data);
 	const bumbuProduk = useSelector((state) => state.handleBumbuProduk.dataById);
 	const orderLoading = useSelector((state) => state.handleOrder);
@@ -56,7 +58,7 @@ function ProductDetails() {
 	const totalprice = bumbuProduk.harga + itemPrice;
 
 	const addCart = () => {
-		dispatch(postOrder(id, addCustom, setShow, setAddCustom, setTotalItemCustom));
+		dispatch(postOrder(id, addCustom, setShow, setAddCustom, setTotalItemCustom, history, isLogin));
 	};
 
 	useEffect(() => {

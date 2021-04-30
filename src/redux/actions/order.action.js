@@ -54,8 +54,13 @@ export const postOrderBumbuDasarError = (error) => {
   }
 }
 
-export const postOrder = (produkId, customData, setShow, setAddCustom, setTotalItemCustom) => {
+export const postOrder = (produkId, customData, setShow, setAddCustom, setTotalItemCustom, history, isLogin) => {
   return function(dispatch) {
+    // console.log(JSON.parse(localStorage.payload)._id)
+    if(!isLogin){
+      history.push("/login");
+    } else {
+
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
     dispatch(postOrderRequest())
@@ -110,11 +115,17 @@ export const postOrder = (produkId, customData, setShow, setAddCustom, setTotalI
       .catch((error) => {
         dispatch(postOrderError(error, setShow));
       })
+    }
   }
 }
 
-export const postOrderBumbuDasar = (bumbuDasar, setShow, setTotalItemBumbuDasar) => {
+export const postOrderBumbuDasar = (bumbuDasar, setShow, setTotalItemBumbuDasar, history, isLogin) => {
   // console.log(bumbuDasar)
+
+  if(!isLogin){
+    history.push("/login");
+  } else {
+
   return function(dispatch) {
     const token = localStorage.token;
     const userId = JSON.parse(localStorage.payload)._id;
@@ -152,5 +163,6 @@ export const postOrderBumbuDasar = (bumbuDasar, setShow, setTotalItemBumbuDasar)
         })
     })
   }
+}
 }
 
