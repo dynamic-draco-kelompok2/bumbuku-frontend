@@ -65,7 +65,7 @@ const CategoryPage = () => {
         handleAllButton={handleAllButton}
       />
       {allBumbu && (
-        <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4">
+        <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4 d-flex justify-content-center">
           {bumbuProduk.filter((bumbu) => {
             if(searchAllProduk === "") {
               return bumbu
@@ -82,7 +82,7 @@ const CategoryPage = () => {
         </div>
       )}
       {bumbuCategory && (
-        <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4">
+        <div className="tw-mx-auto tw-flex tw-flex-col tw-flex-wrap md:tw-flex-row tw-py-4 d-flex justify-content-center">
           {products.filter((item) => {
             if(searchCategoryProduk === "") {
               return item
