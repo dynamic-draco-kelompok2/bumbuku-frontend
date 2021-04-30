@@ -28,7 +28,7 @@ export const editAlamatUser = ({_id, newAlamatUser}) => {
   return function(dispatch) {
     dispatch(updateAlamatRequest())
     axios
-      .put(`http://bumbuku.herokuapp.com/user/${_id}`, newAlamatUser)
+      .put(`https://bumbuku.herokuapp.com/user/${_id}`, newAlamatUser)
       .then((result) => dispatch(updateAlamatSuccess(result)))
       .catch((error) => dispatch(updateAlamatError(error)))
   }

@@ -38,7 +38,6 @@ const HistoryTransaksi = () => {
 	  }
 
 	const paginate = (item) => {
-		console.log(item)
 		const num = currentPage + item
 
 		if(num <= paginationLastNum && num > 0){
