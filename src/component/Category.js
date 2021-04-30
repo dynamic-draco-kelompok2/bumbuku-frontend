@@ -5,7 +5,7 @@ const Category = ({paramsCategory, handleFilterButton, handleAllButton}) => {
     <div className="tw-flex tw-flex-row tw-w-full tw-justify-center">
       <button 
         onClick={handleAllButton}
-        className="tw-mx-5 tw-text-basic tw-font-opensans"
+        className="tw-mx-2 tw-text-basic tw-font-opensans"
       >
         All
       </button>
@@ -14,7 +14,7 @@ const Category = ({paramsCategory, handleFilterButton, handleAllButton}) => {
           <div key={index}>
             <button 
               onClick={() => handleFilterButton(category)} 
-              className="tw-mx-5 tw-text-basic tw-font-opensans"
+              className="tw-mx-2 tw-text-basic tw-font-opensans"
             >
               {category}
             </button>
