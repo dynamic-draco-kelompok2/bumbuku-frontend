@@ -419,3 +419,9 @@ a:focus {
 .letterSpace {
 	letter-spacing: -0.2px;
 }
+
+.dropdown-item:active {
+	color: #16181b !important;
+    text-decoration: none;
+    background-color: #e9ecef !important;
+}
