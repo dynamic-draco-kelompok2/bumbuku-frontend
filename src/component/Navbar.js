@@ -105,6 +105,10 @@ const NavbarMenu = () => {
 								id="alert-dropdown"
 								className="navDropDown noToogle"
 								>
+									<NavDropdown.Item className="disabled text-dark one-edge-shadow pb-2 mb-3">
+										<b>Notifikasi</b>
+									</NavDropdown.Item>
+									{/* <NavDropdown.Divider className="one-edge-shadow" /> */}
 								{review.data.length === 0 && 
 									<NavDropdown.Item className="disabled text-dark">
 										Kosong!
@@ -113,6 +117,8 @@ const NavbarMenu = () => {
 								{review.data.map((item, index, arr) => {
 									return <NotifReview key={index} item={item} index={index} arr={arr} />			
 								})}
+									<NavDropdown.Item className="disabled p-1">
+									</NavDropdown.Item>
 								{/* <NavDropdown.Item href="/profile-user">
 									Profile
 								</NavDropdown.Item>
