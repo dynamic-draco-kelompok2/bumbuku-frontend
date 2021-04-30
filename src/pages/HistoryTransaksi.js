@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getHistoryTransaksi } from "../redux/actions/historytransaction.actions";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
+import { Container, Row, Col, Pagination, Spinner } from "react-bootstrap";
 // import HistorybumbuProduk from "../component/HistorybumbuProduk";
 
 const HistoryTransaksi = () => {
@@ -9,13 +9,13 @@ const HistoryTransaksi = () => {
 	const historyTransaction = useSelector(
 		(state) => state.handleHistoryTransaksi.data
 	);
-	console.log(historyTransaction);
+
 	useEffect(() => {
 		dispatch(getHistoryTransaksi());
 	}, [dispatch]);
 
 	let orders = historyTransaction.map((orderan, index) => orderan.orders_id);
-	console.log("ini data order id", orders);
+
 
 	// Pagination
 	// const [loading, setLoading] = useState(false);
@@ -47,6 +47,24 @@ const HistoryTransaksi = () => {
 	}
 
 	return (
+		<>
+		{historyTransaction.isLoading ? 
+		<div className="tw-w-screen tw-h-screen tw-bg-black tw-opacity-50 tw-fixed tw-top-0 tw-left-0 hidden md:flex tw-z-30">
+			<div className="h-100 d-flex align-items-center justify-content-center">
+				<Spinner className="" animation="border" variant="warning"/>
+			</div>
+		</div>
+		:
+		
+		historyTransaction.length === 0 ? 
+			<Container>
+				<Row className="tw-pt-40 mx-2">
+				<p className="tw-font-opensans tw-font-bold titleCart tw-m-0 tw-text-basic">
+					No History Found
+				</p>
+				</Row>
+			</Container>
+		:
 		<Container className="tw-mt-10 h-footer tw-pb-10">
 			<Row className="mx-2">
 				<Col lg={6} md={9}>
@@ -65,6 +83,7 @@ const HistoryTransaksi = () => {
 
 			<Container>
 				<Row>
+					<>
 					<Col className="tw-mt-10" xs={12}>
 						{currentPosts.map((item, index) =>
 							item.bumbuProduk_id ? (
@@ -120,9 +139,14 @@ const HistoryTransaksi = () => {
 							<Pagination.Next className="pagination-color-red" onClick={() => paginate(1)} />
 						</Pagination>
 					</Col>
+					</>
+					
 				</Row>
 			</Container>
+
 		</Container>
+		}
+		</>
 	);
 };
 

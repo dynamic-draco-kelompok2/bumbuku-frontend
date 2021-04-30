@@ -140,6 +140,10 @@ const NavbarMenu = () => {
 									Profile
 								</NavDropdown.Item>
 								<NavDropdown.Divider />
+								<NavDropdown.Item href="/history">
+									History Transaksi
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
 								<NavDropdown.Item href="#" onClick={handleLogOut}>
 									Logout
 								</NavDropdown.Item>
