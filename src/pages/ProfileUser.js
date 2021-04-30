@@ -76,7 +76,7 @@ const ProfileUser = () => {
 								{/* <div className="tw-bg-base tw-p-2 tw-px-3 tw-rounded-xl"> */}
 									<Link 
 										to="/history"
-										className="tw-text-white tw-font-opensans tw-no-underline"
+										className="tw-text-black tw-font-opensans tw-no-underline"
 									>
 										History Transaksi
 									</Link>
