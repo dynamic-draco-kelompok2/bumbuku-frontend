@@ -202,13 +202,13 @@ hr {
 }
 
 .imgBaseCart {
-	height: 128px;
+	height: 250px;
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	.imgBaseCart {
-		height: 238px;
+		height: 300px;
 	}
 }
 
@@ -229,7 +229,7 @@ a:focus {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	.borderCustom {
-		height: 430px;
+		height: 490px;
 	}
 }
 
@@ -292,7 +292,7 @@ a:focus {
 }
 
 .cartCustomBody {
-	max-height: 321px;
+	max-height: 381px;
 	overflow-y: auto;
 }
 
@@ -418,4 +418,10 @@ a:focus {
 }
 .letterSpace {
 	letter-spacing: -0.2px;
+}
+
+.dropdown-item:active {
+	color: #16181b !important;
+    text-decoration: none;
+    background-color: #e9ecef !important;
 }
