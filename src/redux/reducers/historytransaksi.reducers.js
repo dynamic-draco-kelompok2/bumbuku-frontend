@@ -5,24 +5,28 @@ import {
 } from '../actions/historytransaction.actions.js'
 
 const initialState = {
-  data: []
+  data: [],
+  isLoading: true
 }
 
 const handleHistoryTransaksi = (state = initialState, action) => {
   switch(action.type) {
     case GET_DATA_HISTORYTRANSAKSI_REQUEST:
       return {
-        ...state
+        ...state,
+        isLoading: true
       }
     case GET_DATA_HISTORYTRANSAKSI_SUCCESS:
       return {
         ...state,
-        data: action.result
+        data: action.result,
+        isLoading: false
       }
     case GET_DATA_HISTORYTRANSAKSI_ERROR:
       return {
         ...state,
-        error: action.error
+        error: action.error,
+        isLoading: false
       }
     default:
       return state

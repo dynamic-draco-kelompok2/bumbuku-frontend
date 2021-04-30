@@ -25,11 +25,13 @@ export const getDataHistoryError = (error) => {
 }
 
 export const getHistoryTransaksi = () => {
+  const userId = JSON.parse(localStorage.payload)._id;
+
   return function(dispatch) {
     dispatch(getDataHistoryRequest())
 
     axios
-      .get("https://bumbuku.herokuapp.com/history-transaksi/")
+      .get(`https://bumbuku.herokuapp.com/history-transaksi/user/${userId}`)
       .then((result) => dispatch(getDataHistorySuccess(result.data)))
       .catch((error) => dispatch(getDataHistoryError(error)))
   }
