@@ -62,7 +62,11 @@ function CardBumbuDasar(bumbuDasar) {
 				text: "Anda belum memilih produk !",
 			})
 		}else{
+			if(!isLogin){
+				history.push('/login');
+			} else{
 			dispatch(postOrderBumbuDasar(totalItemBumbuDasar, setShow, setTotalItemBumbuDasar, history, isLogin));
+			}
 		}
 	};
 
